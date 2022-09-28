@@ -4,7 +4,7 @@ import Header from '../components/header'
 
 export default function Home({ websiteSettings }) {
     return (
-        <div>
+        <div className="min-h-screen">
             <Header websiteSettings={websiteSettings} />
         </div>
     )

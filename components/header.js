@@ -41,7 +41,7 @@ export default function Header({ websiteSettings }) {
                     <div className="hidden  h-11  md:flex flex-row items-center self-end">
                         <input
                             type="text"
-                            className="w-48  h-11 focus:outline-none placeholder:text-xs border-b-2 border-red-700"
+                            className="w-48  h-11 focus:outline-none placeholder:text-xs border-0 border-b-2 border-red-700"
                             placeholder="RECHERCHE UN PRODUIT..."
                         />
                         <FaSearch className="text-xl mr-8 ml-2 hover:cursor-pointer hover:text-red-700 " />

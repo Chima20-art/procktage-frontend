@@ -11,7 +11,7 @@ export default function Header({ websiteSettings }) {
     console.log('setting:', websiteSettings)
     return (
         <div>
-            <div className=" font-raleway h-24  grid content-around  border border-b-red">
+            <div className=" font-raleway h-24  grid content-around  border border-b-red-700">
                 <div className=" px-2 text-gray  h-20 w-screen max-w-5xl  mx-auto  flex flex-row  justify-between  ">
                     <div className="flex flex-row ">
                         {logo && (
@@ -22,27 +22,30 @@ export default function Header({ websiteSettings }) {
                             />
                         )}
 
-                        <div className="hidden text-sm md:grid sm:content-end sm:px-4 sm:py-2 hover:cursor-pointer hover:border-b-2 hover:border-red  hover:text-red ">
+                        <div className="hidden text-sm md:grid sm:content-end sm:px-4 sm:py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700  hover:text-red-700 ">
                             ACCEUIL
                         </div>
-                        <div className="hidden  text-sm md:grid content-end px-4 py-2 hover:cursor-pointer hover:border-b-2 hover:border-red hover:text-red  ">
+                        <div
+                            className="hidden  text-sm md:grid content-end px-4 py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700
+                         hover:text-red-700  "
+                        >
                             ENTREPRISE
                         </div>
-                        <div className="hidden text-sm  md:grid content-end px-4 py-2 hover:cursor-pointer hover:border-b-2 hover:border-red hover:text-red ">
+                        <div className="hidden text-sm  md:grid content-end px-4 py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700 hover:text-red-700 ">
                             NOS PRODUITS
                         </div>
-                        <div className="hidden text-sm md:grid content-end px-4 py-2 hover:cursor-pointer hover:border-b-2 hover:border-red hover:text-red  ">
+                        <div className="hidden text-sm md:grid content-end px-4 py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700 hover:text-red-700  ">
                             CONTACT
                         </div>
                     </div>
                     <div className="hidden  h-11  md:flex flex-row items-center self-end">
                         <input
                             type="text"
-                            className="w-48  h-11 focus:outline-none placeholder:text-xs border-b-2 border-red"
+                            className="w-48  h-11 focus:outline-none placeholder:text-xs border-b-2 border-red-700"
                             placeholder="RECHERCHE UN PRODUIT..."
                         />
-                        <FaSearch className="text-xl mr-8 ml-2 hover:cursor-pointer hover:text-red " />
-                        <RiShoppingCart2Fill className="text-xl  hover:cursor-pointer hover:text-red  " />
+                        <FaSearch className="text-xl mr-8 ml-2 hover:cursor-pointer hover:text-red-700 " />
+                        <RiShoppingCart2Fill className="text-xl  hover:cursor-pointer hover:text-red-700  " />
                     </div>
 
                     <div className=" md:hidden flex mr-4 text-3xl items-center  hover:cursor-pointer">
@@ -52,27 +55,27 @@ export default function Header({ websiteSettings }) {
                 </div>
             </div>
             {isOpen && (
-                <div className="md:hidden   h-[calc(100vh_-_6rem)] mx-6 flex flex-col  ">
+                <div className="md:hidden   h-[calc(100vh_-_6rem)] px-6 flex flex-col z-1000">
                     <div className="flex h-16 items-center  ">
-                        <FaSearch className="mr-2 text-xl flex  self-center hover:cursor-pointer hover:text-red " />
+                        <FaSearch className="mr-2 text-xl flex  self-center hover:cursor-pointer hover:text-red-700 " />
 
                         <input
                             type="text"
-                            className="w-full  h-11 focus:outline-none placeholder:text-xs border-b-2 border-b-red border-0"
+                            className="w-full  h-11 focus:outline-none placeholder:text-xs border-b-2 border-b-red-700 border-0"
                             placeholder="RECHERCHE UN PRODUIT..."
                         />
                     </div>
 
-                    <div className="flex  items-center  h-16  text-sm  py-2 hover:cursor-pointer hover:border-b-2 hover:border-red hover:text-red ">
+                    <div className="flex  items-center  h-16  text-sm  py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700 hover:text-red-700 ">
                         Accueil
                     </div>
-                    <div className="flex  items-center  h-16  text-sm  py-2 hover:cursor-pointer hover:border-b-2 hover:border-red hover:text-red ">
+                    <div className="flex  items-center  h-16  text-sm  py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700 hover:text-red-700 ">
                         Entreprise
                     </div>
-                    <div className="flex  items-center  h-16  text-sm py-2 hover:cursor-pointer hover:border-b-2 hover:border-red hover:text-red ">
+                    <div className="flex  items-center  h-16  text-sm py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700 hover:text-red-700 ">
                         Nos produits
                     </div>
-                    <div className="flex  items-center  h-16  text-sm py-2 hover:cursor-pointer hover:border-b-2 hover:border-red hover:text-red ">
+                    <div className="flex  items-center  h-16  text-sm py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700 hover:text-red-700 ">
                         Contact
                     </div>
                 </div>

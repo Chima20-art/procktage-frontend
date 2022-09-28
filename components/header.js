@@ -45,14 +45,36 @@ export default function Header({ websiteSettings }) {
                         <RiShoppingCart2Fill className="text-xl  hover:cursor-pointer hover:text-red  " />
                     </div>
 
-                    <div className=" md:hidden flex mr-4 text-4xl items-center  hover:cursor-pointer">
+                    <div className=" md:hidden flex mr-4 text-3xl items-center  hover:cursor-pointer">
+                        <RiShoppingCart2Fill className="text-2xl  mr-4 hover:cursor-pointer " />
                         <IoMdMenu onClick={() => setIsOpen(!isOpen)} />
                     </div>
                 </div>
             </div>
             {isOpen && (
-                <div className="md:hidden bg-red  h-[calc(100vh_-_6rem)]">
-                    fvefve
+                <div className="md:hidden   h-[calc(100vh_-_6rem)] mx-6 flex flex-col  ">
+                    <div className="flex h-16 items-center  ">
+                        <FaSearch className="mr-2 text-xl flex  self-center hover:cursor-pointer hover:text-red " />
+
+                        <input
+                            type="text"
+                            className="w-full  h-11 focus:outline-none placeholder:text-xs border-b-2 border-b-red border-0"
+                            placeholder="RECHERCHE UN PRODUIT..."
+                        />
+                    </div>
+
+                    <div className="flex  items-center  h-16  text-sm  py-2 hover:cursor-pointer hover:border-b-2 hover:border-red hover:text-red ">
+                        Accueil
+                    </div>
+                    <div className="flex  items-center  h-16  text-sm  py-2 hover:cursor-pointer hover:border-b-2 hover:border-red hover:text-red ">
+                        Entreprise
+                    </div>
+                    <div className="flex  items-center  h-16  text-sm py-2 hover:cursor-pointer hover:border-b-2 hover:border-red hover:text-red ">
+                        Nos produits
+                    </div>
+                    <div className="flex  items-center  h-16  text-sm py-2 hover:cursor-pointer hover:border-b-2 hover:border-red hover:text-red ">
+                        Contact
+                    </div>
                 </div>
             )}
         </div>

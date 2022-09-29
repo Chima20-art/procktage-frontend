@@ -5,6 +5,7 @@ import { client } from '../lib/sanity'
 function MyApp({ Component, pageProps, websiteSettings }) {
     return <Component {...pageProps} websiteSettings={websiteSettings} />
 }
+
 MyApp.getInitialProps = async (appContext) => {
     //   // calls page's `getInitialProps` and fills `appProps.pageProps`
     const appProps = await App.getInitialProps(appContext)

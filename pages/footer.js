@@ -25,9 +25,9 @@ export default function Footer({ websiteSettings }) {
                         Connectez-vous avec nous sur les réseaux sociaux :
                     </p>
                     <div className="flex items-center">
-                        <AiFillFacebook className="mx-1 text-2xl" />
-                        <BsInstagram className="mx-1 text-xl" />
-                        <TbBrandTiktok className="mx-1 text-2xl" />
+                        <AiFillFacebook className="mx-1 text-2xl cursor-pointer" />
+                        <BsInstagram className="mx-1 text-xl cursor-pointer" />
+                        <TbBrandTiktok className="mx-1 text-2xl cursor-pointer" />
                     </div>
                 </div>
             </section>
@@ -60,13 +60,13 @@ export default function Footer({ websiteSettings }) {
                     <p className=" w-[204px]  uppercase  py-2 text-xs border-b-2 border-red-700 border-0">
                         Nos produit
                     </p>
-                    <p className="uppercase text-[#424242]  text-xs  w-[204px]">
+                    <p className="uppercase text-[#424242]  text-xs  w-[204px] cursor-pointer hover:font-bold">
                         emballage alimentaire pour la restauration
                     </p>
-                    <p className="uppercase text-[#424242] text-xs  w-[204px]">
+                    <p className="uppercase text-[#424242] text-xs  w-[204px] cursor-pointer hover:font-bold">
                         emballage recyclable biodégradable
                     </p>
-                    <p className="uppercase text-[#424242] text-xs  w-[204px]">
+                    <p className="uppercase text-[#424242] text-xs  w-[204px] cursor-pointer hover:font-bold">
                         le professionnel de l'hygiène
                     </p>
                 </section>

@@ -68,23 +68,23 @@ export default function Footer() {
                         Contact
                     </p>
                     <div className="flex items-center pt-4 pb-1">
-                        <ImLocation />
+                        <ImLocation className="text-lg" />
                         104 bis rue mimousa hay erraha casablanca - maroc
                     </div>
                     <div className="flex items-center py-1">
-                        <BsTelephoneFill />
+                        <BsTelephoneFill className="text-lg" />
                         +212(0)522 95 18 54/522 36 52 72
                     </div>
                     <div className="flex items-center py-1">
-                        <GoDeviceMobile />
+                        <GoDeviceMobile className="text-lg" />
                         +212(0)661 88 56 19
                     </div>
                     <div className="flex items-center py-1">
-                        <FaFax />
+                        <FaFax className="text-lg" />
                         +212(0)522 36 52 72
                     </div>
                     <div className="flex items-center py-1">
-                        <MdOutlineEmail />
+                        <MdOutlineEmail className="text-xl" />
                         proxymarket@menara.ma - contact@proxymarketmaroc.com
                     </div>
                 </section>

@@ -9,7 +9,14 @@ import { GoDeviceMobile } from 'react-icons/go'
 
 import { MdOutlineEmail } from 'react-icons/md'
 
-export default function Footer() {
+export default function Footer({ websiteSettings }) {
+    console.log('setting:', websiteSettings)
+    const adress = websiteSettings?.contact?.adress
+    const phone = websiteSettings?.contact?.phone
+    const mobile = websiteSettings?.contact?.mobile
+    const fax = websiteSettings?.contact?.fax
+    const email = websiteSettings?.contact?.email
+
     return (
         <div className="h-[350px] bg-[#FFF8ED] flex flex-col self-end w-full-screen">
             <section className="  py-4   text-[#424242] bg-red-700 ">
@@ -69,23 +76,23 @@ export default function Footer() {
                     </p>
                     <div className="flex items-center pt-4 pb-1">
                         <ImLocation className="text-lg" />
-                        104 bis rue mimousa hay erraha casablanca - maroc
+                        {adress}
                     </div>
                     <div className="flex items-center py-1">
                         <BsTelephoneFill className="text-lg" />
-                        +212(0)522 95 18 54/522 36 52 72
+                        {phone}
                     </div>
                     <div className="flex items-center py-1">
                         <GoDeviceMobile className="text-lg" />
-                        +212(0)661 88 56 19
+                        {mobile}
                     </div>
                     <div className="flex items-center py-1">
                         <FaFax className="text-lg" />
-                        +212(0)522 36 52 72
+                        {fax}
                     </div>
                     <div className="flex items-center py-1">
                         <MdOutlineEmail className="text-xl" />
-                        proxymarket@menara.ma - contact@proxymarketmaroc.com
+                        {email}
                     </div>
                 </section>
             </section>

@@ -8,7 +8,7 @@ export default function Header({ websiteSettings }) {
     const [isOpen, setIsOpen] = useState(false)
     const logo = websiteSettings?.logo?.logo
     const alt = websiteSettings?.logo?.caption
-    console.log('setting:', websiteSettings)
+
     return (
         <div>
             <div className=" font-raleway h-24  grid content-around  border border-b-red-700">

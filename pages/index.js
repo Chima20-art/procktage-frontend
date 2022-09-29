@@ -8,7 +8,7 @@ export default function Home({ websiteSettings }) {
         <div className="h-screen  ">
             <Header websiteSettings={websiteSettings} />
             <div className="h-1/3 ">Content</div>
-            <Footer />
+            <Footer websiteSettings={websiteSettings} />
         </div>
     )
 }

@@ -18,7 +18,7 @@ export default function Footer({ websiteSettings }) {
     const email = websiteSettings?.contact?.email
 
     return (
-        <div className="h-[350px] bg-[#FFF8ED] flex flex-col self-end w-full-screen">
+        <div className="h-full pb-8 bg-[#FFF8ED] flex flex-col self-end w-full-screen">
             <section className="  py-4   text-[#424242] bg-red-700 ">
                 <div className="max-w-5xl  mx-auto  flex justify-between">
                     <p className="text-sm text-[#FEDFB6]">
@@ -33,7 +33,7 @@ export default function Footer({ websiteSettings }) {
             </section>
             <section
                 id="footer search"
-                className=" bg-red-100 flex-col flex px-4 md:px-0 md:py-2 md:flex-row md:flex md:justify-between max-w-5xl md:py-6 mx-auto  w-screen"
+                className="flex-col flex px-4  md:px-0 md:py-2 md:flex-row md:flex md:justify-between max-w-5xl md:py-6 mx-auto  w-screen"
             >
                 <section className=" md:px-2  flex flex-col  px-6 text-[#424242] ">
                     <p className="    pt-4 pb-2 my-2   md:w-[204px] md:py-2 uppercase  text-xs border-b-2 border-red-700 border-0">
@@ -70,7 +70,7 @@ export default function Footer({ websiteSettings }) {
                         le professionnel de l'hygiène
                     </p>
                 </section>
-                <section className="  w-full px-6 uppercase text-[#424242] text-xs  ">
+                <section className="  w-fit  px-6 uppercase text-[#424242] text-xs  ">
                     <p className=" pt-4 pb-2 my-4 md:my-2   md:w-[204px] md:py-2 uppercase  text-xs border-b-2 border-red-700 border-0">
                         Contact
                     </p>

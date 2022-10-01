@@ -20,7 +20,7 @@ export default function Footer({ websiteSettings }) {
     return (
         <div className="h-full pb-8 bg-[#FFF8ED] flex flex-col self-end w-full-screen">
             <section className="  py-4   text-[#424242] bg-red-700 ">
-                <div className="max-w-5xl  mx-auto  flex justify-between">
+                <div className="max-w-5xl lg:px-0 px-2 mx-auto  flex justify-between">
                     <p className="text-sm text-[#FEDFB6]">
                         Connectez-vous avec nous sur les réseaux sociaux :
                     </p>

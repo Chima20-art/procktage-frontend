@@ -2,8 +2,14 @@ import '../styles/globals.css'
 import App from 'next/app'
 import { client } from '../lib/sanity'
 
-function MyApp({ Component, pageProps, websiteSettings }) {
-    return <Component {...pageProps} websiteSettings={websiteSettings} />
+function MyApp({ Component, pageProps, websiteSettings, homePage }) {
+    return (
+        <Component
+            {...pageProps}
+            websiteSettings={websiteSettings}
+            homePage={homePage}
+        />
+    )
 }
 
 MyApp.getInitialProps = async (appContext) => {
@@ -11,9 +17,26 @@ MyApp.getInitialProps = async (appContext) => {
     const appProps = await App.getInitialProps(appContext)
 
     const websiteSettings = await client.fetch(`*[_type == 'settings'][0]`, {})
-    //console.log('websiteSettings', websiteSettings)
+    const homePage = await client.fetch(
+        `*[_type == 'homePage'][0]{
+        Sections[]{
+          image,
+          title,
+          refrence->{
+            title,
+            subCategories[]->{
+              title,
+              _id,
+              "count":count(*[ _type=='product' && references(^._id)])
+            }
+          },
+          _key
+        },
+      }`,
+        {}
+    )
 
-    return { ...appProps, websiteSettings }
+    return { ...appProps, websiteSettings, homePage }
 }
 
 export default MyApp

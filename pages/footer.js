@@ -55,9 +55,9 @@ export default function Footer({ websiteSettings }) {
                 </section>
                 <section
                     className="
-                     md:px-6 px-6 flex flex-col justify-between text-[#424242]"
+                     px-6 flex flex-col justify-between text-[#424242]"
                 >
-                    <p className="pt-4 pb-2 my-4 md:my-2   md:w-[204px] md:py-2 uppercase  text-xs border-b-2 border-red-700 border-0">
+                    <p className="pt-4 pb-2 my-4 md:my-2    md:py-2 uppercase  text-xs border-b-2 border-red-700 border-0">
                         Nos produit
                     </p>
                     <p className="uppercase text-[#424242]  text-xs my-2   md:w-[204px] cursor-pointer hover:font-bold">
@@ -70,8 +70,8 @@ export default function Footer({ websiteSettings }) {
                         le professionnel de l'hygiène
                     </p>
                 </section>
-                <section className="  w-fit  px-6 uppercase text-[#424242] text-xs  ">
-                    <p className=" pt-4 pb-2 my-4 md:my-2   md:w-[204px] md:py-2 uppercase  text-xs border-b-2 border-red-700 border-0">
+                <section className=" w-full px-6 uppercase text-[#424242] text-xs  ">
+                    <p className=" pt-4 pb-2 my-4 md:my-2    md:py-2 uppercase  text-xs border-b-2 border-red-700 border-0">
                         Contact
                     </p>
                     <div className="flex items-center md:pt-2 md:py-0 py-3 pt-0 ">

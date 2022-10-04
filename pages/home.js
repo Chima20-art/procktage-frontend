@@ -28,7 +28,7 @@ export default function Accueil({ homePage }) {
                                 transition={{ duration: 1, delay: 0.1 }}
                                 className={`absolute flex flex-col justify-between bottom-0 w-full max-h-1/2  md:inset-y-0 md:pt-12 	 ${
                                     index % 2 == 0 ? 'left-0' : 'right-0'
-                                } bg-black bg-opacity-40 z-50 md:w-2/5 md:h-full`}
+                                } bg-black bg-opacity-40 z-20 md:w-2/5 md:h-full`}
                             >
                                 <motion.h1
                                     initial={{

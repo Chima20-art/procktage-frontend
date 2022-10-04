@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import { urlFor } from '../lib/sanity'
 import { FaSearch } from 'react-icons/fa'
-import { RiShoppingCart2Fill } from 'react-icons/ri'
+import { RiShoppingCart2Fill, RiArrowDropDownLine } from 'react-icons/ri'
 import { IoMdMenu } from 'react-icons/io'
+import { motion, AnimatePresence } from 'framer-motion'
 
 export default function Header({ websiteSettings }) {
     const [isOpen, setIsOpen] = useState(false)
     const logo = websiteSettings?.logo?.logo
     const alt = websiteSettings?.logo?.caption
+    const [clicked, setClicked] = useState(false)
 
     return (
         <div>
@@ -22,19 +24,37 @@ export default function Header({ websiteSettings }) {
                             />
                         )}
 
-                        <div className="hidden text-sm md:grid sm:content-end sm:px-4 sm:py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700  hover:text-red-700 ">
+                        <div className="hidden text-xs font-bold md:grid sm:content-end sm:px-4 sm:py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700  hover:text-red-700 ">
                             ACCEUIL
                         </div>
                         <div
-                            className="hidden  text-sm md:grid content-end px-4 py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700
+                            className="hidden  text-xs font-bold  md:grid content-end px-4 py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700
                          hover:text-red-700  "
                         >
                             ENTREPRISE
                         </div>
-                        <div className="hidden text-sm  md:grid content-end px-4 py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700 hover:text-red-700 ">
-                            NOS PRODUITS
+                        <div
+                            onClick={() => setClicked(!clicked)}
+                            className=" relative hidden text-xs font-bold   md:flex md:flex-row  items-end  px-4 py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700 hover:text-red-700 "
+                        >
+                            <p>NOS PRODUITS</p>
+                            <RiArrowDropDownLine className="text-xl " />
+                            <AnimatePresence>
+                                {clicked && (
+                                    <motion.div
+                                        key="categoryMenu"
+                                        initial={{ y: '-20%', opacity: 0 }}
+                                        animate={{ y: 0, opacity: 1 }}
+                                        exit={{ opacity: 0 }}
+                                        className="z-50 bg-red-200 flex absolute rounded-md  -bottom-[198px] left-0 min-w-[280px] px-4 py-2 h-48 "
+                                    >
+                                        dropdown
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
                         </div>
-                        <div className="hidden text-sm md:grid content-end px-4 py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700 hover:text-red-700  ">
+
+                        <div className="hidden text-xs font-bold  md:grid content-end px-4 py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700 hover:text-red-700  ">
                             CONTACT
                         </div>
                     </div>
@@ -54,6 +74,7 @@ export default function Header({ websiteSettings }) {
                     </div>
                 </div>
             </div>
+
             {isOpen && (
                 <div className="md:hidden   h-[calc(100vh_-_6rem)] px-6 flex flex-col z-1000">
                     <div className="flex h-16 items-center  ">

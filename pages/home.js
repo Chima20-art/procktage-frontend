@@ -1,5 +1,6 @@
 import React from 'react'
 import { urlFor } from '../lib/sanity'
+import { motion } from 'framer-motion'
 
 export default function Accueil({ homePage }) {
     console.log('homePage', homePage)
@@ -10,7 +11,7 @@ export default function Accueil({ homePage }) {
     return (
         <div>
             {' '}
-            <div className="my-8 max-w-4xl mx-auto bg-red-100 ">
+            <div className="my-8 max-w-4xl mx-auto  ">
                 {homePage?.Sections?.map((section, index) => {
                     return (
                         <div
@@ -21,15 +22,31 @@ export default function Accueil({ homePage }) {
                                 src={urlFor(section?.image?.image)}
                                 className="h-[500px] object-cover w-full"
                             />
-                            <div
+                            <motion.div
+                                initial={{ x: index % 2 == 0 ? '40%' : '-40%' }}
+                                animate={{ x: 0 }}
+                                transition={{ duration: 1, delay: 0.1 }}
                                 className={`absolute flex flex-col justify-between bottom-0 w-full max-h-1/2  md:inset-y-0 md:pt-12 	 ${
                                     index % 2 == 0 ? 'left-0' : 'right-0'
-                                } bg-black bg-opacity-50 z-50 md:w-2/5 md:h-full`}
+                                } bg-black bg-opacity-40 z-50 md:w-2/5 md:h-full`}
                             >
-                                <h1 className="text-[20px] uppercase text-white p-6 leading-10 opacity-90">
+                                <motion.h1
+                                    initial={{
+                                        x: index % 2 == 0 ? '15%' : '-15%',
+                                    }}
+                                    animate={{ x: 0 }}
+                                    transition={{ duration: 1, delay: 0.1 }}
+                                    className="text-[20px] uppercase text-white p-6 leading-10 opacity-90"
+                                >
                                     {section?.title}
-                                </h1>
-                                <div>
+                                </motion.h1>
+                                <motion.div
+                                    initial={{
+                                        x: index % 2 == 0 ? '15%' : '-15%',
+                                    }}
+                                    animate={{ x: 0 }}
+                                    transition={{ duration: 1, delay: 0.1 }}
+                                >
                                     {' '}
                                     <p className="bg-red-700 w-full pb-6 pt-12 px-6 uppercase text-white text-[15px] text-opacity-90">
                                         <a
@@ -42,8 +59,8 @@ export default function Accueil({ homePage }) {
                                     <p className=" px-6 py-6 uppercase text-white text-[10px] text-opacity-90">
                                         Découvrir +800 differents produits
                                     </p>
-                                </div>
-                            </div>
+                                </motion.div>
+                            </motion.div>
                         </div>
                     )
                 })}

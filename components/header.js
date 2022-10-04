@@ -10,6 +10,8 @@ export default function Header({ websiteSettings, homePage }) {
     const logo = websiteSettings?.logo?.logo
     const alt = websiteSettings?.logo?.caption
     const [clicked, setClicked] = useState(false)
+    const [openCategories, setOpenCategories] = useState([])
+
     console.log(homePage)
     return (
         <div>
@@ -34,13 +36,18 @@ export default function Header({ websiteSettings, homePage }) {
                             ENTREPRISE
                         </div>
                         <div
-                            onClick={() => setClicked(!clicked)}
                             className={`relative hidden text-xs font-bold   md:flex md:flex-row  items-end  px-4 py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700 hover:text-red-700 ${
                                 clicked && 'border-b-2 border-red-700'
                             } `}
                         >
-                            <p>NOS PRODUITS</p>
-                            <RiArrowDropDownLine className="text-xl " />
+                            <div
+                                className="md:flex md:flex-row  items-end relative "
+                                onClick={() => setClicked(!clicked)}
+                            >
+                                <p>NOS PRODUITS</p>
+                                <RiArrowDropDownLine className="text-xl " />
+                            </div>
+
                             <AnimatePresence>
                                 {clicked && (
                                     <motion.div
@@ -48,20 +55,77 @@ export default function Header({ websiteSettings, homePage }) {
                                         initial={{ y: '-20%', opacity: 0 }}
                                         animate={{ y: 0, opacity: 1 }}
                                         exit={{ opacity: 0 }}
-                                        className="z-50 bg-beige flex absolute uppercase text-gray -bottom-[194px] border border-red-700 left-0 min-w-[280px] px-4 py-6 h-48 "
+                                        className="z-50 bg-beige flex absolute uppercase text-gray top-[112px] border border-red-700 left-0 min-w-[280px] px-4 py-6  "
                                     >
                                         <ul>
                                             <li className="pb-3  ">
                                                 Tous nos categories
                                             </li>
                                             {homePage?.Sections?.map(
-                                                (section) => {
+                                                (section, index) => {
                                                     return (
-                                                        <div className="">
-                                                            <li className="  justify-between items-center py-3 flex flex-row text-[10px] hover:cursor-pointer hover:text-red-700">
+                                                        <div
+                                                            key={section?._key}
+                                                            className=" flex flex-col"
+                                                        >
+                                                            <div
+                                                                onClick={() => {
+                                                                    if (
+                                                                        !openCategories.includes(
+                                                                            index
+                                                                        )
+                                                                    ) {
+                                                                        setOpenCategories(
+                                                                            [
+                                                                                ...openCategories,
+                                                                                index,
+                                                                            ]
+                                                                        )
+                                                                    } else {
+                                                                        const newOpenCategories =
+                                                                            openCategories.filter(
+                                                                                (
+                                                                                    item
+                                                                                ) =>
+                                                                                    item !=
+                                                                                    index
+                                                                            )
+
+                                                                        setOpenCategories(
+                                                                            newOpenCategories
+                                                                        )
+                                                                    }
+                                                                }}
+                                                                className="  justify-between items-center py-3 flex flex-row text-[10px] hover:cursor-pointer hover:text-red-700"
+                                                            >
                                                                 {section?.title}
                                                                 <RiArrowDropDownLine className="text-xl " />
-                                                            </li>
+                                                            </div>
+                                                            {openCategories.includes(
+                                                                index
+                                                            ) && (
+                                                                <div>
+                                                                    {section?.refrence?.subCategories?.map(
+                                                                        (
+                                                                            subcategory
+                                                                        ) => {
+                                                                            return (
+                                                                                <li
+                                                                                    key={
+                                                                                        subcategory?._id
+                                                                                    }
+                                                                                    className="text-gray py-1 text-[10px] "
+                                                                                >
+                                                                                    -{' '}
+                                                                                    {
+                                                                                        subcategory?.title
+                                                                                    }
+                                                                                </li>
+                                                                            )
+                                                                        }
+                                                                    )}
+                                                                </div>
+                                                            )}
                                                         </div>
                                                     )
                                                 }

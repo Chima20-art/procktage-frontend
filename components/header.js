@@ -5,12 +5,12 @@ import { RiShoppingCart2Fill, RiArrowDropDownLine } from 'react-icons/ri'
 import { IoMdMenu } from 'react-icons/io'
 import { motion, AnimatePresence } from 'framer-motion'
 
-export default function Header({ websiteSettings }) {
+export default function Header({ websiteSettings, homePage }) {
     const [isOpen, setIsOpen] = useState(false)
     const logo = websiteSettings?.logo?.logo
     const alt = websiteSettings?.logo?.caption
     const [clicked, setClicked] = useState(false)
-
+    console.log(homePage)
     return (
         <div>
             <div className=" font-raleway h-fit pt-2 pb-4 grid content-around  border border-b-red-700">
@@ -35,7 +35,9 @@ export default function Header({ websiteSettings }) {
                         </div>
                         <div
                             onClick={() => setClicked(!clicked)}
-                            className=" relative hidden text-xs font-bold   md:flex md:flex-row  items-end  px-4 py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700 hover:text-red-700 "
+                            className={`relative hidden text-xs font-bold   md:flex md:flex-row  items-end  px-4 py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700 hover:text-red-700 ${
+                                clicked && 'border-b-2 border-red-700'
+                            } `}
                         >
                             <p>NOS PRODUITS</p>
                             <RiArrowDropDownLine className="text-xl " />
@@ -46,9 +48,25 @@ export default function Header({ websiteSettings }) {
                                         initial={{ y: '-20%', opacity: 0 }}
                                         animate={{ y: 0, opacity: 1 }}
                                         exit={{ opacity: 0 }}
-                                        className="z-50 bg-red-200 flex absolute rounded-md  -bottom-[198px] left-0 min-w-[280px] px-4 py-2 h-48 "
+                                        className="z-50 bg-beige flex absolute uppercase text-gray -bottom-[194px] border border-red-700 left-0 min-w-[280px] px-4 py-6 h-48 "
                                     >
-                                        dropdown
+                                        <ul>
+                                            <li className="pb-3  ">
+                                                Tous nos categories
+                                            </li>
+                                            {homePage?.Sections?.map(
+                                                (section) => {
+                                                    return (
+                                                        <div className="">
+                                                            <li className="  justify-between items-center py-3 flex flex-row text-[10px] hover:cursor-pointer hover:text-red-700">
+                                                                {section?.title}
+                                                                <RiArrowDropDownLine className="text-xl " />
+                                                            </li>
+                                                        </div>
+                                                    )
+                                                }
+                                            )}
+                                        </ul>
                                     </motion.div>
                                 )}
                             </AnimatePresence>

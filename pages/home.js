@@ -3,11 +3,6 @@ import { urlFor } from '../lib/sanity'
 import { motion } from 'framer-motion'
 
 export default function Accueil({ homePage }) {
-    console.log('homePage', homePage)
-    let title = homePage?.Sections?.map((section) => {
-        return section.title
-    })
-    console.log('title:', title)
     return (
         <div>
             {' '}

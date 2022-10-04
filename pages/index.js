@@ -8,7 +8,7 @@ import { motion } from 'framer-motion'
 export default function Home({ websiteSettings, homePage }) {
     return (
         <div className="h-full bg-[#FFF8ED] flex flex-col justify-between ">
-            <Header websiteSettings={websiteSettings} />
+            <Header websiteSettings={websiteSettings} homePage={homePage} />
             <Accueil homePage={homePage} />
             <div className="w-screen">
                 <Footer websiteSettings={websiteSettings} />

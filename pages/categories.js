@@ -1,16 +1,13 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import React from 'react'
 import Header from '../components/header'
-import Footer from '../components/footer'
-import Accueil from '../components/home'
-import { motion } from 'framer-motion'
 import { client } from '../lib/sanity'
+import Footer from '../components/footer'
 
-export default function Home({ websiteSettings, homePage, categories }) {
+export default function Categories({ websiteSettings, categories }) {
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen flex flex-col justify-between ">
             <Header websiteSettings={websiteSettings} categories={categories} />
-            <Accueil homePage={homePage} />
+            <div>categories</div>
             <div className="w-screen">
                 <Footer websiteSettings={websiteSettings} />
             </div>
@@ -20,24 +17,6 @@ export default function Home({ websiteSettings, homePage, categories }) {
 
 export async function getStaticProps(context) {
     let websiteSettings = client.fetch(`*[_type == 'settings'][0]`, {})
-    let homePage = client.fetch(
-        `*[_type == 'homePage'][0]{
-        Sections[]{
-          image,
-          title,
-          refrence->{
-            title,
-            subCategories[]->{
-              title,
-              _id,
-              "count":count(*[ _type=='product' && references(^._id)])
-            }
-          },
-          _key
-        },
-      }`,
-        {}
-    )
     let categories = client.fetch(
         `*[_type == 'category']{
           _id,
@@ -49,13 +28,12 @@ export async function getStaticProps(context) {
               }
         }`
     )
-    let promises = [websiteSettings, homePage, categories]
+    let promises = [websiteSettings, categories]
     promises = await Promise.all(promises)
     websiteSettings = promises[0]
-    homePage = promises[1]
-    categories = promises[2]
+    categories = promises[1]
 
     return {
-        props: { websiteSettings, homePage, categories }, // will be passed to the page component as props
+        props: { websiteSettings, categories }, // will be passed to the page component as props
     }
 }

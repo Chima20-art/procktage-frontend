@@ -4,15 +4,15 @@ import { FaSearch } from 'react-icons/fa'
 import { RiShoppingCart2Fill, RiArrowDropDownLine } from 'react-icons/ri'
 import { IoMdMenu } from 'react-icons/io'
 import { motion, AnimatePresence } from 'framer-motion'
+import Link from 'next/link'
 
-export default function Header({ websiteSettings, homePage }) {
+export default function Header({ websiteSettings, categories }) {
     const [isOpen, setIsOpen] = useState(false)
     const logo = websiteSettings?.logo?.logo
     const alt = websiteSettings?.logo?.caption
     const [clicked, setClicked] = useState(false)
     const [openCategories, setOpenCategories] = useState([])
 
-    console.log(homePage)
     return (
         <div>
             <div className=" font-raleway h-fit pt-2 pb-4 grid content-around  border border-b-red-700">
@@ -58,14 +58,15 @@ export default function Header({ websiteSettings, homePage }) {
                                         className="z-50 bg-beige flex absolute uppercase text-gray top-[112px] border border-red-700 left-0 min-w-[280px] px-4 py-6  "
                                     >
                                         <ul>
-                                            <li className="pb-3  ">
+                                            <Link href="/categories">
                                                 Tous nos categories
-                                            </li>
-                                            {homePage?.Sections?.map(
-                                                (section, index) => {
+                                            </Link>
+
+                                            {categories?.map(
+                                                (category, index) => {
                                                     return (
                                                         <div
-                                                            key={section?._key}
+                                                            key={category?._id}
                                                             className=" flex flex-col"
                                                         >
                                                             <div
@@ -98,14 +99,16 @@ export default function Header({ websiteSettings, homePage }) {
                                                                 }}
                                                                 className="  justify-between items-center py-3 flex flex-row text-[10px] hover:cursor-pointer hover:text-red-700"
                                                             >
-                                                                {section?.title}
+                                                                {
+                                                                    category?.title
+                                                                }
                                                                 <RiArrowDropDownLine className="text-xl " />
                                                             </div>
                                                             {openCategories.includes(
                                                                 index
                                                             ) && (
                                                                 <div>
-                                                                    {section?.refrence?.subCategories?.map(
+                                                                    {category.subCategories?.map(
                                                                         (
                                                                             subcategory
                                                                         ) => {

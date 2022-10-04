@@ -11,7 +11,7 @@ export default function Header({ websiteSettings }) {
 
     return (
         <div>
-            <div className=" font-raleway h-28  grid content-around  border border-b-red-700">
+            <div className=" font-raleway h-fit pt-2 pb-4 grid content-around  border border-b-red-700">
                 <div className=" px-2 text-gray  h-28 w-screen max-w-5xl  mx-auto  flex flex-row  justify-between  ">
                     <div className="flex flex-row ">
                         {logo && (

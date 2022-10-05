@@ -18,9 +18,3 @@ a {
 * {
     box-sizing: border-box;
 }
-
-.products:after {
-    content: '';
-    flex: auto;
-    background-color: red;
-}

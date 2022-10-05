@@ -8,6 +8,12 @@ export default function Accueil({ homePage }) {
             {' '}
             <div className="my-8 max-w-4xl mx-auto  ">
                 {homePage?.Sections?.map((section, index) => {
+                    let numberOfProducts = 0
+                    section?.refrence?.subCategories?.forEach((item) => {
+                        numberOfProducts =
+                            numberOfProducts + (item?.count ? item?.count : 0)
+                    })
+
                     return (
                         <div
                             key={section?._key}
@@ -52,7 +58,8 @@ export default function Accueil({ homePage }) {
                                         </a>
                                     </p>
                                     <p className=" px-6 py-6 uppercase text-white text-[10px] text-opacity-90">
-                                        Découvrir +800 differents produits
+                                        Découvrir +{numberOfProducts} differents
+                                        produits
                                     </p>
                                 </motion.div>
                             </motion.div>

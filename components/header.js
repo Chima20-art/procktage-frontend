@@ -19,15 +19,17 @@ export default function Header({ websiteSettings, categories }) {
                 <div className=" px-2 text-gray  h-28 w-screen max-w-5xl  mx-auto  flex flex-row  justify-between  ">
                     <div className="flex flex-row ">
                         {logo && (
-                            <img
-                                src={urlFor(logo).height(200)}
-                                alt={alt}
-                                className="self-start lg:mr-4 hover:cursor-pointer object-contain bg-red-100 h-24 my-auto  "
-                            />
+                            <Link href="/">
+                                <img
+                                    src={urlFor(logo).height(200)}
+                                    alt={alt}
+                                    className="self-start lg:mr-4 hover:cursor-pointer object-contain bg-red-100 h-24 my-auto  "
+                                />
+                            </Link>
                         )}
 
                         <div className="hidden text-xs font-bold md:grid sm:content-end sm:px-4 sm:py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700  hover:text-red-700 ">
-                            ACCEUIL
+                            <Link href="/">ACCEUIL</Link>
                         </div>
                         <div
                             className="hidden  text-xs font-bold  md:grid content-end px-4 py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700
@@ -59,7 +61,9 @@ export default function Header({ websiteSettings, categories }) {
                                     >
                                         <ul>
                                             <Link href="/categories">
-                                                Tous nos categories
+                                                <p className="hover:text-red-700">
+                                                    Tous nos categories
+                                                </p>
                                             </Link>
 
                                             {categories?.map(
@@ -117,7 +121,7 @@ export default function Header({ websiteSettings, categories }) {
                                                                                     key={
                                                                                         subcategory?._id
                                                                                     }
-                                                                                    className="text-gray py-1 text-[10px] "
+                                                                                    className="text-gray py-1 text-[10px]  hover:cursor-pointer hover:text-red-700"
                                                                                 >
                                                                                     -{' '}
                                                                                     {

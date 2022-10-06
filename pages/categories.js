@@ -25,7 +25,7 @@ export default function Categories({ websiteSettings, categories }) {
                             <section className="text-[28px]  uppercase my-6  text-red-700 border-b-gray border-b-[15px] border-dotted ">
                                 {category?.title}
                             </section>
-                            <section className=" w-full flex flex-row     flex-wrap    ">
+                            <section className=" w-full flex flex-row flex-wrap    ">
                                 {category?.subCategories?.map(
                                     (subcategory, index) => {
                                         const shouldNotGrow =

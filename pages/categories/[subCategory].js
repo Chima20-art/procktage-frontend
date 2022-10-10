@@ -13,7 +13,7 @@ export default function SubCategory({
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between ">
             <Header websiteSettings={websiteSettings} categories={categories} />
-            <div className="max-w-5xl  w-full flex flex-col items-center mx-auto py-8 h-full  ">
+            <div className="lg:max-w-5xl max-w-[80%]  w-full flex flex-col items-center mx-auto py-8 h-full  ">
                 <section className=" w-full  ">
                     {' '}
                     Nos Produits/ {subCategory.title}
@@ -21,14 +21,14 @@ export default function SubCategory({
                 <section className="text-[20px] uppercase my-6  text-red-700 border-b-gray border-b-[10px] border-dotted ">
                     {subCategory.title}
                 </section>
-                <section className="w-full  flex flex-row flex-wrap    ">
+                <section className="lg:max-w-5xl max-w-[80%]  flex flex-row flex-wrap    ">
                     {subCategory?.products
                         ?.concat(subCategory?.products)
                         .map((product, index) => {
                             return (
                                 <div
                                     key={index}
-                                    className="w-1/2 md:w-1/3 lg:w-1/4 flex justify-center"
+                                    className="w-full md:w-1/2 lg:w-1/4 flex justify-center"
                                 >
                                     <Link
                                         href={
@@ -38,19 +38,19 @@ export default function SubCategory({
                                             product?.slug?.current
                                         }
                                     >
-                                        <a className="group w-full pb-4 m-2 flex flex-col items-center border-[5px] border-grey-200 hover:border-red-700 hover:cursor-pointer ">
+                                        <a className="group w-full py-5 px-4 m-2 flex flex-col items-center border-[5px] border-grey-200 hover:border-red-700 hover:cursor-pointer ">
                                             <img
                                                 src={urlFor(
                                                     product?.image?.asset
                                                 )}
-                                                className="object-contain max-w-[140px] h-[140px] pt-3"
+                                                className="object-contain max-w-[140px] h-[140px] py-3"
                                             />
-                                            <p className="text-[12px] text-gray uppercase py-4">
+                                            <p className="text-[12px] text-gray uppercase py-3">
                                                 {product.title}
                                             </p>
-                                            <div className="flex flex-col justify-center  mx-4">
+                                            <div className="flex flex-col  justify-center py-3 items-center mx-4">
                                                 {product?.reference && (
-                                                    <div className="flex gap-2 mb-2">
+                                                    <div className="flex items-center gap-2 mb-2">
                                                         <div className="w-6 h-6  ">
                                                             <svg
                                                                 xmlns="http://www.w3.org/2000/svg"
@@ -69,14 +69,14 @@ export default function SubCategory({
                                                                 />
                                                             </svg>
                                                         </div>
-                                                        <p className="   p-0 m-0 ">
+                                                        <p className="   px-0 m-0 text-red-700 text-[12px] font-bold ">
                                                             {product?.reference}
                                                         </p>
                                                     </div>
                                                 )}
                                                 {product?.description?.length >
                                                     0 && (
-                                                    <div className="flex gap-2 mb-2 items-center justify-start   ">
+                                                    <div className="flex gap-2 mb-2 items-center justify-start py-3   ">
                                                         <div className="w-6 h-full  ">
                                                             <svg
                                                                 xmlns="http://www.w3.org/2000/svg"
@@ -96,12 +96,9 @@ export default function SubCategory({
                                                             </svg>
                                                         </div>
 
-                                                        <p className="">
+                                                        <p className="text-red-700 text-[11px] font-bold">
                                                             {product?.description
-                                                                ?.concat(
-                                                                    product?.description
-                                                                )
-                                                                .map(
+                                                                ?.map(
                                                                     (item) =>
                                                                         item?.sizing
                                                                 )
@@ -132,7 +129,7 @@ export default function SubCategory({
                                                                     />
                                                                 </svg>
                                                             </div>
-                                                            <p className="">
+                                                            <p className=" text-[14px] font-bold">
                                                                 {
                                                                     product
                                                                         ?.description[0]

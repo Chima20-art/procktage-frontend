@@ -20,7 +20,7 @@ export default function Footer({ websiteSettings }) {
     return (
         <div className="h-full pb-8 bg-[#FFF8ED] flex flex-col self-end w-full-screen">
             <section className="  py-4   text-[#424242] bg-red-700 ">
-                <div className="max-w-5xl lg:px-0 px-2 mx-auto  flex justify-between">
+                <div className="lg:max-w-5xl max-w-[80%]  lg:px-0 px-2 mx-auto  flex justify-between">
                     <p className="text-sm text-[#FEDFB6]">
                         Connectez-vous avec nous sur les réseaux sociaux :
                     </p>
@@ -33,10 +33,10 @@ export default function Footer({ websiteSettings }) {
             </section>
             <section
                 id="footer search"
-                className="flex-col flex px-4  md:px-0 md:py-2 md:flex-row md:flex md:justify-between max-w-5xl md:py-6 mx-auto  w-screen"
+                className="flex-col flex px-4  md:px-0 md:py-2 lg:flex-row lg:flex lg:justify-between lg:max-w-5xl max-w-[80%]  md:py-6 mx-auto  w-screen"
             >
-                <section className=" md:px-2  flex flex-col  px-6 text-[#424242] ">
-                    <p className="    pt-4 pb-2 my-2   md:w-[204px] md:py-2 uppercase  text-xs border-b-2 border-red-700 border-0">
+                <section className=" lg:px-2  flex flex-col  px-6 text-[#424242] ">
+                    <p className="   pt-4 pb-2 my-2   lg:w-[204px] lg:py-2 uppercase  text-xs border-b-2 border-red-700 border-0">
                         Recherche un produit
                     </p>
                     <p className="text-[9px] uppercase py-2 flex justify-center text-[#555]">
@@ -57,21 +57,21 @@ export default function Footer({ websiteSettings }) {
                     className="
                      px-6 flex flex-col justify-between text-[#424242]"
                 >
-                    <p className="pt-4 pb-2 my-4 md:my-2    md:py-2 uppercase  text-xs border-b-2 border-red-700 border-0">
+                    <p className="pt-6 pb-2 my-4 lg:my-2    lg:py-2 uppercase  text-xs border-b-2 border-red-700 border-0">
                         Nos produit
                     </p>
-                    <p className="uppercase text-[#424242]  text-xs my-2   md:w-[204px] cursor-pointer hover:font-bold">
+                    <p className="uppercase text-[#424242]  text-xs my-2   lg:w-[204px] cursor-pointer hover:font-bold">
                         emballage alimentaire pour la restauration
                     </p>
-                    <p className="uppercase text-[#424242] text-xs my-2   md:w-[204px] cursor-pointer hover:font-bold">
+                    <p className="uppercase text-[#424242] text-xs my-2   lg:w-[204px] cursor-pointer hover:font-bold">
                         emballage recyclable biodégradable
                     </p>
-                    <p className="uppercase text-[#424242] text-xs my-2   md:w-[204px] cursor-pointer hover:font-bold">
+                    <p className="uppercase text-[#424242] text-xs my-2   lg:w-[204px] cursor-pointer hover:font-bold">
                         le professionnel de l'hygiène
                     </p>
                 </section>
                 <section className=" w-full px-6 uppercase text-[#424242] text-xs  ">
-                    <p className=" pt-4 pb-2 my-4 md:my-2    md:py-2 uppercase  text-xs border-b-2 border-red-700 border-0">
+                    <p className=" pt-6 pb-2 my-4 lg:my-2    lg:py-2 uppercase  text-xs border-b-2 border-red-700 border-0">
                         Contact
                     </p>
                     <div className="flex items-center md:pt-2 md:py-0 py-3 pt-0 ">

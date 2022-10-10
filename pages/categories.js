@@ -20,7 +20,7 @@ export default function Categories({ websiteSettings, categories }) {
                     return (
                         <div
                             key={category._id}
-                            className=" w-full  items-center flex flex-col      "
+                            className=" w-full  items-center flex flex-col"
                         >
                             <section className="text-[28px]  uppercase my-6  text-red-700 border-b-gray border-b-[15px] border-dotted ">
                                 {category?.title}

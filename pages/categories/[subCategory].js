@@ -9,7 +9,6 @@ export default function SubCategory({
     categories,
     websiteSettings,
 }) {
-    console.log('subcategory', subCategory)
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between ">
             <Header websiteSettings={websiteSettings} categories={categories} />

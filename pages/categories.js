@@ -9,7 +9,7 @@ export default function Categories({ websiteSettings, categories }) {
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between ">
             <Header websiteSettings={websiteSettings} categories={categories} />
-            <div className="max-w-5xl w-full flex flex-col items-center mx-auto py-8 h-full  ">
+            <div className="lg:max-w-5xl max-w-[80%] flex flex-col items-center mx-auto py-8 h-full  ">
                 <section className=" w-full  "> Nos produits/...</section>
                 {categories?.map((category) => {
                     let rest = category?.subCategories?.length % 4
@@ -25,7 +25,7 @@ export default function Categories({ websiteSettings, categories }) {
                             <section className="text-[28px]  uppercase my-6  text-red-700 border-b-gray border-b-[15px] border-dotted ">
                                 {category?.title}
                             </section>
-                            <section className=" w-full flex flex-row flex-wrap    ">
+                            <section className=" lg:max-w-5xl max-w-[80%] flex flex-row flex-wrap    ">
                                 {category?.subCategories?.map(
                                     (subcategory, index) => {
                                         const shouldNotGrow =

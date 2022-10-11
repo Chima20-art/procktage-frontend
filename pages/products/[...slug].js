@@ -6,15 +6,24 @@ import { client, urlFor } from '../../lib/sanity'
 
 export default function Product({ subCategory, categories, websiteSettings }) {
     const products = subCategory?.products
+    let [count, setCount] = useState(0)
     console.log('subcategory', subCategory)
     console.log('products', products)
 
     const [isSelected, setIsSelected] = useState(false)
+    function incrementCount() {
+        count = count + 1
+        setCount(count)
+    }
+    function decrementCount() {
+        count = count - 1
+        setCount(count)
+    }
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between text-gray ">
             <Header websiteSettings={websiteSettings} categories={categories} />
-            <div className=" uppercase  max-w-5xl bg-red-100 w-full flex flex-col items-center mx-auto py-8 h-full  ">
-                <p className="w-full text-[11px]">
+            <div className=" uppercase  max-w-5xl  w-full flex flex-col items-center mx-auto py-8 h-full  ">
+                <p className="w-full text-[11px] py-8">
                     Nos produits/ Category/Subcategory/ Produit
                 </p>
                 <div className="w-full flex flex-col border border-grey-400 py-6 px-4">
@@ -22,11 +31,13 @@ export default function Product({ subCategory, categories, websiteSettings }) {
                         retour
                     </div>
                     <div className="w-full flex   ">
-                        <img
-                            src="/testimg.png"
-                            className=" flex flex-1  p-4  max-w-[270px] max-h-[240px]"
-                        />
-                        <div className=" flex flex-1 bg-red-200 w-full p-4 flex-col border-l">
+                        <div className=" w-[50%] flex justify-center">
+                            <img
+                                src="/testimg.png"
+                                className=" flex  p-4  max-w-[270px] max-h-[240px]"
+                            />
+                        </div>
+                        <div className=" flex   w-full p-4 flex-col border-l pl-6">
                             <p className="font-bold">
                                 Pot bodega sans couvercle
                             </p>
@@ -38,13 +49,13 @@ export default function Product({ subCategory, categories, websiteSettings }) {
                             </p>
                             <div>
                                 <div className="bg-red-700 flex fex-row py-3 ">
-                                    <div className="w-6 h-6 flex-1 flex justify-center bg-red-100 ">
+                                    <div className="w-6 h-6 flex-1 flex justify-center  ">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             fill="none"
                                             viewBox="0 0 24 24"
                                             strokeWidth={1.5}
-                                            stroke="currentColor"
+                                            stroke="black"
                                             className="w-6 h-6"
                                         >
                                             <path
@@ -60,7 +71,7 @@ export default function Product({ subCategory, categories, websiteSettings }) {
                                             fill="none"
                                             viewBox="0 0 24 24"
                                             strokeWidth={1.5}
-                                            stroke="currentColor"
+                                            stroke="black"
                                             className="w-6 h-6"
                                         >
                                             <path
@@ -70,7 +81,7 @@ export default function Product({ subCategory, categories, websiteSettings }) {
                                             />
                                         </svg>
                                     </div>
-                                    <div className="w-6 h-6 flex-1 bg-red-100 flex justify-center ">
+                                    <div className="w-6 h-6 flex-1  flex justify-center ">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             fill="none"
@@ -90,95 +101,7 @@ export default function Product({ subCategory, categories, websiteSettings }) {
                                 <div
                                     onClick={() => setIsSelected(!isSelected)}
                                     className={` flex fex-row py-2 cursor-pointer ${
-                                        isSelected ? 'bg-black' : 'bg-grey-100'
-                                    }`}
-                                >
-                                    <div className="flex-1 flex text-[15px] text-red-700 font-bold justify-center ">
-                                        050cplc14
-                                    </div>
-                                    <div className="flex-1 flex text-red-700 lowercase justify-center">
-                                        14oz - 38,5cl
-                                    </div>
-                                    <div
-                                        className={`flex-1 flex text-[15px] font-bold justify-center ${
-                                            isSelected
-                                                ? 'text-white'
-                                                : 'text-black'
-                                        } `}
-                                    >
-                                        1000pcs-1pqt
-                                    </div>
-                                </div>
-                                <div
-                                    onClick={() => setIsSelected(!isSelected)}
-                                    className={` flex fex-row py-2 ${
-                                        isSelected ? 'bg-black' : 'bg-grey-100'
-                                    }`}
-                                >
-                                    <div className="flex-1 flex text-[15px] text-red-700 font-bold justify-center ">
-                                        050cplc14
-                                    </div>
-                                    <div className="flex-1 flex text-red-700 lowercase justify-center">
-                                        14oz - 38,5cl
-                                    </div>
-                                    <div
-                                        className={`flex-1 flex text-[15px] font-bold justify-center ${
-                                            isSelected
-                                                ? 'text-white'
-                                                : 'text-black'
-                                        } `}
-                                    >
-                                        1000pcs-1pqt
-                                    </div>
-                                </div>
-                                <div
-                                    onClick={() => setIsSelected(!isSelected)}
-                                    className={` flex fex-row py-2 ${
-                                        isSelected ? 'bg-black' : 'bg-grey-100'
-                                    }`}
-                                >
-                                    <div className="flex-1 flex text-[15px] text-red-700 font-bold justify-center ">
-                                        050cplc14
-                                    </div>
-                                    <div className="flex-1 flex text-red-700 lowercase justify-center">
-                                        14oz - 38,5cl
-                                    </div>
-                                    <div
-                                        className={`flex-1 flex text-[15px] font-bold justify-center ${
-                                            isSelected
-                                                ? 'text-white'
-                                                : 'text-black'
-                                        } `}
-                                    >
-                                        1000pcs-1pqt
-                                    </div>
-                                </div>
-                                <div
-                                    onClick={() => setIsSelected(!isSelected)}
-                                    className={` flex fex-row py-2 ${
-                                        isSelected ? 'bg-black' : 'bg-grey-100'
-                                    }`}
-                                >
-                                    <div className="flex-1 flex text-[15px] text-red-700 font-bold justify-center ">
-                                        050cplc14
-                                    </div>
-                                    <div className="flex-1 flex text-red-700 lowercase justify-center">
-                                        14oz - 38,5cl
-                                    </div>
-                                    <div
-                                        className={`flex-1 flex text-[15px] font-bold justify-center ${
-                                            isSelected
-                                                ? 'text-white'
-                                                : 'text-black'
-                                        } `}
-                                    >
-                                        1000pcs-1pqt
-                                    </div>
-                                </div>
-                                <div
-                                    onClick={() => setIsSelected(!isSelected)}
-                                    className={` flex fex-row py-2 ${
-                                        isSelected ? 'bg-black' : 'bg-grey-100'
+                                        isSelected ? 'bg-gray' : 'bg-grey-100'
                                     }`}
                                 >
                                     <div className="flex-1 flex text-[15px] text-red-700 font-bold justify-center ">
@@ -198,8 +121,30 @@ export default function Product({ subCategory, categories, websiteSettings }) {
                                     </div>
                                 </div>
                             </div>
-                            <div>Quantite (Pqt):minimum pqt </div>
-                            <div></div>
+                            <div className=" text-[12px] mt-6">
+                                Quantite (Pqt):minimum pqt{' '}
+                            </div>
+                            <div className="flex">
+                                <button
+                                    onClick={decrementCount}
+                                    className="bg-gray text-white text-2xl h-fit my-auto w-[20px] flex items-center rounded-[2px] "
+                                >
+                                    -
+                                </button>
+                                <div className=" m-1 flex w-[80px] rounded-[50px] px-[10px] py-[10px] bg-red-200 ">
+                                    {count}
+                                </div>
+
+                                <button
+                                    onClick={incrementCount}
+                                    className="bg-gray text-white text-2xl h-fit my-auto w-[20px] flex  rounded-[2px] "
+                                >
+                                    <p className=" my-auto">+</p>
+                                </button>
+                            </div>
+                            <div className=" mt-6 bg-red-700 w-fit cursor-pointer py-[18px] px-[25px] rounded-[50px] text-[12px] text-white hover:bg-gray">
+                                @ ajouter au panier
+                            </div>
                         </div>
                     </div>
                 </div>

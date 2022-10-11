@@ -24,7 +24,7 @@ module.exports = {
                 beige: '#FFF8ED',
                 grey: {
                     50: '#f7f7f7',
-                    100: '#e3e3e3',
+                    100: '#F5F5F5',
                     200: '#c8c8c8',
                     300: '#a4a4a4',
                     400: '#818181',

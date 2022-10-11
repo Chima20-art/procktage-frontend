@@ -11,25 +11,33 @@ export default function Product({ subCategory, categories, websiteSettings }) {
 
     const [isSelected, setIsSelected] = useState(false)
     return (
-        <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between ">
+        <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between text-gray ">
             <Header websiteSettings={websiteSettings} categories={categories} />
             <div className=" uppercase  max-w-5xl bg-red-100 w-full flex flex-col items-center mx-auto py-8 h-full  ">
                 <p className="w-full text-[11px]">
                     Nos produits/ Category/Subcategory/ Produit
                 </p>
                 <div className="w-full flex flex-col border border-grey-400 py-6 px-4">
-                    <div>retour</div>
+                    <div className="lowercase font-bold cursor-pointer">
+                        retour
+                    </div>
                     <div className="w-full flex   ">
                         <img
                             src="/testimg.png"
-                            className=" flex  p-4  border-r"
+                            className=" flex flex-1  p-4  max-w-[270px] max-h-[240px]"
                         />
-                        <div className=" flex bg-red-200 w-full p-4 flex-col">
-                            <p>Pot bodega sans couvercle</p>
-                            <p>goblets et pots</p>
-                            <p>selectionnez la taille:</p>
+                        <div className=" flex flex-1 bg-red-200 w-full p-4 flex-col border-l">
+                            <p className="font-bold">
+                                Pot bodega sans couvercle
+                            </p>
+                            <p className="text-[14px] pt-2 pb-4 ">
+                                goblets et pots
+                            </p>
+                            <p className=" text-[12px]">
+                                selectionnez la taille:
+                            </p>
                             <div>
-                                <div className="bg-red-700 flex fex-row py-2 ">
+                                <div className="bg-red-700 flex fex-row py-3 ">
                                     <div className="w-6 h-6 flex-1 flex justify-center bg-red-100 ">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -81,6 +89,72 @@ export default function Product({ subCategory, categories, websiteSettings }) {
                                 </div>
                                 <div
                                     onClick={() => setIsSelected(!isSelected)}
+                                    className={` flex fex-row py-2 cursor-pointer ${
+                                        isSelected ? 'bg-black' : 'bg-grey-100'
+                                    }`}
+                                >
+                                    <div className="flex-1 flex text-[15px] text-red-700 font-bold justify-center ">
+                                        050cplc14
+                                    </div>
+                                    <div className="flex-1 flex text-red-700 lowercase justify-center">
+                                        14oz - 38,5cl
+                                    </div>
+                                    <div
+                                        className={`flex-1 flex text-[15px] font-bold justify-center ${
+                                            isSelected
+                                                ? 'text-white'
+                                                : 'text-black'
+                                        } `}
+                                    >
+                                        1000pcs-1pqt
+                                    </div>
+                                </div>
+                                <div
+                                    onClick={() => setIsSelected(!isSelected)}
+                                    className={` flex fex-row py-2 ${
+                                        isSelected ? 'bg-black' : 'bg-grey-100'
+                                    }`}
+                                >
+                                    <div className="flex-1 flex text-[15px] text-red-700 font-bold justify-center ">
+                                        050cplc14
+                                    </div>
+                                    <div className="flex-1 flex text-red-700 lowercase justify-center">
+                                        14oz - 38,5cl
+                                    </div>
+                                    <div
+                                        className={`flex-1 flex text-[15px] font-bold justify-center ${
+                                            isSelected
+                                                ? 'text-white'
+                                                : 'text-black'
+                                        } `}
+                                    >
+                                        1000pcs-1pqt
+                                    </div>
+                                </div>
+                                <div
+                                    onClick={() => setIsSelected(!isSelected)}
+                                    className={` flex fex-row py-2 ${
+                                        isSelected ? 'bg-black' : 'bg-grey-100'
+                                    }`}
+                                >
+                                    <div className="flex-1 flex text-[15px] text-red-700 font-bold justify-center ">
+                                        050cplc14
+                                    </div>
+                                    <div className="flex-1 flex text-red-700 lowercase justify-center">
+                                        14oz - 38,5cl
+                                    </div>
+                                    <div
+                                        className={`flex-1 flex text-[15px] font-bold justify-center ${
+                                            isSelected
+                                                ? 'text-white'
+                                                : 'text-black'
+                                        } `}
+                                    >
+                                        1000pcs-1pqt
+                                    </div>
+                                </div>
+                                <div
+                                    onClick={() => setIsSelected(!isSelected)}
                                     className={` flex fex-row py-2 ${
                                         isSelected ? 'bg-black' : 'bg-grey-100'
                                     }`}
@@ -124,6 +198,8 @@ export default function Product({ subCategory, categories, websiteSettings }) {
                                     </div>
                                 </div>
                             </div>
+                            <div>Quantite (Pqt):minimum pqt </div>
+                            <div></div>
                         </div>
                     </div>
                 </div>

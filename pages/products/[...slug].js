@@ -1,14 +1,12 @@
-import { fromJSON } from 'postcss'
+import Link from 'next/link'
 import { useState } from 'react'
 import Footer from '../../components/footer'
 import Header from '../../components/header'
 import { client, urlFor } from '../../lib/sanity'
 
-export default function Product({ subCategory, categories, websiteSettings }) {
-    const products = subCategory?.products
+export default function Product({ product, categories, websiteSettings }) {
     let [count, setCount] = useState(0)
-    console.log('subcategory', subCategory)
-    console.log('products', products)
+    console.log('product', product)
 
     const [isSelected, setIsSelected] = useState(false)
     function incrementCount() {
@@ -23,9 +21,10 @@ export default function Product({ subCategory, categories, websiteSettings }) {
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between text-gray ">
             <Header websiteSettings={websiteSettings} categories={categories} />
             <div className=" uppercase  max-w-5xl  w-full flex flex-col items-center mx-auto py-8 h-full  ">
-                <p className="w-full text-[11px] py-8">
-                    Nos produits/ Category/Subcategory/ Produit
-                </p>
+                <div className="w-full text-[11px] py-8">
+                    <Link href="/cateogries">Nos produits</Link>/ Category/
+                    {product?.Subcategory?.title}/{product?.title}
+                </div>
                 <div className="w-full flex flex-col border border-grey-400 py-6 px-4">
                     <div className="lowercase font-bold cursor-pointer">
                         retour
@@ -120,6 +119,28 @@ export default function Product({ subCategory, categories, websiteSettings }) {
                                         1000pcs-1pqt
                                     </div>
                                 </div>
+                                <div
+                                    onClick={() => setIsSelected(!isSelected)}
+                                    className={` flex fex-row py-2 cursor-pointer ${
+                                        isSelected ? 'bg-gray' : 'bg-grey-100'
+                                    }`}
+                                >
+                                    <div className="flex-1 flex text-[15px] text-red-700 font-bold justify-center ">
+                                        050cplc14
+                                    </div>
+                                    <div className="flex-1 flex text-red-700 lowercase justify-center">
+                                        14oz - 38,5cl
+                                    </div>
+                                    <div
+                                        className={`flex-1 flex text-[15px] font-bold justify-center ${
+                                            isSelected
+                                                ? 'text-white'
+                                                : 'text-black'
+                                        } `}
+                                    >
+                                        1000pcs-1pqt
+                                    </div>
+                                </div>
                             </div>
                             <div className=" text-[12px] mt-6">
                                 Quantite (Pqt):minimum pqt{' '}
@@ -154,4 +175,57 @@ export default function Product({ subCategory, categories, websiteSettings }) {
             </div>
         </div>
     )
+}
+
+export async function getStaticPaths() {
+    const products = await client.fetch(
+        `*[_type == 'product' && !(_id in path("drafts.**"))  ]{ Subcategory->{ slug }, slug }`,
+        {}
+    )
+    let paths = products.map((item, index) => {
+        return {
+            params: {
+                slug: [item.Subcategory.slug.current, item.slug.current],
+            },
+        }
+    })
+
+    return {
+        paths,
+        fallback: false, // can also be true or 'blocking'
+    }
+}
+
+export async function getStaticProps(context) {
+    const slug = context?.params?.slug
+
+    let productSlug = slug[slug?.length - 1]
+    // productSlug =
+
+    let prodcutQuery = `*[_type == 'product' && slug.current == '${productSlug}' &&  !(_id in path("drafts.**"))  ][0]{ Subcategory->{}, _id,description,image,reference,slug,title }`
+    let product = await client.fetch(prodcutQuery, {})
+
+    let websiteSettings = await client.fetch(`*[_type == 'settings'][0]`, {})
+    let categories = await client.fetch(
+        `*[_type == 'category']{
+          _id,
+          title,
+           subCategories[]->{
+                title,
+                _id,
+                image,
+                slug,
+                "count":count(*[ _type=='product' && references(^._id)])
+              }
+        }`
+    )
+    console.log('product', product)
+
+    return {
+        props: {
+            product,
+            categories,
+            websiteSettings,
+        },
+    }
 }

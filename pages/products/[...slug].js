@@ -6,9 +6,10 @@ import { client, urlFor } from '../../lib/sanity'
 
 export default function Product({ product, categories, websiteSettings }) {
     let [count, setCount] = useState(0)
+    console.log('categories', categories)
     console.log('product', product)
 
-    const [isSelected, setIsSelected] = useState(false)
+    const [isSelected, setIsSelected] = useState('')
     function incrementCount() {
         count = count + 1
         setCount(count)
@@ -22,8 +23,8 @@ export default function Product({ product, categories, websiteSettings }) {
             <Header websiteSettings={websiteSettings} categories={categories} />
             <div className=" uppercase  max-w-5xl  w-full flex flex-col items-center mx-auto py-8 h-full  ">
                 <div className="w-full text-[11px] py-8">
-                    <Link href="/cateogries">Nos produits</Link>/ Category/
-                    {product?.Subcategory?.title}/{product?.title}
+                    <Link href="/cateogries">tous nos produits</Link>/{' '}
+                    {product?.Subcategory?.title}
                 </div>
                 <div className="w-full flex flex-col border border-grey-400 py-6 px-4">
                     <div className="lowercase font-bold cursor-pointer">
@@ -32,16 +33,14 @@ export default function Product({ product, categories, websiteSettings }) {
                     <div className="w-full flex   ">
                         <div className=" w-[50%] flex justify-center">
                             <img
-                                src="/testimg.png"
+                                src={urlFor(product?.image?.asset)}
                                 className=" flex  p-4  max-w-[270px] max-h-[240px]"
                             />
                         </div>
-                        <div className=" flex   w-full p-4 flex-col border-l pl-6">
-                            <p className="font-bold">
-                                Pot bodega sans couvercle
-                            </p>
+                        <div className=" flex   w-full p-4 flex-col border-l border-grey-200 pl-6">
+                            <p className="font-bold">{product?.title}</p>
                             <p className="text-[14px] pt-2 pb-4 ">
-                                goblets et pots
+                                {product?.Subcategory?.title}
                             </p>
                             <p className=" text-[12px]">
                                 selectionnez la taille:
@@ -97,71 +96,56 @@ export default function Product({ product, categories, websiteSettings }) {
                                         </svg>
                                     </div>
                                 </div>
-                                <div
-                                    onClick={() => setIsSelected(!isSelected)}
-                                    className={` flex fex-row py-2 cursor-pointer ${
-                                        isSelected ? 'bg-gray' : 'bg-grey-100'
-                                    }`}
-                                >
-                                    <div className="flex-1 flex text-[15px] text-red-700 font-bold justify-center ">
-                                        050cplc14
-                                    </div>
-                                    <div className="flex-1 flex text-red-700 lowercase justify-center">
-                                        14oz - 38,5cl
-                                    </div>
-                                    <div
-                                        className={`flex-1 flex text-[15px] font-bold justify-center ${
-                                            isSelected
-                                                ? 'text-white'
-                                                : 'text-black'
-                                        } `}
-                                    >
-                                        1000pcs-1pqt
-                                    </div>
-                                </div>
-                                <div
-                                    onClick={() => setIsSelected(!isSelected)}
-                                    className={` flex fex-row py-2 cursor-pointer ${
-                                        isSelected ? 'bg-gray' : 'bg-grey-100'
-                                    }`}
-                                >
-                                    <div className="flex-1 flex text-[15px] text-red-700 font-bold justify-center ">
-                                        050cplc14
-                                    </div>
-                                    <div className="flex-1 flex text-red-700 lowercase justify-center">
-                                        14oz - 38,5cl
-                                    </div>
-                                    <div
-                                        className={`flex-1 flex text-[15px] font-bold justify-center ${
-                                            isSelected
-                                                ? 'text-white'
-                                                : 'text-black'
-                                        } `}
-                                    >
-                                        1000pcs-1pqt
-                                    </div>
-                                </div>
+                                {product?.description?.map((item, index) => {
+                                    return (
+                                        <div
+                                            key={item?._key}
+                                            onClick={() => setIsSelected(index)}
+                                            className={` flex fex-row py-2 cursor-pointer ${
+                                                isSelected == index
+                                                    ? 'bg-gray'
+                                                    : 'bg-grey-100'
+                                            }`}
+                                        >
+                                            <div className="flex-1 flex text-[15px] text-red-500 font-bold justify-center ">
+                                                {item?.reference}
+                                            </div>
+                                            <div className="flex-1 flex text-red-500 lowercase justify-center">
+                                                {item?.sizing}
+                                            </div>
+                                            <div
+                                                className={`flex-1 flex text-[15px] font-bold justify-center ${
+                                                    isSelected == index
+                                                        ? 'text-white'
+                                                        : 'text-black'
+                                                } `}
+                                            >
+                                                {item?.quantite}
+                                            </div>
+                                        </div>
+                                    )
+                                })}
                             </div>
                             <div className=" text-[12px] mt-6">
                                 Quantite (Pqt):minimum pqt{' '}
                             </div>
                             <div className="flex">
-                                <button
+                                <div
                                     onClick={decrementCount}
-                                    className="bg-gray text-white text-2xl h-fit my-auto w-[20px] flex items-center rounded-[2px] "
+                                    className="bg-gray text-white text-3xl h-[25px] my-auto  w-[25px] flex flex-col justify-center items-center rounded-[2px] "
                                 >
                                     -
-                                </button>
+                                </div>
                                 <div className=" m-1 flex w-[80px] rounded-[50px] px-[10px] py-[10px] bg-red-200 ">
                                     {count}
                                 </div>
 
-                                <button
-                                    onClick={incrementCount}
-                                    className="bg-gray text-white text-2xl h-fit my-auto w-[20px] flex  rounded-[2px] "
+                                <div
+                                    onClick={decrementCount}
+                                    className="bg-gray text-white text-3xl h-[25px] my-auto  w-[25px] flex flex-col justify-center items-center rounded-[2px] "
                                 >
-                                    <p className=" my-auto">+</p>
-                                </button>
+                                    +
+                                </div>
                             </div>
                             <div className=" mt-6 bg-red-700 w-fit cursor-pointer py-[18px] px-[25px] rounded-[50px] text-[12px] text-white hover:bg-gray">
                                 @ ajouter au panier
@@ -202,7 +186,7 @@ export async function getStaticProps(context) {
     let productSlug = slug[slug?.length - 1]
     // productSlug =
 
-    let prodcutQuery = `*[_type == 'product' && slug.current == '${productSlug}' &&  !(_id in path("drafts.**"))  ][0]{ Subcategory->{}, _id,description,image,reference,slug,title }`
+    let prodcutQuery = `*[_type == 'product' && slug.current == '${productSlug}' &&  !(_id in path("drafts.**"))  ][0]{ Subcategory->{title}, _id,description,image,reference,slug,title }`
     let product = await client.fetch(prodcutQuery, {})
 
     let websiteSettings = await client.fetch(`*[_type == 'settings'][0]`, {})

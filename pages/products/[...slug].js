@@ -42,7 +42,7 @@ export default function Product({ product, categories, websiteSettings }) {
                             <p className="text-[14px] pt-2 pb-4 ">
                                 {product?.Subcategory?.title}
                             </p>
-                            <p className=" text-[12px]">
+                            <p className=" text-[12px] py-1">
                                 selectionnez la taille:
                             </p>
                             <div>
@@ -104,7 +104,7 @@ export default function Product({ product, categories, websiteSettings }) {
                                             className={` flex fex-row py-2 cursor-pointer ${
                                                 isSelected == index
                                                     ? 'bg-gray'
-                                                    : 'bg-grey-100'
+                                                    : 'bg-red-100'
                                             }`}
                                         >
                                             <div className="flex-1 flex text-[15px] text-red-500 font-bold justify-center ">
@@ -132,17 +132,17 @@ export default function Product({ product, categories, websiteSettings }) {
                             <div className="flex">
                                 <div
                                     onClick={decrementCount}
-                                    className="bg-gray text-white text-3xl h-[25px] my-auto  w-[25px] flex flex-col justify-center items-center rounded-[2px] "
+                                    className="bg-gray cursor-pointer text-white text-3xl h-fit my-auto  w-[28px] flex flex-col justify-center items-center rounded-[2px] "
                                 >
                                     -
                                 </div>
-                                <div className=" m-1 flex w-[80px] rounded-[50px] px-[10px] py-[10px] bg-red-200 ">
+                                <div className=" m-1 flex w-[100px] rounded-[50px] px-[10px] py-[10px] bg-red-100 ">
                                     {count}
                                 </div>
 
                                 <div
                                     onClick={decrementCount}
-                                    className="bg-gray text-white text-3xl h-[25px] my-auto  w-[25px] flex flex-col justify-center items-center rounded-[2px] "
+                                    className="bg-gray cursor-pointer text-white text-3xl h-fit my-auto  w-[28px] flex flex-col justify-center items-center rounded-[2px] "
                                 >
                                     +
                                 </div>

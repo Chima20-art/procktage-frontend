@@ -143,9 +143,11 @@ export default function Header({ websiteSettings, categories }) {
                             </AnimatePresence>
                         </div>
 
-                        <div className="hidden text-xs font-bold  md:grid content-end px-4 py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700 hover:text-red-700  ">
-                            CONTACT
-                        </div>
+                        <Link href="/contact">
+                            <div className="hidden text-xs font-bold  md:grid content-end px-4 py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700 hover:text-red-700  ">
+                                CONTACT
+                            </div>
+                        </Link>
                     </div>
                     <div className="hidden  h-11  md:flex flex-row items-center self-end">
                         <input
@@ -185,9 +187,11 @@ export default function Header({ websiteSettings, categories }) {
                     <div className="flex  items-center  h-16  text-sm py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700 hover:text-red-700 ">
                         Nos produits
                     </div>
-                    <div className="flex  items-center  h-16  text-sm py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700 hover:text-red-700 ">
-                        Contact
-                    </div>
+                    <Link href="/contact">
+                        <div className="flex items-center  h-16  text-sm py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700 hover:text-red-700 ">
+                            Contact
+                        </div>
+                    </Link>
                 </div>
             )}
         </div>

@@ -3,23 +3,68 @@ import Header from '../components/header'
 import { client, urlFor } from '../lib/sanity'
 import Footer from '../components/footer'
 import Link from 'next/link'
+import GoogleMapReact from 'google-map-react'
+const AnyReactComponent = ({ text }) => (
+    <div className="flex text-red-800  ">
+        <div>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="black"
+                className="w-6 h-6"
+            >
+                <path
+                    fillRule="evenodd"
+                    d="M7.5 5.25a3 3 0 013-3h3a3 3 0 013 3v.205c.933.085 1.857.197 2.774.334 1.454.218 2.476 1.483 2.476 2.917v3.033c0 1.211-.734 2.352-1.936 2.752A24.726 24.726 0 0112 15.75c-2.73 0-5.357-.442-7.814-1.259-1.202-.4-1.936-1.541-1.936-2.752V8.706c0-1.434 1.022-2.7 2.476-2.917A48.814 48.814 0 017.5 5.455V5.25zm7.5 0v.09a49.488 49.488 0 00-6 0v-.09a1.5 1.5 0 011.5-1.5h3a1.5 1.5 0 011.5 1.5zm-3 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
+                    clipRule="evenodd"
+                />
+                <path d="M3 18.4v-2.796a4.3 4.3 0 00.713.31A26.226 26.226 0 0012 17.25c2.892 0 5.68-.468 8.287-1.335.252-.084.49-.189.713-.311V18.4c0 1.452-1.047 2.728-2.523 2.923-2.12.282-4.282.427-6.477.427a49.19 49.19 0 01-6.477-.427C4.047 21.128 3 19.852 3 18.4z" />
+            </svg>
+        </div>
+        <h1 className="text-lg font-bold">{text}</h1>
+    </div>
+)
 
 export default function Contact({ websiteSettings, categories }) {
     console.log('categories', categories)
+    const defaultProps = {
+        center: {
+            lat: 10.99835602,
+            lng: 77.01502627,
+        },
+        zoom: 14,
+    }
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between ">
             <Header websiteSettings={websiteSettings} categories={categories} />
             <div className="w-full lg:max-w-5xl max-w-[80%]  flex flex-row mx-auto p-4 my-12 h-fit  border border-grey-200 uppercase text-gray">
                 <div className="flex-1  h-fit flex flex-col justify-between">
                     <p>Trouvez nous facilement</p>
-                    <img src="/map.png" className="cursor-pointer h-full" />
+                    <div
+                        className="w-128 h-[80vh] "
+                        style={{ minHeight: 300, minWidth: 300 }}
+                    >
+                        <GoogleMapReact
+                            bootstrapURLKeys={{
+                                key: 'AIzaSyBBjQ-uu38SXO64wcDT9azoSwYCTuw8L4M',
+                            }}
+                            defaultCenter={defaultProps.center}
+                            defaultZoom={defaultProps.zoom}
+                        >
+                            <AnyReactComponent
+                                lat={defaultProps.center.lat}
+                                lng={defaultProps.center.lng}
+                                text="My Marker"
+                            />
+                        </GoogleMapReact>
+                    </div>
                 </div>
                 <div className="flex-1  ">
                     <p className="flex-1  self-top pb-2 pl-4 ">
                         contactez-nous
                     </p>
                     <form className="h-full  flex flex-col justify-between py-8 px-4">
-                        <div className="flex bg-red-100 h-[54px] rounded-[50px] items-center px-4 mb-4 ">
+                        <div className="flex   bg-red-100 h-[54px] rounded-[50px] items-center px-4 mb-4 ">
                             {' '}
                             <div className="pr-2">
                                 <svg

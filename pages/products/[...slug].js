@@ -11,12 +11,10 @@ export default function Product({ product, categories, websiteSettings }) {
 
     const [isSelected, setIsSelected] = useState('')
     function incrementCount() {
-        count = count + 1
-        setCount(count)
+        count >= 0 ? setCount(count + 1) : count
     }
     function decrementCount() {
-        count = count - 1
-        setCount(count)
+        count > 0 ? setCount(count - 1) : count
     }
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between text-gray ">
@@ -141,7 +139,7 @@ export default function Product({ product, categories, websiteSettings }) {
                                 </div>
 
                                 <div
-                                    onClick={decrementCount}
+                                    onClick={incrementCount}
                                     className="bg-gray cursor-pointer text-white text-3xl h-fit my-auto  w-[28px] flex flex-col justify-center items-center rounded-[2px] "
                                 >
                                     +

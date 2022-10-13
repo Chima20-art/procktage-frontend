@@ -19,7 +19,7 @@ export default function Product({ product, categories, websiteSettings }) {
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between text-gray ">
             <Header websiteSettings={websiteSettings} categories={categories} />
-            <div className=" uppercase  max-w-5xl  w-full flex flex-col items-center mx-auto py-8 h-full  ">
+            <div className=" uppercase max-w-5xl  w-full flex flex-col items-center mx-auto py-8 h-full  ">
                 <div className="w-full text-[11px] py-8">
                     <Link href="/cateogries">tous nos produits</Link>/{' '}
                     {product?.Subcategory?.title}

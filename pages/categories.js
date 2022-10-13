@@ -25,7 +25,7 @@ export default function Categories({ websiteSettings, categories }) {
                             <section className="text-[28px]  uppercase my-6  text-red-700 border-b-gray border-b-[15px] border-dotted ">
                                 {category?.title}
                             </section>
-                            <section className=" lg:max-w-5xl max-w-[80%] flex flex-row flex-wrap    ">
+                            <section className=" w-full md:max-w-5xl  flex flex-row flex-wrap    ">
                                 {category?.subCategories?.map(
                                     (subcategory, index) => {
                                         const shouldNotGrow =
@@ -36,7 +36,7 @@ export default function Categories({ websiteSettings, categories }) {
                                         return (
                                             <div
                                                 key={index}
-                                                className={` w-1/2 md:w-1/3 lg:w-1/4 flex justify-center`}
+                                                className={` w-[100%] sm:w-1/2 md:w-1/3 lg:w-1/4 flex justify-center bg-red-100`}
                                             >
                                                 <Link
                                                     href={

@@ -37,13 +37,10 @@ export default function Contact({ websiteSettings, categories }) {
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between ">
             <Header websiteSettings={websiteSettings} categories={categories} />
-            <div className="w-full lg:max-w-5xl max-w-[80%]  flex flex-row mx-auto p-4 my-12 h-fit  border border-grey-200 uppercase text-gray">
+            <div className="w-full lg:max-w-5xl max-w-[90%]  flex lg:flex-row flex-col  mx-auto p-4 my-12 h-fit  border border-grey-200 uppercase text-gray">
                 <div className="flex-1  h-fit flex flex-col justify-between">
                     <p>Trouvez nous facilement</p>
-                    <div
-                        className="w-128 h-[80vh] "
-                        style={{ minHeight: 300, minWidth: 300 }}
-                    >
+                    <div className="lg:w-[455px] lg:h-[605px] w-full h-[500px]  ">
                         <GoogleMapReact
                             bootstrapURLKeys={{
                                 key: 'AIzaSyBBjQ-uu38SXO64wcDT9azoSwYCTuw8L4M',
@@ -63,8 +60,8 @@ export default function Contact({ websiteSettings, categories }) {
                     <p className="flex-1  self-top pb-2 pl-4 ">
                         contactez-nous
                     </p>
-                    <form className="h-full  flex flex-col justify-between py-8 px-4">
-                        <div className="flex   bg-red-100 h-[54px] rounded-[50px] items-center px-4 mb-4 ">
+                    <form className="lg:h-[580px] lg:w-[455px] md:w-full  flex flex-col justify-between px-4 py-2 gap-6">
+                        <div className="flex   bg-orange-100 h-[54px] rounded-[50px] items-center px-4  drop-shadow-xl ">
                             {' '}
                             <div className="pr-2">
                                 <svg
@@ -86,7 +83,7 @@ export default function Contact({ websiteSettings, categories }) {
                                 placeholder="Nom de l'entreprise.."
                             />
                         </div>
-                        <div className="flex bg-red-100 h-[54px] rounded-[50px] items-center px-4 mb-4">
+                        <div className="flex bg-orange-100 h-[54px] rounded-[50px] items-center px-4  drop-shadow-xl">
                             {' '}
                             <div className="pr-2">
                                 <svg
@@ -107,7 +104,7 @@ export default function Contact({ websiteSettings, categories }) {
                                 placeholder="Nom du responsable.. "
                             />
                         </div>
-                        <div className="flex bg-red-100 h-[54px] rounded-[50px] items-center px-4 mb-4">
+                        <div className="flex bg-orange-100 h-[54px] rounded-[50px] items-center px-4 drop-shadow-xl">
                             {' '}
                             <div className="pr-2">
                                 <svg
@@ -125,7 +122,7 @@ export default function Contact({ websiteSettings, categories }) {
                                 placeholder="Email.. "
                             />
                         </div>
-                        <div className="flex bg-red-100 h-[54px] rounded-[50px] items-center px-4 mb-4">
+                        <div className="flex bg-orange-100 h-[54px] rounded-[50px] items-center px-4 drop-shadow-xl">
                             {' '}
                             <div className="pr-2">
                                 <svg
@@ -146,7 +143,7 @@ export default function Contact({ websiteSettings, categories }) {
                                 placeholder="telephone ex(0669875421) "
                             />
                         </div>
-                        <div className="flex bg-red-100 min-h-[164px] rounded-[38px] items-start px-4 py-4 mb-4">
+                        <div className="flex bg-orange-100 min-h-[164px] rounded-[38px] items-start px-4 py-4  drop-shadow-xl">
                             {' '}
                             <div className="pr-2 pt-2">
                                 <svg
@@ -163,15 +160,15 @@ export default function Contact({ websiteSettings, categories }) {
                                 </svg>
                             </div>{' '}
                             <textarea
-                                rows="5"
+                                rows="4"
                                 cols="50"
                                 className="w-[90%] bg-transparent uppercase text-[14px] border-0 text-gray outline-none h-full"
                                 placeholder="description... "
                             />
                         </div>
-                        <div className="flex bg-red-700 h-[64px] rounded-[38px] items-center justify-center  cursor-pointer px-4 py-4 mb-4 text-white">
+                        <div className="flex bg-red-700 h-[64px] rounded-[38px] items-center justify-center  cursor-pointer px-4 py-4  text-white drop-shadow-xl">
                             {' '}
-                            <div className="pr-2  flex flex-col items-cneter w-fit ">
+                            <div className="pr-2  flex flex-col items-cneter w-fit">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 24 24"

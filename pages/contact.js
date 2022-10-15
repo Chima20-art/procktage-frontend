@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../components/header'
 import { client, urlFor } from '../lib/sanity'
 import Footer from '../components/footer'
@@ -26,6 +26,9 @@ const AnyReactComponent = ({ text }) => (
 )
 
 export default function Contact({ websiteSettings, categories }) {
+    const [name, setName] = useState('')
+    const [message, setMessage] = useState('')
+    const [email, setEmail] = useState('')
     console.log('categories', categories)
     const defaultProps = {
         center: {
@@ -34,6 +37,26 @@ export default function Contact({ websiteSettings, categories }) {
         },
         zoom: 14,
     }
+
+    const onSubmit = async (e) => {
+        e.preventDefault()
+        console.log('onSubmit')
+        try {
+            let result = await fetch('/api/sendEmail', {
+                method: 'POST',
+                body: JSON.stringify({
+                    email,
+                    name,
+                    message,
+                }),
+            })
+            result = await result.json()
+            console.log('result', result)
+        } catch (error) {
+            console.log('error calling sendEmail', error)
+        }
+    }
+
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between ">
             <Header websiteSettings={websiteSettings} categories={categories} />
@@ -60,7 +83,10 @@ export default function Contact({ websiteSettings, categories }) {
                     <p className="flex-1  self-top pb-2 pl-4 ">
                         contactez-nous
                     </p>
-                    <form className="lg:h-[580px] lg:w-[455px] md:w-full  flex flex-col justify-between px-4 py-2 gap-6">
+                    <form
+                        onSubmit={onSubmit}
+                        className="lg:h-[580px] lg:w-[455px] md:w-full  flex flex-col justify-between px-4 py-2 gap-6"
+                    >
                         <div className="flex   bg-orange-100 h-[54px] rounded-[50px] items-center px-4  drop-shadow-xl ">
                             {' '}
                             <div className="pr-2">
@@ -79,8 +105,11 @@ export default function Contact({ websiteSettings, categories }) {
                                 </svg>
                             </div>{' '}
                             <input
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
                                 className="w-full bg-transparent uppercase text-[14px] text-gray outline-none h-full"
                                 placeholder="Nom de l'entreprise.."
+                                type="text"
                             />
                         </div>
                         <div className="flex bg-orange-100 h-[54px] rounded-[50px] items-center px-4  drop-shadow-xl">
@@ -120,6 +149,10 @@ export default function Contact({ websiteSettings, categories }) {
                             <input
                                 className="w-full bg-transparent uppercase text-[14px] text-gray outline-none h-full"
                                 placeholder="Email.. "
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
                             />
                         </div>
                         <div className="flex bg-orange-100 h-[54px] rounded-[50px] items-center px-4 drop-shadow-xl">
@@ -164,9 +197,14 @@ export default function Contact({ websiteSettings, categories }) {
                                 cols="50"
                                 className="w-[90%] bg-transparent uppercase text-[14px] border-0 text-gray outline-none h-full"
                                 placeholder="description... "
+                                value={message}
+                                onChange={(e) => setMessage(e.target.value)}
                             />
                         </div>
-                        <div className="flex bg-red-700 h-[64px] rounded-[38px] items-center justify-center  cursor-pointer px-4 py-4  text-white drop-shadow-xl">
+                        <button
+                            type="submit"
+                            className="flex bg-red-700 h-[64px] rounded-[38px] items-center justify-center  cursor-pointer px-4 py-4  text-white drop-shadow-xl"
+                        >
                             {' '}
                             <div className="pr-2  flex flex-col items-cneter w-fit">
                                 <svg
@@ -179,7 +217,7 @@ export default function Contact({ websiteSettings, categories }) {
                                 </svg>
                             </div>{' '}
                             envoyez
-                        </div>
+                        </button>
                     </form>
                 </div>
             </div>

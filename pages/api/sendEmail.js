@@ -2,8 +2,17 @@ export default function handler(req, res) {
     try {
         if (req.method == 'POST') {
             const { email, name, message } = JSON.parse(req.body)
+            console.log('email ', email)
             if (email) {
                 const Mailjet = require('node-mailjet')
+                console.log(
+                    'process.env.MJ_APIKEY_PUBLIC',
+                    process.env.MJ_APIKEY_PUBLIC
+                )
+                console.log(
+                    'process.env.MJ_APIKEY_PRIVATE',
+                    process.env.MJ_APIKEY_PRIVATE
+                )
                 const mailjet = Mailjet.apiConnect(
                     process.env.MJ_APIKEY_PUBLIC,
                     process.env.MJ_APIKEY_PRIVATE
@@ -14,30 +23,38 @@ export default function handler(req, res) {
                         Messages: [
                             {
                                 From: {
-                                    Email: 'pilot@mailjet.com',
-                                    Name: 'Mailjet Pilot',
+                                    Email: 'no-reply@procktage.ma',
+                                    Name: 'Procktage Website',
                                 },
                                 To: [
                                     {
-                                        Email: 'passenger1@mailjet.com',
-                                        Name: 'passenger 1',
+                                        Email: 'chaimaemichich@gmail.com',
+                                        Name: 'Chiame Michich',
                                     },
                                 ],
-                                Subject: 'Your email flight plan!',
+                                Subject: 'A Contact Request!',
                                 TextPart:
-                                    'Dear passenger 1, welcome to Mailjet! May the delivery force be with you!',
-                                HTMLPart:
-                                    '<h3>Dear passenger 1, welcome to <a href="https://www.mailjet.com/">Mailjet</a>!</h3><br />May the delivery force be with you!',
+                                    'Hi , we just got a new contact request',
+                                HTMLPart: `<h3>name : ${name}</h3>
+                                    <br/>
+                                    <h3>email : ${email}</h3>
+                                    <br/>
+                                    <h3>message : ${message}</h3>
+                                    `,
                             },
                         ],
                     })
 
                 request
                     .then((result) => {
-                        console.log(result.body)
+                        //console.log(result.body)
+                        return res.status(200).json({ status: true })
                     })
                     .catch((err) => {
-                        console.log(err.statusCode)
+                        //console.log(err)
+                        return res.status(200).json({
+                            status: false,
+                        })
                     })
             } else {
                 return res.status(200).json({

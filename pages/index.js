@@ -45,6 +45,7 @@ export async function getStaticProps(context) {
            subCategories[]->{
                 title,
                 _id,
+                slug,
                 "count":count(*[ _type=='product' && references(^._id)])
               }
         }`

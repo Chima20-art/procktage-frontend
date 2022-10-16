@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Footer from '../../components/footer'
 import Header from '../../components/header'
 import { client, urlFor } from '../../lib/sanity'
+import { RiShoppingCart2Fill } from 'react-icons/ri'
 
 export default function Product({ product, categories, websiteSettings }) {
     let [count, setCount] = useState(0)
@@ -99,12 +100,18 @@ export default function Product({ product, categories, websiteSettings }) {
                                         <div
                                             key={item?._key}
                                             onClick={() => setIsSelected(index)}
-                                            className={` flex fex-row py-2 cursor-pointer ${
+                                            className={` flex fex-row py-2 cursor-pointer  relative  ${
                                                 isSelected == index
-                                                    ? 'bg-gray'
+                                                    ? 'bg-gray static '
                                                     : 'bg-red-100'
                                             }`}
                                         >
+                                            <div
+                                                className={` ${
+                                                    isSelected == index &&
+                                                    'border-t-[10px] border-t-transparent border-l-[15px]  -left-[6px] border-l-red-600 border-b-[10px] border-b-transparent absolute  '
+                                                }   `}
+                                            ></div>
                                             <div className="flex-1 flex text-[15px] text-red-500 font-bold justify-center ">
                                                 {item?.reference}
                                             </div>
@@ -124,6 +131,7 @@ export default function Product({ product, categories, websiteSettings }) {
                                     )
                                 })}
                             </div>
+
                             <div className=" text-[12px] mt-6">
                                 Quantite (Pqt):minimum pqt{' '}
                             </div>
@@ -145,8 +153,9 @@ export default function Product({ product, categories, websiteSettings }) {
                                     +
                                 </div>
                             </div>
-                            <div className=" mt-6 bg-red-700 w-fit cursor-pointer py-[18px] px-[25px] rounded-[50px] text-[12px] text-white hover:bg-gray">
-                                @ ajouter au panier
+                            <div className=" mt-6 bg-red-700 flex w-fit items-center cursor-pointer py-[18px] px-[25px] rounded-[50px] text-[12px] text-white hover:bg-gray">
+                                <RiShoppingCart2Fill className=" mx-2 text-xl" />{' '}
+                                ajouter au panier
                             </div>
                         </div>
                     </div>

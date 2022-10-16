@@ -36,7 +36,7 @@ export default function Categories({ websiteSettings, categories }) {
                                         return (
                                             <div
                                                 key={index}
-                                                className={` w-[100%] sm:w-1/2 md:w-1/3 lg:w-1/4 flex justify-center bg-red-100`}
+                                                className={` w-[100%] sm:w-1/2 md:w-1/3 lg:w-1/4 flex justify-center `}
                                             >
                                                 <Link
                                                     href={

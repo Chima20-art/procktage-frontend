@@ -117,17 +117,21 @@ export default function Header({ websiteSettings, categories }) {
                                                                             subcategory
                                                                         ) => {
                                                                             return (
-                                                                                <li
-                                                                                    key={
-                                                                                        subcategory?._id
-                                                                                    }
-                                                                                    className="text-gray py-1 text-[10px]  hover:cursor-pointer hover:text-red-700"
+                                                                                <Link
+                                                                                    href={`/categories/${subcategory?.slug.current}`}
                                                                                 >
-                                                                                    -{' '}
-                                                                                    {
-                                                                                        subcategory?.title
-                                                                                    }
-                                                                                </li>
+                                                                                    <li
+                                                                                        key={
+                                                                                            subcategory?._id
+                                                                                        }
+                                                                                        className="text-gray py-1 text-[10px]  hover:cursor-pointer hover:text-red-700"
+                                                                                    >
+                                                                                        -{' '}
+                                                                                        {
+                                                                                            subcategory?.title
+                                                                                        }
+                                                                                    </li>
+                                                                                </Link>
                                                                             )
                                                                         }
                                                                     )}
@@ -173,7 +177,7 @@ export default function Header({ websiteSettings, categories }) {
 
                         <input
                             type="text"
-                            className="w-full  h-11 focus:outline-none placeholder:text-xs border-b-2 border-b-red-700 border-0"
+                            className="w-full  h-11  placeholder:text-xs border-b-2 border-b-red-700 border-0 focus:outline-none  focus:border-0"
                             placeholder="RECHERCHE UN PRODUIT..."
                         />
                     </div>

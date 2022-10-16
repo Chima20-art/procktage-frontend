@@ -4,6 +4,7 @@ import Footer from '../../components/footer'
 import Header from '../../components/header'
 import { client, urlFor } from '../../lib/sanity'
 import { RiShoppingCart2Fill } from 'react-icons/ri'
+import { IoChevronBackCircleSharp } from 'react-icons/io'
 
 export default function Product({ product, categories, websiteSettings }) {
     let [count, setCount] = useState(0)
@@ -20,20 +21,34 @@ export default function Product({ product, categories, websiteSettings }) {
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between text-gray ">
             <Header websiteSettings={websiteSettings} categories={categories} />
-            <div className=" uppercase max-w-5xl  w-full flex flex-col items-center mx-auto py-8 h-full  ">
+            <div className=" uppercase lg:max-w-5xl max-w-[90%]  w-full flex flex-col items-center mx-auto py-8 h-full  ">
                 <div className="w-full text-[11px] py-8">
-                    <Link href="/cateogries">tous nos produits</Link>/{' '}
+                    <Link href="/categories">tous nos produits</Link>/{' '}
                     {product?.Subcategory?.title}
                 </div>
-                <div className="w-full flex flex-col border border-grey-400 py-6 px-4">
-                    <div className="lowercase font-bold cursor-pointer">
+                <div className="w-full flex flex-col border border-grey-200 py-6 px-4">
+                    <div className="lowercase font-bold cursor-pointer flex  ">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-6 h-6"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M15.75 19.5L8.25 12l7.5-7.5"
+                            />
+                        </svg>
                         retour
                     </div>
-                    <div className="w-full flex   ">
-                        <div className=" w-[50%] flex justify-center">
+                    <div className="w-full flex  md:flex-row flex-col  ">
+                        <div className=" md:w-[50%] flex justify-center items center">
                             <img
                                 src={urlFor(product?.image?.asset)}
-                                className=" flex  p-4  max-w-[270px] max-h-[240px]"
+                                className=" flex  p-4  max-w-[270px] max-h-[240px] "
                             />
                         </div>
                         <div className=" flex   w-full p-4 flex-col border-l border-grey-200 pl-6">
@@ -201,6 +216,7 @@ export async function getStaticProps(context) {
         `*[_type == 'category']{
           _id,
           title,
+          slug,
            subCategories[]->{
                 title,
                 _id,

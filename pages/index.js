@@ -8,7 +8,7 @@ import { client } from '../lib/sanity'
 
 export default function Home({ websiteSettings, homePage, categories }) {
     return (
-        <div className="h-full bg-[#FFF8ED] min-h-screen flex flex-col justify-between ">
+        <div className="h-full bg-beige min-h-screen flex flex-col justify-between ">
             <Header websiteSettings={websiteSettings} categories={categories} />
             <Accueil homePage={homePage} />
             <div className="w-screen">

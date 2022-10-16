@@ -8,7 +8,7 @@ import Link from 'next/link'
 
 export default function Header({ websiteSettings, categories }) {
     const [isOpen, setIsOpen] = useState(false)
-    const logo = websiteSettings?.logo?.logo
+    const logo = websiteSettings?.logo?.image
     const alt = websiteSettings?.logo?.caption
     const [clicked, setClicked] = useState(false)
     const [openCategories, setOpenCategories] = useState([])

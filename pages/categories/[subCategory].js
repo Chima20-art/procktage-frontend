@@ -5,29 +5,22 @@ import { client, urlFor } from '../../lib/sanity'
 import Link from 'next/link'
 
 export default function SubCategory({
+    category,
     subCategory,
     categories,
     websiteSettings,
 }) {
-    let category = categories?.filter((item) => {
-        let isCurrnetCategory = false
-        item?.subCategories?.forEach((sub) => {
-            if (sub?.slug?.current == subCategory?.slug?.current) {
-                isCurrnetCategory = true
-            }
-        })
-        return isCurrnetCategory
-    })
-
-    category = category[0]
+    console.log('category', category)
 
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between ">
             <Header websiteSettings={websiteSettings} categories={categories} />
             <div className="lg:max-w-5xl max-w-[90%]   w-full flex flex-col items-center mx-auto py-8 h-full  ">
-                <div className=" w-full  ">
+                <div className=" w-full uppercase text-xs ">
                     <Link href="/categories">Nos Produits </Link> {' / '}
-                    {category?.title}
+                    <Link href={`/category/${category?.slug?.current}`}>
+                        {category?.title}
+                    </Link>
                 </div>
                 <section className="text-[20px] uppercase my-6  text-red-700 border-b-gray border-b-[10px] border-dotted ">
                     {subCategory.title}
@@ -189,6 +182,7 @@ export async function getStaticProps(context) {
         `*[_type == 'category']{
           _id,
           title,
+          slug,
            subCategories[]->{
                 title,
                 _id,
@@ -198,9 +192,20 @@ export async function getStaticProps(context) {
               }
         }`
     )
+    let category = categories?.filter((item) => {
+        let isCurrnetCategory = false
+        item?.subCategories?.forEach((sub) => {
+            if (sub?.slug?.current == subCategory?.slug?.current) {
+                isCurrnetCategory = true
+            }
+        })
+        return isCurrnetCategory
+    })
 
+    category = category[0]
     return {
         props: {
+            category,
             subCategory,
             categories,
             websiteSettings,

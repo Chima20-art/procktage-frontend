@@ -24,7 +24,11 @@ export default function Product({ product, categories, websiteSettings }) {
             <div className=" uppercase lg:max-w-5xl max-w-[90%]  w-full flex flex-col items-center mx-auto py-8 h-full  ">
                 <div className="w-full text-[11px] py-8">
                     <Link href="/categories">tous nos produits</Link>/{' '}
-                    {product?.Subcategory?.title}
+                    <Link
+                        href={`/categories/${product?.Subcategory?.slug?.current}`}
+                    >
+                        {product?.Subcategory?.title}
+                    </Link>
                 </div>
                 <div className="w-full flex flex-col border border-grey-200 py-6 px-4">
                     <div className="lowercase font-bold cursor-pointer flex  ">
@@ -115,10 +119,10 @@ export default function Product({ product, categories, websiteSettings }) {
                                         <div
                                             key={item?._key}
                                             onClick={() => setIsSelected(index)}
-                                            className={` flex fex-row py-2 cursor-pointer  relative  ${
+                                            className={` flex fex-row py-2 cursor-pointer  border-b  border-red-200 relative  ${
                                                 isSelected == index
                                                     ? 'bg-gray static '
-                                                    : 'bg-red-100'
+                                                    : 'bg-orange-50'
                                             }`}
                                         >
                                             <div
@@ -208,7 +212,7 @@ export async function getStaticProps(context) {
     let productSlug = slug[slug?.length - 1]
     // productSlug =
 
-    let prodcutQuery = `*[_type == 'product' && slug.current == '${productSlug}' &&  !(_id in path("drafts.**"))  ][0]{ Subcategory->{title}, _id,description,image,reference,slug,title }`
+    let prodcutQuery = `*[_type == 'product' && slug.current == '${productSlug}' &&  !(_id in path("drafts.**"))  ][0]{ Subcategory->{title,slug,category}, _id,description,image,reference,slug,title }`
     let product = await client.fetch(prodcutQuery, {})
 
     let websiteSettings = await client.fetch(`*[_type == 'settings'][0]`, {})

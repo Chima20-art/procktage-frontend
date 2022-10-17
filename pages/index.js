@@ -27,6 +27,7 @@ export async function getStaticProps(context) {
           title,
           refrence->{
             title,
+            slug,
             subCategories[]->{
               title,
               _id,

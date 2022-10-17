@@ -3,6 +3,7 @@ import { urlFor } from '../lib/sanity'
 import { motion } from 'framer-motion'
 
 export default function Accueil({ homePage }) {
+    console.log('homePage', homePage)
     return (
         <div>
             {' '}

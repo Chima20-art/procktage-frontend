@@ -12,6 +12,7 @@ export default function Header({ websiteSettings, categories }) {
     const alt = websiteSettings?.logo?.caption
     const [clicked, setClicked] = useState(false)
     const [openCategories, setOpenCategories] = useState([])
+    const [openCard, setOpenCard] = useState(false)
 
     return (
         <div>
@@ -153,14 +154,95 @@ export default function Header({ websiteSettings, categories }) {
                             </div>
                         </Link>
                     </div>
-                    <div className="hidden  h-11  md:flex flex-row items-center self-end">
+                    <div className="hidden   relative h-11  md:flex flex-row items-center self-end">
                         <input
                             type="text"
                             className="w-48  h-11 focus:outline-none placeholder:text-xs border-0 border-b-2 border-red-700"
                             placeholder="RECHERCHE UN PRODUIT..."
                         />
                         <FaSearch className="text-xl mr-8 ml-2 hover:cursor-pointer hover:text-red-700 " />
-                        <RiShoppingCart2Fill className="text-xl  hover:cursor-pointer hover:text-red-700  " />
+
+                        <div className=" relative flex flex-col">
+                            <RiShoppingCart2Fill
+                                onClick={() => setOpenCard(!openCard)}
+                                className="text-xl  hover:cursor-pointer hover:text-red-700  "
+                            ></RiShoppingCart2Fill>
+                            <AnimatePresence>
+                                {openCard && (
+                                    <div
+                                        className="z-50 bg-beige flex  flex-col absolute  uppercase text-gray top-[44px] border border-red-700 right-0 min-w-[280px] px-4 py-4 rounded-b-lg
+                                  "
+                                    >
+                                        <div
+                                            className=" absolute border-l-[15px] 
+                                border-l-transparent
+                                    border-r-[15px] border-r-transparent 
+                                    border-b-[15px]   border-red-700
+                                    -top-[15px] right-[0px]"
+                                        />
+
+                                        <div className="border-b text-[11px] mb-3 pb-2  border-grey-200  ">
+                                            Listes des produits demandés
+                                        </div>
+                                        <div className=" border-b border-grey-200 pb-3">
+                                            <div className="flex justify-between items-center  text-[9px]   ">
+                                                <img
+                                                    src="/testimg.png"
+                                                    className="w-[35px] h-[35px] border-grey-300 border"
+                                                />
+                                                <p className="">
+                                                    {' '}
+                                                    Goblet bio en carton
+                                                </p>
+                                                <div className="bg-red-400py-2 w-fit py-3  cursor-pointer ">
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 24 24"
+                                                        fill="#b0151e"
+                                                        className="w-6 h-6"
+                                                    >
+                                                        <path
+                                                            fillRule="evenodd"
+                                                            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm3 10.5a.75.75 0 000-1.5H9a.75.75 0 000 1.5h6z"
+                                                            clipRule="evenodd"
+                                                        />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div className="flex justify-between items-center  text-[9px]   ">
+                                                <img
+                                                    src="/testimg.png"
+                                                    className="w-[35px] h-[35px] border-grey-300 border"
+                                                />
+                                                <p className="">
+                                                    {' '}
+                                                    Goblet bio en carton
+                                                </p>
+                                                <div className="bg-red-400py-2 w-fit py-3  cursor-pointer ">
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 24 24"
+                                                        fill="#b0151e"
+                                                        className="w-6 h-6"
+                                                    >
+                                                        <path
+                                                            fillRule="evenodd"
+                                                            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm3 10.5a.75.75 0 000-1.5H9a.75.75 0 000 1.5h6z"
+                                                            clipRule="evenodd"
+                                                        />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <Link href="/demandes">
+                                            <button className=" hover:bg-red-700 hover:text-white py-3 border-red-00 border-2 rounded-[50px] mt-4 text-[10px] text-red-700 uppercase mx-auto px-12 w-full  ">
+                                                Completer
+                                            </button>
+                                        </Link>
+                                    </div>
+                                )}
+                            </AnimatePresence>
+                        </div>
                     </div>
 
                     <div className=" md:hidden flex mr-4 text-3xl items-center  hover:cursor-pointer">

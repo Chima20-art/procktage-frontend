@@ -1,6 +1,7 @@
 import React from 'react'
 import { urlFor } from '../lib/sanity'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 export default function Accueil({ homePage }) {
     console.log('homePage', homePage)
@@ -51,12 +52,12 @@ export default function Accueil({ homePage }) {
                                 >
                                     {' '}
                                     <p className="bg-red-700 w-full pb-6 pt-12 px-6 uppercase text-white text-[15px] text-opacity-90">
-                                        <a
-                                            href="wwww.facebook.com"
+                                        <Link
+                                            href={`/category/${section?.refrence?.slug?.current}`}
                                             className="hover:underline"
                                         >
                                             En savoir plus
-                                        </a>
+                                        </Link>
                                     </p>
                                     <p className=" px-6 py-6 uppercase text-white text-[10px] text-opacity-90">
                                         Découvrir +{numberOfProducts} differents

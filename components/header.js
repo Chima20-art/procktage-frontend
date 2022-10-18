@@ -16,6 +16,15 @@ export default function Header({ websiteSettings, categories }) {
 
     return (
         <div>
+            {(clicked || openCard) && (
+                <div
+                    onClick={(e) => {
+                        setClicked(false)
+                        setOpenCard(false)
+                    }}
+                    className="w-screen h-screen absolute z-20 top-0 left-0  bg-black bg-opacity-30"
+                ></div>
+            )}
             <div className=" font-raleway h-fit pt-2 pb-4 grid content-around  border border-b-red-700">
                 <div className=" px-2 text-gray  h-28 w-screen lg:max-w-5xl max-w-[90%] md:max-w-[80%]  mx-auto  flex flex-row  justify-between  ">
                     <div className="flex flex-row ">

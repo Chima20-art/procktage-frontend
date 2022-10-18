@@ -11,6 +11,18 @@ export default function Product({ product, categories, websiteSettings }) {
     console.log('categories', categories)
     console.log('product', product)
 
+    let category = categories?.filter((item) => {
+        let isCurrnetCategory = false
+        item?.subCategories?.forEach((sub) => {
+            if (sub?.slug?.current == product?.Subcategory?.slug?.current) {
+                isCurrnetCategory = true
+            }
+        })
+        return isCurrnetCategory
+    })
+
+    category = category[0]
+
     const [isSelected, setIsSelected] = useState('')
     function incrementCount() {
         count >= 0 ? setCount(count + 1) : count
@@ -23,7 +35,11 @@ export default function Product({ product, categories, websiteSettings }) {
             <Header websiteSettings={websiteSettings} categories={categories} />
             <div className=" uppercase lg:max-w-5xl max-w-[90%]  w-full flex flex-col items-center mx-auto py-8 h-full  ">
                 <div className="w-full text-[11px] py-8">
-                    <Link href="/categories">tous nos produits</Link>/{' '}
+                    <Link href="/categories">tous nos produits</Link> /{' '}
+                    <Link href={`/category/${category?.slug.current}`}>
+                        {category?.title}
+                    </Link>{' '}
+                    /{' '}
                     <Link
                         href={`/categories/${product?.Subcategory?.slug?.current}`}
                     >

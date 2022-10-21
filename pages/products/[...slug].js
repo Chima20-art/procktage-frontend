@@ -27,8 +27,8 @@ export default function Product({ product, categories, websiteSettings }) {
 
     category = category[0]
 
-    const [isSelected, setIsSelected] = useState('')
-    console.log('isSelected', isSelected)
+    const [isSelected, setIsSelected] = useState(product?.description[0])
+
     function incrementCount() {
         if (count >= 0) {
             setCount(count + 1)

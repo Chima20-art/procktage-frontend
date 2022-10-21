@@ -83,18 +83,18 @@ export default function Product({ product, categories, websiteSettings }) {
                     <Link
                         href={`/categories/${product?.Subcategory?.slug?.current}`}
                     >
-                        <div className="lowercase font-bold cursor-pointer flex  ">
+                        <div className="lowercase font-bold cursor-pointer flex">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
-                                stroke-width="1.5"
+                                strokeWidth="1.5"
                                 stroke="currentColor"
-                                class="w-6 h-6"
+                                className="w-5 h-5"
                             >
                                 <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
                                     d="M15.75 19.5L8.25 12l7.5-7.5"
                                 />
                             </svg>
@@ -312,7 +312,6 @@ export async function getStaticProps(context) {
               }
         }`
     )
-    console.log('product', product)
 
     return {
         props: {

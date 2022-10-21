@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Header from '../components/header'
 import { client, urlFor } from '../lib/sanity'
 import Footer from '../components/footer'
 import Link from 'next/link'
+import OrdersContext from '../OrdersContext'
 
 export default function Categories({ websiteSettings, categories }) {
     const [name, setName] = useState('')
     const [message, setMessage] = useState('')
     const [email, setEmail] = useState('')
     console.log('categories', categories)
+    const { cart, removeFromCart } = useContext(OrdersContext)
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between ">
             <Header websiteSettings={websiteSettings} categories={categories} />
@@ -24,28 +26,45 @@ export default function Categories({ websiteSettings, categories }) {
                         <div className="w-[20%]">quatite (pqt)</div>
                         <div className="w-[20%]">action</div>
                     </div>
-                    <div className="bg-white w-[98%] flex text-gray text-[10px] h-full flex-6 py-3 px-2 ">
-                        <div className="w-[20%]">
-                            {' '}
-                            <img
-                                src="/testimg.png"
-                                className="  w-[60px] h-[60px]"
-                            />
-                        </div>
-                        <div className="w-[40%] h-full  h-full">
-                            <p className=" pb-1 font-bold">
-                                bouteille plastique transparent +bouchon
-                            </p>
-                            <p className=" pb-1 ">500ml</p>
-                            <p className=" pb-1">126pcs - 1pqt</p>
-                        </div>
-                        <div className="w-[20%] font-bold h-full">1</div>
-                        <div className="w-[20%]">
-                            <button className="bg-red-400 py-3 px-2 uppercase text-beige hover:bg-gray rounded-[20px]">
-                                Supprimer
-                            </button>
-                        </div>
-                    </div>
+                    {cart?.map((item) => {
+                        return (
+                            <div
+                                key={item._key}
+                                className="bg-white w-[98%] flex text-gray text-[10px] h-full flex-6 py-3 px-2 "
+                            >
+                                <div className="w-[20%]">
+                                    {' '}
+                                    <img
+                                        src={urlFor(item?.product?.image)}
+                                        className="  w-[60px] h-[60px] object-contain"
+                                    />
+                                </div>
+                                <div className="w-[40%] h-full  h-full">
+                                    <p className=" pb-1 font-bold">
+                                        {item?.product?.title}
+                                    </p>
+                                    <p className=" pb-1 ">
+                                        {item?.variant?.sizing}
+                                    </p>
+                                    <p className=" pb-1">
+                                        {' '}
+                                        {item?.variant?.quantite}
+                                    </p>
+                                </div>
+                                <div className="w-[20%] font-bold h-full">
+                                    {item?.count}
+                                </div>
+                                <div className="w-[20%]">
+                                    <button
+                                        onClick={() => removeFromCart(item)}
+                                        className="bg-red-400 py-3 px-2 uppercase text-beige hover:bg-gray rounded-[20px]"
+                                    >
+                                        Supprimer
+                                    </button>
+                                </div>
+                            </div>
+                        )
+                    })}
                 </div>
                 <div className="bg-white">
                     <div className="text-gray text-[11px] text-center pt-6 pb-3 font-bold">

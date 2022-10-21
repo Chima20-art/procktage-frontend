@@ -200,24 +200,30 @@ export default function Header({ websiteSettings, categories }) {
                                                 return (
                                                     <div className="flex justify-between items-center  text-[9px]   ">
                                                         <img
-                                                            src="/testimg.png"
-                                                            className="w-[35px] h-[35px] border-grey-300 border"
-                                                        />
-                                                        <p className="">
-                                                            {
+                                                            src={urlFor(
                                                                 cartItem
                                                                     ?.product
-                                                                    ?.title
-                                                            }
-                                                            {' / '}
-                                                            {
-                                                                cartItem
-                                                                    ?.variant
-                                                                    ?.reference
-                                                            }
-                                                            {' / '}
-                                                            {cartItem?.count}
-                                                        </p>
+                                                                    ?.image
+                                                            )}
+                                                            className="w-[35px] h-[35px] border-grey-300 border"
+                                                        />
+                                                        <div className="  w-full pl-2">
+                                                            <p>
+                                                                {
+                                                                    cartItem
+                                                                        ?.product
+                                                                        ?.title
+                                                                }
+                                                            </p>
+                                                            <p className="text-grey-400">
+                                                                {' '}
+                                                                {
+                                                                    cartItem
+                                                                        ?.variant
+                                                                        ?.reference
+                                                                }
+                                                            </p>
+                                                        </div>
                                                         <div
                                                             onClick={() => {
                                                                 removeFromCart(

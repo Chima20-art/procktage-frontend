@@ -15,7 +15,7 @@ export default function Header({ websiteSettings, categories }) {
     const [openCategories, setOpenCategories] = useState([])
     const [openCard, setOpenCard] = useState(false)
     const { cart, removeFromCart } = useContext(OrdersContext)
-
+    console.log('cart length', cart.length)
     return (
         <div>
             {(clicked || openCard) && (
@@ -195,65 +195,74 @@ export default function Header({ websiteSettings, categories }) {
                                         <div className="border-b text-[11px] mb-3 pb-2  border-grey-200  ">
                                             Listes des produits demandés
                                         </div>
-                                        <div className=" border-b border-grey-200 pb-3">
-                                            {cart?.map((cartItem) => {
-                                                return (
-                                                    <div className="flex justify-between items-center  text-[9px]   ">
-                                                        <img
-                                                            src={urlFor(
-                                                                cartItem
-                                                                    ?.product
-                                                                    ?.image
-                                                            )}
-                                                            className="w-[35px] h-[35px] border-grey-300 border"
-                                                        />
-                                                        <div className="  w-full pl-2">
-                                                            <p>
-                                                                {
-                                                                    cartItem
-                                                                        ?.product
-                                                                        ?.title
-                                                                }
-                                                            </p>
-                                                            <p className="text-grey-400">
-                                                                {' '}
-                                                                {
-                                                                    cartItem
-                                                                        ?.variant
-                                                                        ?.reference
-                                                                }
-                                                            </p>
-                                                        </div>
-                                                        <div
-                                                            onClick={() => {
-                                                                removeFromCart(
-                                                                    cartItem
-                                                                )
-                                                            }}
-                                                            className="bg-red-400py-2 w-fit py-3  cursor-pointer "
-                                                        >
-                                                            <svg
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                viewBox="0 0 24 24"
-                                                                fill="#b0151e"
-                                                                className="w-6 h-6"
-                                                            >
-                                                                <path
-                                                                    fillRule="evenodd"
-                                                                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm3 10.5a.75.75 0 000-1.5H9a.75.75 0 000 1.5h6z"
-                                                                    clipRule="evenodd"
+                                        {cart?.length == 0 ? (
+                                            <p className="text-xs normal-case">
+                                                Aucun article ajouté
+                                            </p>
+                                        ) : (
+                                            <div>
+                                                {' '}
+                                                <div className=" border-b border-grey-200 pb-3">
+                                                    {cart?.map((cartItem) => {
+                                                        return (
+                                                            <div className="flex justify-between items-center  text-[9px]   ">
+                                                                <img
+                                                                    src={urlFor(
+                                                                        cartItem
+                                                                            ?.product
+                                                                            ?.image
+                                                                    )}
+                                                                    className="w-[35px] h-[35px] border-grey-300 border"
                                                                 />
-                                                            </svg>
-                                                        </div>
-                                                    </div>
-                                                )
-                                            })}
-                                        </div>
-                                        <Link href="/demandes">
-                                            <button className=" hover:bg-red-700 hover:text-white py-3 border-red-00 border-2 rounded-[50px] mt-4 text-[10px] text-red-700 uppercase mx-auto px-12 w-full  ">
-                                                Completer
-                                            </button>
-                                        </Link>
+                                                                <div className="  w-full pl-2">
+                                                                    <p>
+                                                                        {
+                                                                            cartItem
+                                                                                ?.product
+                                                                                ?.title
+                                                                        }
+                                                                    </p>
+                                                                    <p className="text-grey-400">
+                                                                        {' '}
+                                                                        {
+                                                                            cartItem
+                                                                                ?.variant
+                                                                                ?.reference
+                                                                        }
+                                                                    </p>
+                                                                </div>
+                                                                <div
+                                                                    onClick={() => {
+                                                                        removeFromCart(
+                                                                            cartItem
+                                                                        )
+                                                                    }}
+                                                                    className="bg-red-400py-2 w-fit py-3  cursor-pointer "
+                                                                >
+                                                                    <svg
+                                                                        xmlns="http://www.w3.org/2000/svg"
+                                                                        viewBox="0 0 24 24"
+                                                                        fill="#b0151e"
+                                                                        className="w-6 h-6"
+                                                                    >
+                                                                        <path
+                                                                            fillRule="evenodd"
+                                                                            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm3 10.5a.75.75 0 000-1.5H9a.75.75 0 000 1.5h6z"
+                                                                            clipRule="evenodd"
+                                                                        />
+                                                                    </svg>
+                                                                </div>
+                                                            </div>
+                                                        )
+                                                    })}
+                                                </div>
+                                                <Link href="/demandes">
+                                                    <button className=" hover:bg-red-700 hover:text-white py-3 border-red-00 border-2 rounded-[50px] mt-4 text-[10px] text-red-700 uppercase mx-auto px-12 w-full  ">
+                                                        Completer
+                                                    </button>
+                                                </Link>
+                                            </div>
+                                        )}
                                     </div>
                                 )}
                             </AnimatePresence>

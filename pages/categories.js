@@ -10,7 +10,12 @@ export default function Categories({ websiteSettings, categories }) {
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between ">
             <Header websiteSettings={websiteSettings} categories={categories} />
             <div className="lg:max-w-5xl max-w-[80%] flex flex-col items-center mx-auto py-8 h-full  ">
-                <section className=" w-full  "> Nos produits /</section>
+                <Link href="/categories" className="   ">
+                    <p className="hover:font-bold cursor-pointer w-full">
+                        {' '}
+                        Nos produits /
+                    </p>
+                </Link>
                 {categories?.map((category) => {
                     let rest = category?.subCategories?.length % 4
                     let isLast = category?.subCategories?.length

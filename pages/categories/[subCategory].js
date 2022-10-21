@@ -16,10 +16,17 @@ export default function SubCategory({
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between ">
             <Header websiteSettings={websiteSettings} categories={categories} />
             <div className="lg:max-w-5xl max-w-[90%]   w-full flex flex-col items-center mx-auto py-8 h-full  ">
-                <div className=" w-full uppercase text-xs ">
-                    <Link href="/categories">Nos Produits </Link> {' / '}
-                    <Link href={`/category/${category?.slug?.current}`}>
-                        {category?.title}
+                <div className=" w-full uppercase text-xs flex ">
+                    <Link href="/categories">
+                        <p className="hover:font-bold cursor-pointer ">
+                            Nos Produits
+                        </p>
+                    </Link>{' '}
+                    {'  / '}
+                    <Link href={`/category/ ${category?.slug?.current}`}>
+                        <p className="hover:font-bold cursor-pointer ">
+                            {category?.title}
+                        </p>
                     </Link>
                 </div>
                 <section className="text-[20px] uppercase my-6  text-red-700 border-b-gray border-b-[10px] border-dotted ">

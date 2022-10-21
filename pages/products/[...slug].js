@@ -28,6 +28,7 @@ export default function Product({ product, categories, websiteSettings }) {
     category = category[0]
 
     const [isSelected, setIsSelected] = useState('')
+    console.log('isSelected', isSelected)
     function incrementCount() {
         if (count >= 0) {
             setCount(count + 1)
@@ -53,36 +54,50 @@ export default function Product({ product, categories, websiteSettings }) {
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between text-gray ">
             <Header websiteSettings={websiteSettings} categories={categories} />
             <div className=" uppercase lg:max-w-5xl max-w-[90%]  w-full flex flex-col items-center mx-auto py-8 h-full  ">
-                <div className="w-full text-[11px] py-8">
-                    <Link href="/categories">tous nos produits</Link> /{' '}
+                <div className="w-full text-[11px] py-8 flex">
+                    <Link href="/categories">
+                        <p className="hover:font-bold cursor-pointer">
+                            tous nos produits
+                        </p>
+                    </Link>{' '}
+                    /{' '}
                     <Link href={`/category/${category?.slug.current}`}>
-                        {category?.title}
+                        <p className="hover:font-bold cursor-pointer">
+                            {category?.title}
+                        </p>
                     </Link>{' '}
                     /{' '}
                     <Link
                         href={`/categories/${product?.Subcategory?.slug?.current}`}
                     >
-                        {product?.Subcategory?.title}
+                        <p className="hover:font-bold cursor-pointer">
+                            {product?.Subcategory?.title}
+                        </p>
                     </Link>
                 </div>
                 <div className="w-full flex flex-col border border-grey-200 py-6 px-4">
-                    <div className="lowercase font-bold cursor-pointer flex  ">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            class="w-6 h-6"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M15.75 19.5L8.25 12l7.5-7.5"
-                            />
-                        </svg>
-                        retour
-                    </div>
+                    <Link
+                        href={`/categories/${product?.Subcategory?.slug?.current}`}
+                    >
+                        <div className="lowercase font-bold cursor-pointer flex  ">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                class="w-6 h-6"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M15.75 19.5L8.25 12l7.5-7.5"
+                                />
+                            </svg>
+                            retour
+                        </div>
+                    </Link>
+
                     <div className="w-full flex  md:flex-row flex-col  ">
                         <div className=" md:w-[50%] flex justify-center items center">
                             <img

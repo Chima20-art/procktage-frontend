@@ -1,13 +1,17 @@
 import Link from 'next/link'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import Footer from '../../components/footer'
 import Header from '../../components/header'
 import { client, urlFor } from '../../lib/sanity'
 import { RiShoppingCart2Fill } from 'react-icons/ri'
 import { IoChevronBackCircleSharp } from 'react-icons/io'
+import OrdersContext from '../../OrdersContext'
+import { uid } from 'uid'
 
 export default function Product({ product, categories, websiteSettings }) {
-    let [count, setCount] = useState(0)
+    const { addToCart } = useContext(OrdersContext)
+    const [count, setCount] = useState(0)
+
     console.log('categories', categories)
     console.log('product', product)
 
@@ -25,11 +29,26 @@ export default function Product({ product, categories, websiteSettings }) {
 
     const [isSelected, setIsSelected] = useState('')
     function incrementCount() {
-        count >= 0 ? setCount(count + 1) : count
+        if (count >= 0) {
+            setCount(count + 1)
+        }
     }
     function decrementCount() {
-        count > 0 ? setCount(count - 1) : count
+        if (count > 0) {
+            setCount(count - 1)
+        }
     }
+
+    const onAddToCart = () => {
+        var item = {
+            id: uid(32),
+            product,
+            variant: isSelected,
+            count,
+        }
+        addToCart(item)
+    }
+
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between text-gray ">
             <Header websiteSettings={websiteSettings} categories={categories} />
@@ -134,16 +153,17 @@ export default function Product({ product, categories, websiteSettings }) {
                                     return (
                                         <div
                                             key={item?._key}
-                                            onClick={() => setIsSelected(index)}
+                                            onClick={() => setIsSelected(item)}
                                             className={` flex fex-row py-2 cursor-pointer  border-b  border-red-200 relative  ${
-                                                isSelected == index
+                                                isSelected?._key == item._key
                                                     ? 'bg-gray static '
                                                     : 'bg-orange-50'
                                             }`}
                                         >
                                             <div
                                                 className={` ${
-                                                    isSelected == index &&
+                                                    isSelected?._key ==
+                                                        item._key &&
                                                     'border-t-[10px] border-t-transparent border-l-[15px]  -left-[6px] border-l-red-600 border-b-[10px] border-b-transparent absolute  '
                                                 }   `}
                                             ></div>
@@ -155,7 +175,8 @@ export default function Product({ product, categories, websiteSettings }) {
                                             </div>
                                             <div
                                                 className={`flex-1 flex text-[15px] font-bold justify-center ${
-                                                    isSelected == index
+                                                    isSelected?._key ==
+                                                    item._key
                                                         ? 'text-white'
                                                         : 'text-black'
                                                 } `}
@@ -188,10 +209,13 @@ export default function Product({ product, categories, websiteSettings }) {
                                     +
                                 </div>
                             </div>
-                            <div className=" mt-6 bg-red-700 flex w-fit items-center cursor-pointer py-[18px] px-[25px] rounded-[50px] text-[12px] text-white hover:bg-gray">
+                            <button
+                                onClick={onAddToCart}
+                                className=" mt-6 bg-red-700 flex w-fit items-center cursor-pointer py-[18px] px-[25px] rounded-[50px] text-[12px] text-white hover:bg-gray"
+                            >
                                 <RiShoppingCart2Fill className=" mx-2 text-xl" />{' '}
                                 ajouter au panier
-                            </div>
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { urlFor } from '../lib/sanity'
 import { FaSearch } from 'react-icons/fa'
 import { RiShoppingCart2Fill, RiArrowDropDownLine } from 'react-icons/ri'
 import { IoMdMenu } from 'react-icons/io'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
+import OrdersContext from '../OrdersContext'
 
 export default function Header({ websiteSettings, categories }) {
     const [isOpen, setIsOpen] = useState(false)
@@ -13,6 +14,7 @@ export default function Header({ websiteSettings, categories }) {
     const [clicked, setClicked] = useState(false)
     const [openCategories, setOpenCategories] = useState([])
     const [openCard, setOpenCard] = useState(false)
+    const { cart, removeFromCart } = useContext(OrdersContext)
 
     return (
         <div>
@@ -194,54 +196,52 @@ export default function Header({ websiteSettings, categories }) {
                                             Listes des produits demandés
                                         </div>
                                         <div className=" border-b border-grey-200 pb-3">
-                                            <div className="flex justify-between items-center  text-[9px]   ">
-                                                <img
-                                                    src="/testimg.png"
-                                                    className="w-[35px] h-[35px] border-grey-300 border"
-                                                />
-                                                <p className="">
-                                                    {' '}
-                                                    Goblet bio en carton
-                                                </p>
-                                                <div className="bg-red-400py-2 w-fit py-3  cursor-pointer ">
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        viewBox="0 0 24 24"
-                                                        fill="#b0151e"
-                                                        className="w-6 h-6"
-                                                    >
-                                                        <path
-                                                            fillRule="evenodd"
-                                                            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm3 10.5a.75.75 0 000-1.5H9a.75.75 0 000 1.5h6z"
-                                                            clipRule="evenodd"
+                                            {cart?.map((cartItem) => {
+                                                return (
+                                                    <div className="flex justify-between items-center  text-[9px]   ">
+                                                        <img
+                                                            src="/testimg.png"
+                                                            className="w-[35px] h-[35px] border-grey-300 border"
                                                         />
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            <div className="flex justify-between items-center  text-[9px]   ">
-                                                <img
-                                                    src="/testimg.png"
-                                                    className="w-[35px] h-[35px] border-grey-300 border"
-                                                />
-                                                <p className="">
-                                                    {' '}
-                                                    Goblet bio en carton
-                                                </p>
-                                                <div className="bg-red-400py-2 w-fit py-3  cursor-pointer ">
-                                                    <svg
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        viewBox="0 0 24 24"
-                                                        fill="#b0151e"
-                                                        className="w-6 h-6"
-                                                    >
-                                                        <path
-                                                            fillRule="evenodd"
-                                                            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm3 10.5a.75.75 0 000-1.5H9a.75.75 0 000 1.5h6z"
-                                                            clipRule="evenodd"
-                                                        />
-                                                    </svg>
-                                                </div>
-                                            </div>
+                                                        <p className="">
+                                                            {
+                                                                cartItem
+                                                                    ?.product
+                                                                    ?.title
+                                                            }
+                                                            {' / '}
+                                                            {
+                                                                cartItem
+                                                                    ?.variant
+                                                                    ?.reference
+                                                            }
+                                                            {' / '}
+                                                            {cartItem?.count}
+                                                        </p>
+                                                        <div
+                                                            onClick={() => {
+                                                                removeFromCart(
+                                                                    cartItem
+                                                                )
+                                                            }}
+                                                            className="bg-red-400py-2 w-fit py-3  cursor-pointer "
+                                                        >
+                                                            <svg
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 24 24"
+                                                                fill="#b0151e"
+                                                                className="w-6 h-6"
+                                                            >
+                                                                <path
+                                                                    fillRule="evenodd"
+                                                                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm3 10.5a.75.75 0 000-1.5H9a.75.75 0 000 1.5h6z"
+                                                                    clipRule="evenodd"
+                                                                />
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            })}
                                         </div>
                                         <Link href="/demandes">
                                             <button className=" hover:bg-red-700 hover:text-white py-3 border-red-00 border-2 rounded-[50px] mt-4 text-[10px] text-red-700 uppercase mx-auto px-12 w-full  ">

@@ -23,7 +23,7 @@ export default function SubCategory({
                         </p>
                     </Link>{' '}
                     {'  / '}
-                    <Link href={`/category/ ${category?.slug?.current}`}>
+                    <Link href={`/category/${category?.slug?.current}`}>
                         <p className="hover:font-bold cursor-pointer ">
                             {category?.title}
                         </p>

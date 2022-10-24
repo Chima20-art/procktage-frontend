@@ -30,8 +30,11 @@ const AnyReactComponent = ({ text }) => (
 
 export default function Contact({ websiteSettings, categories }) {
     const [name, setName] = useState('')
-    const [message, setMessage] = useState('')
+    const [nomDuResponsable, setNomDuResponsable] = useState('')
+    const [telephone, setTelephone] = useState('')
     const [email, setEmail] = useState('')
+    const [message, setMessage] = useState('')
+
     console.log('categories', categories)
     const defaultProps = {
         center: {
@@ -41,22 +44,23 @@ export default function Contact({ websiteSettings, categories }) {
         zoom: 12.5,
     }
 
-    const onSubmit = async (e) => {
+    const onSend = async (e) => {
         e.preventDefault()
-        console.log('onSubmit')
         try {
-            let result = await fetch('/api/sendEmail', {
+            const response = await fetch('/api/sendContact', {
                 method: 'POST',
                 body: JSON.stringify({
-                    email,
                     name,
+                    nomDuResponsable,
+                    telephone,
+                    email,
                     message,
                 }),
             })
-            result = await result.json()
+            let result = await response.json()
             console.log('result', result)
         } catch (error) {
-            console.log('error calling sendEmail', error)
+            console.log('error', error)
         }
     }
 
@@ -87,7 +91,7 @@ export default function Contact({ websiteSettings, categories }) {
                         contactez-nous
                     </p>
                     <form
-                        onSubmit={onSubmit}
+                        onSubmit={(e) => onSend(e)}
                         className="lg:h-[580px] lg:w-[455px] md:w-full  flex flex-col justify-between px-4 py-2 gap-6"
                     >
                         <div className="flex   bg-orange-100 h-[54px] rounded-[50px] items-center px-4  drop-shadow-xl ">
@@ -131,9 +135,13 @@ export default function Contact({ websiteSettings, categories }) {
                                 </svg>
                             </div>{' '}
                             <input
+                                value={nomDuResponsable}
+                                onChange={(e) =>
+                                    setNomDuResponsable(e.target.value)
+                                }
                                 className="w-full bg-transparent uppercase text-[14px] text-gray outline-none h-full"
                                 placeholder="Nom du responsable.. "
-                                reauired
+                                required
                             />
                         </div>
                         <div className="flex bg-orange-100 h-[54px] rounded-[50px] items-center px-4 drop-shadow-xl">
@@ -175,6 +183,8 @@ export default function Contact({ websiteSettings, categories }) {
                                 </svg>
                             </div>{' '}
                             <input
+                                value={telephone}
+                                onChange={(e) => setTelephone(e.target.value)}
                                 className="w-full bg-transparent uppercase text-[14px] text-gray outline-none h-full"
                                 placeholder="telephone ex(0669875421) "
                             />

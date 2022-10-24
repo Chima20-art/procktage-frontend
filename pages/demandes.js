@@ -5,12 +5,35 @@ import Footer from '../components/footer'
 import Link from 'next/link'
 import OrdersContext from '../OrdersContext'
 
-export default function Categories({ websiteSettings, categories }) {
+export default function Demandes({ websiteSettings, categories }) {
     const [name, setName] = useState('')
-    const [message, setMessage] = useState('')
+    const [nomDuResponsable, setNomDuResponsable] = useState('')
+    const [telephone, setTelephone] = useState('')
     const [email, setEmail] = useState('')
+    const [message, setMessage] = useState('')
     console.log('categories', categories)
     const { cart, removeFromCart } = useContext(OrdersContext)
+
+    const onSend = async (e) => {
+        e.preventDefault()
+        try {
+            const response = await fetch('/api/sendOrder', {
+                method: 'POST',
+                body: JSON.stringify({
+                    name,
+                    nomDuResponsable,
+                    telephone,
+                    email,
+                    message,
+                }),
+            })
+            let result = await response.json()
+            console.log('result', result)
+        } catch (error) {
+            console.log('error', error)
+        }
+    }
+
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between ">
             <Header websiteSettings={websiteSettings} categories={categories} />
@@ -70,7 +93,10 @@ export default function Categories({ websiteSettings, categories }) {
                     <div className="text-gray text-[11px] text-center pt-6 pb-3 font-bold">
                         demande de devis
                     </div>
-                    <form className=" lg:w-[400px] md:w-full  flex flex-col justify-between px-4 py-2 gap-6">
+                    <form
+                        onSubmit={(e) => onSend(e)}
+                        className=" lg:w-[400px] md:w-full  flex flex-col justify-between px-4 py-2 gap-6"
+                    >
                         <div className="flex   bg-red-100 h-[54px] rounded-[50px] items-center px-4  drop-shadow-xl ">
                             {' '}
                             <div className="pr-2">
@@ -112,6 +138,10 @@ export default function Categories({ websiteSettings, categories }) {
                                 </svg>
                             </div>{' '}
                             <input
+                                value={nomDuResponsable}
+                                onChange={(e) =>
+                                    setNomDuResponsable(e.target.value)
+                                }
                                 className="w-full bg-transparent uppercase text-[14px] text-gray outline-none h-full"
                                 placeholder="Nom du responsable.. "
                                 reauired
@@ -156,6 +186,8 @@ export default function Categories({ websiteSettings, categories }) {
                                 </svg>
                             </div>{' '}
                             <input
+                                value={telephone}
+                                onChange={(e) => setTelephone(e.target.value)}
                                 className="w-full bg-transparent uppercase text-[14px] text-gray outline-none h-full"
                                 placeholder="telephone ex(0669875421) "
                             />

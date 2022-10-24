@@ -54,9 +54,11 @@ export default function Accueil({ homePage }) {
                                     <p className="bg-red-700 w-full pb-6 pt-12 px-6 uppercase text-white text-[15px] text-opacity-90">
                                         <Link
                                             href={`/category/${section?.refrence?.slug?.current}`}
-                                            className="hover:underline"
                                         >
-                                            En savoir plus
+                                            <p className="hover:underline hover:cursor-pointer">
+                                                {' '}
+                                                En savoir plus
+                                            </p>
                                         </Link>
                                     </p>
                                     <p className=" px-6 py-6 uppercase text-white text-[10px] text-opacity-90">

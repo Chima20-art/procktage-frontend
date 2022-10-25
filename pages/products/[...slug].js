@@ -294,12 +294,12 @@ export async function getStaticProps(context) {
     let productSlug = slug[slug?.length - 1]
     // productSlug =
 
-    let prodcutQuery = `*[_type == 'product' && slug.current == '${productSlug}' &&  !(_id in path("drafts.**"))  ][0]{ Subcategory->{title,slug,category}, _id,description,image,reference,slug,title }`
+    let prodcutQuery = `*[_type == 'product'  && slug.current == '${productSlug}' &&  !(_id in path("drafts.**"))  ][0]{ Subcategory->{title,slug,category}, _id,description,image,reference,slug,title }`
     let product = await client.fetch(prodcutQuery, {})
 
     let websiteSettings = await client.fetch(`*[_type == 'settings'][0]`, {})
     let categories = await client.fetch(
-        `*[_type == 'category']{
+        `*[_type == 'category'  && !(_id in path("drafts.**"))]{
           _id,
           title,
           slug,
@@ -308,7 +308,7 @@ export async function getStaticProps(context) {
                 _id,
                 image,
                 slug,
-                "count":count(*[ _type=='product' && references(^._id)])
+                "count":count(*[ _type=='product'  && !(_id in path("drafts.**")) && references(^._id)])
               }
         }`
     )

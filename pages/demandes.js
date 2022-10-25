@@ -248,7 +248,7 @@ export default function Demandes({ websiteSettings, categories }) {
 export async function getStaticProps(context) {
     let websiteSettings = client.fetch(`*[_type == 'settings'][0]`, {})
     let categories = client.fetch(
-        `*[_type == 'category']{
+        `*[_type == 'category ' && !(_id in path("drafts.**")) ]{
           _id,
           title,
            subCategories[]->{
@@ -256,7 +256,7 @@ export async function getStaticProps(context) {
                 _id,
                 image,
                 slug,
-                "count":count(*[ _type=='product' && references(^._id)])
+                "count":count(*[ _type=='product' && !(_id in path("drafts.**")) && references(^._id)])
               }
         }`
     )

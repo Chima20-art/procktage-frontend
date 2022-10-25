@@ -21,7 +21,7 @@ export default function Home({ websiteSettings, homePage, categories }) {
 export async function getStaticProps(context) {
     let websiteSettings = client.fetch(`*[_type == 'settings'][0]`, {})
     let homePage = client.fetch(
-        `*[_type == 'homePage'][0]{
+        `*[_type == 'homePage' && !(_id in path("drafts.**"))][0]{
         Sections[]{
           image,
           title,
@@ -31,7 +31,7 @@ export async function getStaticProps(context) {
             subCategories[]->{
               title,
               _id,
-              "count":count(*[ _type=='product' && references(^._id)])
+              "count":count(*[ _type=='product' && !(_id in path("drafts.**")) && references(^._id)])
             }
           },
           _key
@@ -40,14 +40,14 @@ export async function getStaticProps(context) {
         {}
     )
     let categories = client.fetch(
-        `*[_type == 'category']{
+        `*[_type == 'category' && !(_id in path("drafts.**"))]{
           _id,
           title,
            subCategories[]->{
                 title,
                 _id,
                 slug,
-                "count":count(*[ _type=='product' && references(^._id)])
+                "count":count(*[ _type=='product' && !(_id in path("drafts.**")) && references(^._id)])
               }
         }`
     )

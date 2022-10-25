@@ -79,7 +79,7 @@ export default function Category({ category, categories, websiteSettings }) {
 
 export async function getStaticPaths() {
     const categories = await client.fetch(
-        `*[_type == 'category']{
+        `*[_type == 'category'  && !(_id in path("drafts.**"))]{
           _id,
           title,
           slug,
@@ -103,19 +103,19 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
     const categoryTitle = context?.params?.category
-    const categoryQuery = `*[_type == 'category' && slug.current == '${categoryTitle}' ][0]{ _id, slug, title, 
+    const categoryQuery = `*[_type == 'category'  && !(_id in path("drafts.**")) && slug.current == '${categoryTitle}' ][0]{ _id, slug, title, 
         subCategories[]->{
         title,
         _id,
         image,
         slug,
-        "count":count(*[ _type=='product' && references(^._id)])
+        "count":count(*[ _type=='product'  && !(_id in path("drafts.**")) && references(^._id)])
       } }`
     const category = await client.fetch(categoryQuery, {})
     let websiteSettings = await client.fetch(`*[_type == 'settings'][0]`, {})
 
     let categories = await client.fetch(
-        `*[_type == 'category']{
+        `*[_type == 'category'  && !(_id in path("drafts.**"))]{
           _id,
           title,
           slug,
@@ -124,7 +124,7 @@ export async function getStaticProps(context) {
                 _id,
                 image,
                 slug,
-                "count":count(*[ _type=='product' && references(^._id)])
+                "count":count(*[ _type=='product'  && !(_id in path("drafts.**")) && references(^._id)])
               }
         }`
     )

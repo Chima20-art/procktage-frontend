@@ -1,11 +1,18 @@
+import { uid } from 'uid'
 import { client } from '../../lib/sanity'
 
 export default async function sendOrder(req, res) {
     try {
         if (req.method == 'POST') {
             try {
-                const { name, nomDuResponsable, telephone, email, message } =
-                    JSON.parse(req.body)
+                const {
+                    name,
+                    nomDuResponsable,
+                    telephone,
+                    email,
+                    message,
+                    cart,
+                } = JSON.parse(req.body)
                 if (email) {
                     const doc = {
                         _type: 'demandes',
@@ -15,10 +22,24 @@ export default async function sendOrder(req, res) {
                         email: email,
                         telephone: telephone,
                         message: message,
+                        products: cart?.map((item) => {
+                            return {
+                                _type: 'order',
+                                _key: uid(32),
+                                variant: item.variant.reference,
+                                quantite: item.count,
+                                product: {
+                                    _type: 'reference',
+                                    _ref: item?.product?._id,
+                                },
+                            }
+                        }),
                     }
 
                     const sanityDoc = await client.create(doc)
-                    return res.status(200).json({ status: true })
+                    return res
+                        .status(200)
+                        .json({ status: true, body: JSON.parse(req.body) })
                 } else {
                     res.status(200).json({
                         status: false,

@@ -11,9 +11,9 @@ export default function Demandes({ websiteSettings, categories }) {
     const [telephone, setTelephone] = useState('')
     const [email, setEmail] = useState('')
     const [message, setMessage] = useState('')
-    console.log('categories', categories)
-    const { cart, removeFromCart } = useContext(OrdersContext)
 
+    const { cart, removeFromCart } = useContext(OrdersContext)
+    console.log('cart:', cart)
     const onSend = async (e) => {
         e.preventDefault()
         try {
@@ -25,6 +25,7 @@ export default function Demandes({ websiteSettings, categories }) {
                     telephone,
                     email,
                     message,
+                    cart,
                 }),
             })
             let result = await response.json()
@@ -52,7 +53,7 @@ export default function Demandes({ websiteSettings, categories }) {
                     {cart?.map((item) => {
                         return (
                             <div
-                                key={item._key}
+                                key={item.id}
                                 className="bg-white w-[98%] flex text-gray text-[10px] h-full flex-6 py-3 px-2 "
                             >
                                 <div className="w-[20%]">

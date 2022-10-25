@@ -6,6 +6,7 @@ import { IoMdMenu } from 'react-icons/io'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import OrdersContext from '../OrdersContext'
+import { useRouter } from 'next/router'
 
 export default function Header({ websiteSettings, categories }) {
     const [isOpen, setIsOpen] = useState(false)
@@ -15,7 +16,15 @@ export default function Header({ websiteSettings, categories }) {
     const [openCategories, setOpenCategories] = useState([])
     const [openCard, setOpenCard] = useState(false)
     const { cart, removeFromCart } = useContext(OrdersContext)
+    const [searchValue, setSearchValue] = useState('')
+    const router = useRouter()
     console.log('cart length', cart.length)
+
+    const onSearch = () => {
+        console.log('onSearch')
+        router.push(`/search/${searchValue}`)
+    }
+
     return (
         <div>
             {(clicked || openCard) && (
@@ -167,11 +176,21 @@ export default function Header({ websiteSettings, categories }) {
                     </div>
                     <div className="hidden   relative h-11  md:flex flex-row items-center self-end">
                         <input
+                            value={searchValue}
+                            onChange={(e) => setSearchValue(e.target.value)}
                             type="text"
                             className="w-48  h-11 focus:outline-none focus:border-0 placeholder:text-xs border-0 border-b-2 border-red-700"
                             placeholder="RECHERCHE UN PRODUIT..."
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter') {
+                                    onSearch()
+                                }
+                            }}
                         />
-                        <FaSearch className="text-xl mr-8 ml-2 hover:cursor-pointer hover:text-red-700 " />
+                        <FaSearch
+                            onClick={() => onSearch()}
+                            className="text-xl mr-8 ml-2 hover:cursor-pointer hover:text-red-700 "
+                        />
 
                         <div className=" relative flex flex-col">
                             <RiShoppingCart2Fill

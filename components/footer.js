@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { AiFillFacebook } from 'react-icons/ai'
 import { BsInstagram } from 'react-icons/bs'
 import { TbBrandTiktok } from 'react-icons/tb'
@@ -6,7 +6,7 @@ import { ImLocation } from 'react-icons/im'
 import { BsTelephoneFill } from 'react-icons/bs'
 import { FaFax } from 'react-icons/fa'
 import { GoDeviceMobile } from 'react-icons/go'
-
+import { useRouter } from 'next/router'
 import { MdOutlineEmail } from 'react-icons/md'
 
 export default function Footer({ websiteSettings }) {
@@ -16,6 +16,13 @@ export default function Footer({ websiteSettings }) {
     const mobile = websiteSettings?.contact?.mobile
     const fax = websiteSettings?.contact?.fax
     const email = websiteSettings?.contact?.email
+    const router = useRouter()
+
+    const [searchValue, setSearchValue] = useState('')
+    const onSearch = () => {
+        console.log('onSearch')
+        router.push(`/search/${searchValue}`)
+    }
 
     return (
         <div className="h-full pb-8 bg-[#FFF8ED] flex flex-col self-end w-full-screen">
@@ -48,8 +55,18 @@ export default function Footer({ websiteSettings }) {
                         className="max-w-sm flex self-center text-center shadow-2xl rounded-[50px] my-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5"
                         placeholder="Recherche un produit"
                         required
+                        value={searchValue}
+                        onChange={(e) => setSearchValue(e.target.value)}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                                onSearch()
+                            }
+                        }}
                     />
-                    <button className="max-w-sm grid self-center content-center shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] rounded-[50px] bg-red-700 text-[#F5F5F5] text-sm rounded-lg focus:ring-red-700 focus:border-red-500 block w-full p-2.5">
+                    <button
+                        onClick={() => onSearch()}
+                        className="max-w-sm grid self-center content-center shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] rounded-[50px] bg-red-700 text-[#F5F5F5] text-sm rounded-lg focus:ring-red-700 focus:border-red-500 block w-full p-2.5"
+                    >
                         Recherche
                     </button>
                 </section>

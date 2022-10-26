@@ -17,10 +17,10 @@ export default function Header({ websiteSettings, categories }) {
     const [openCategories, setOpenCategories] = useState([])
     const [openCard, setOpenCard] = useState(false)
     const { cart, removeFromCart } = useContext(OrdersContext)
-    const [searchValue, setSearchValue] = useState('')
-    const router = useRouter()
-    console.log('cart length', cart.length)
 
+    const router = useRouter()
+
+    const [searchValue, setSearchValue] = useState('')
     const onSearch = () => {
         console.log('onSearch')
         router.push(`/search/${searchValue}`)

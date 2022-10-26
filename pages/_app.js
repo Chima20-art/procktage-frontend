@@ -10,12 +10,12 @@ function MyApp({ Component, pageProps }) {
     useEffect(() => {
         if (typeof window !== 'undefined') {
             const cartItems = localStorage.getItem('myCart')
-            console.log('cartItems', cartItems)
+            //console.log('cartItems', cartItems)
             if (cartItems) {
                 let cartItemsJson = JSON.parse(cartItems)
-                console.log('cartItemsJson', cartItemsJson)
+                //console.log('cartItemsJson', cartItemsJson)
                 if (cartItemsJson && cartItemsJson?.length > 0) {
-                    console.log('Saving new Cart')
+                    //console.log('Saving new Cart')
                     setCart(cartItemsJson)
                 }
             }

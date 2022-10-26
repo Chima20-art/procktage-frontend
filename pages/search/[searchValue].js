@@ -9,7 +9,7 @@ export default function SearchPage({
     websiteSettings,
     categories,
 }) {
-    console.log('searchRes', searchRes)
+    //console.log('searchRes', searchRes)
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between ">
             <Header websiteSettings={websiteSettings} categories={categories} />

@@ -5,7 +5,7 @@ import Footer from '../components/footer'
 import Link from 'next/link'
 
 export default function Categories({ websiteSettings, categories }) {
-    console.log('categories', categories)
+    //console.log('categories', categories)
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between ">
             <Header websiteSettings={websiteSettings} categories={categories} />

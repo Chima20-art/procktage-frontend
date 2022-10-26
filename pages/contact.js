@@ -35,7 +35,7 @@ export default function Contact({ websiteSettings, categories }) {
     const [email, setEmail] = useState('')
     const [message, setMessage] = useState('')
 
-    console.log('categories', categories)
+    //console.log('categories', categories)
     const defaultProps = {
         center: {
             lat: 31.67582375056415,
@@ -58,7 +58,7 @@ export default function Contact({ websiteSettings, categories }) {
                 }),
             })
             let result = await response.json()
-            console.log('result', result)
+            //console.log('result', result)
         } catch (error) {
             console.log('error', error)
         }

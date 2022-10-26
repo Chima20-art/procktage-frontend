@@ -22,7 +22,7 @@ export default function Header({ websiteSettings, categories }) {
 
     const [searchValue, setSearchValue] = useState('')
     const onSearch = () => {
-        console.log('onSearch')
+        //console.log('onSearch')
         router.push(`/search/${searchValue}`)
     }
 

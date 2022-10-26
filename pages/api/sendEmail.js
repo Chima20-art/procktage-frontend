@@ -2,7 +2,7 @@ export default function handler(req, res) {
     try {
         if (req.method == 'POST') {
             const { email, name, message } = JSON.parse(req.body)
-            console.log('email ', email)
+            //console.log('email ', email)
             if (email) {
                 const Mailjet = require('node-mailjet')
                 console.log(

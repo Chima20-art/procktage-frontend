@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 import { MdOutlineEmail } from 'react-icons/md'
 
 export default function Footer({ websiteSettings }) {
-    console.log('setting:', websiteSettings)
+    //console.log('setting:', websiteSettings)
     const adress = websiteSettings?.contact?.adress
     const phone = websiteSettings?.contact?.phone
     const mobile = websiteSettings?.contact?.mobile
@@ -20,7 +20,7 @@ export default function Footer({ websiteSettings }) {
 
     const [searchValue, setSearchValue] = useState('')
     const onSearch = () => {
-        console.log('onSearch')
+        //console.log('onSearch')
         router.push(`/search/${searchValue}`)
     }
 

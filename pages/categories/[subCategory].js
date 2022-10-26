@@ -5,12 +5,23 @@ import { client, urlFor } from '../../lib/sanity'
 import Link from 'next/link'
 
 export default function SubCategory({
-    category,
     subCategory,
     categories,
     websiteSettings,
 }) {
-    console.log('category', category)
+    //console.log('category', category)
+
+    let category = categories?.filter((item) => {
+        let isCurrnetCategory = false
+        item?.subCategories?.forEach((sub) => {
+            if (sub?.slug?.current == subCategory?.slug?.current) {
+                isCurrnetCategory = true
+            }
+        })
+        return isCurrnetCategory
+    })
+
+    category = category?.length > 0 ? category[0] : null
 
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between ">
@@ -30,7 +41,7 @@ export default function SubCategory({
                     </Link>
                 </div>
                 <section className="text-[20px] uppercase my-6  text-red-700 border-b-gray border-b-[10px] border-dotted ">
-                    {subCategory.title}
+                    {subCategory?.title}
                 </section>
                 <section className="lg:w-full   flex flex-row flex-wrap">
                     {subCategory?.products?.map((product, index) => {
@@ -193,17 +204,7 @@ export async function getStaticProps(context) {
               }
         }`
     )
-    let category = categories?.filter((item) => {
-        let isCurrnetCategory = false
-        item?.subCategories?.forEach((sub) => {
-            if (sub?.slug?.current == subCategory?.slug?.current) {
-                isCurrnetCategory = true
-            }
-        })
-        return isCurrnetCategory
-    })
 
-    category = category[0]
     return {
         props: {
             category,

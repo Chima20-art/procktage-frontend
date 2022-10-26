@@ -2,12 +2,28 @@ import '../styles/globals.css'
 import App from 'next/app'
 import { client } from '../lib/sanity'
 import { OrdersProvider } from '../OrdersContext'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function MyApp({ Component, pageProps }) {
     const [cart, setCart] = useState([])
 
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const cartItems = localStorage.getItem('myCart')
+            console.log('cartItems', cartItems)
+            if (cartItems) {
+                let cartItemsJson = JSON.parse(cartItems)
+                console.log('cartItemsJson', cartItemsJson)
+                if (cartItemsJson && cartItemsJson?.length > 0) {
+                    console.log('Saving new Cart')
+                    setCart(cartItemsJson)
+                }
+            }
+        }
+    }, [])
+
     const addToCart = (item) => {
+        localStorage.setItem('myCart', JSON.stringify([...cart, item]))
         setCart([...cart, item])
     }
 
@@ -17,6 +33,7 @@ function MyApp({ Component, pageProps }) {
         })
 
         setCart(newCart)
+        localStorage.setItem('myCart', JSON.stringify(newCart))
     }
 
     return (

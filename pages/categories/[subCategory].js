@@ -207,7 +207,6 @@ export async function getStaticProps(context) {
 
     return {
         props: {
-            category,
             subCategory,
             categories,
             websiteSettings,

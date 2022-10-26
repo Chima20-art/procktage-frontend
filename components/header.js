@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import OrdersContext from '../OrdersContext'
 import { useRouter } from 'next/router'
+import { uid } from 'uid'
 
 export default function Header({ websiteSettings, categories }) {
     const [isOpen, setIsOpen] = useState(false)
@@ -142,6 +143,9 @@ export default function Header({ websiteSettings, categories }) {
                                                                         ) => {
                                                                             return (
                                                                                 <Link
+                                                                                    key={
+                                                                                        subcategory?._id
+                                                                                    }
                                                                                     href={`/categories/${subcategory?.slug.current}`}
                                                                                 >
                                                                                     <li
@@ -227,7 +231,10 @@ export default function Header({ websiteSettings, categories }) {
                                                 <div className=" border-b border-grey-200 pb-3">
                                                     {cart?.map((cartItem) => {
                                                         return (
-                                                            <div className="flex justify-between items-center  text-[9px]   ">
+                                                            <div
+                                                                key={uid(32)}
+                                                                className="flex justify-between items-center  text-[9px]   "
+                                                            >
                                                                 <img
                                                                     src={urlFor(
                                                                         cartItem
@@ -329,7 +336,10 @@ export default function Header({ websiteSettings, categories }) {
                                         <div className=" border-b border-grey-200 pb-3">
                                             {cart?.map((cartItem) => {
                                                 return (
-                                                    <div className="flex justify-between items-center  text-[9px]   ">
+                                                    <div
+                                                        key={uid(32)}
+                                                        className="flex justify-between items-center  text-[9px]   "
+                                                    >
                                                         <img
                                                             src={urlFor(
                                                                 cartItem
@@ -480,6 +490,9 @@ export default function Header({ websiteSettings, categories }) {
                                                                             ) => {
                                                                                 return (
                                                                                     <Link
+                                                                                        key={
+                                                                                            subcategory?._id
+                                                                                        }
                                                                                         href={`/categories/${subcategory?.slug.current}`}
                                                                                     >
                                                                                         <li

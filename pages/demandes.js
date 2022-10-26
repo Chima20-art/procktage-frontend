@@ -13,6 +13,10 @@ export default function Demandes({ websiteSettings, categories }) {
     const [message, setMessage] = useState('')
 
     const { cart, removeFromCart } = useContext(OrdersContext)
+    const [isAlertVisible, setIsAlertVisible] = useState(false)
+    const handleButtonClick = () => {
+        setIsAlertVisible(true)
+    }
 
     const onSend = async (e) => {
         e.preventDefault()
@@ -38,7 +42,7 @@ export default function Demandes({ websiteSettings, categories }) {
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between ">
             <Header websiteSettings={websiteSettings} categories={categories} />
-            <div className="lg:max-w-5xl sm:max-w-[80%] w-[100vw] uppercase  my-10 text-grey-700 flex flex-col items-center mx-auto py-8 h-full  bg-[#f5f5f5] w-full border border-grey-300 ">
+            <div className="lg:max-w-4xl sm:max-w-2xl  w-[95%] uppercase  my-10 text-grey-700 flex flex-col items-center mx-auto py-8 h-full  bg-[#f5f5f5] w-full border border-grey-300 ">
                 <p className="text-[14px] pb-2">demande de produit</p>
                 <div
                     id="tableau "
@@ -219,6 +223,7 @@ export default function Demandes({ websiteSettings, categories }) {
                             />
                         </div>
                         <button
+                            onClick={() => handleButtonClick()}
                             type="submit"
                             className="flex bg-red-700 h-[64px] rounded-[38px] items-center justify-center  cursor-pointer px-4 py-4  text-white drop-shadow-xl"
                         >
@@ -235,6 +240,24 @@ export default function Demandes({ websiteSettings, categories }) {
                             </div>{' '}
                             envoyez
                         </button>
+                        {isAlertVisible && (
+                            <div className="flex text-[10px] items-center w-fit text-black">
+                                {' '}
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    className="w-5 h-5"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                                <p>votre demande de devis a été envoyée</p>
+                            </div>
+                        )}
                     </form>
                 </div>
             </div>

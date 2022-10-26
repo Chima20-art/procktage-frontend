@@ -57,7 +57,7 @@ export default function Product({ product, categories, websiteSettings }) {
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between text-gray ">
             <Header websiteSettings={websiteSettings} categories={categories} />
-            <div className=" uppercase lg:max-w-5xl max-w-[90%]  w-full flex flex-col items-center mx-auto py-8 h-full  ">
+            <div className=" uppercase lg:max-w-4xl sm:max-w-2xl  w-[95%] flex flex-col items-center mx-auto py-8 h-full  ">
                 <div className="w-full text-[11px] py-8 flex">
                     <Link href="/categories">
                         <p className="hover:font-bold cursor-pointer">
@@ -79,23 +79,21 @@ export default function Product({ product, categories, websiteSettings }) {
                         </p>
                     </Link>
                 </div>
-                <div className="w-full flex flex-col border border-grey-200 py-6 px-4">
+                <div className="w-full flex flex-col border border-grey-200 py-6 px-4 ">
                     <Link
                         href={`/categories/${product?.Subcategory?.slug?.current}`}
                     >
-                        <div className="lowercase font-bold cursor-pointer flex">
+                        <div className="lowercase  hover:underline cursor-pointer flex">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
                                 viewBox="0 0 24 24"
-                                strokeWidth="1.5"
-                                stroke="currentColor"
-                                className="w-5 h-5"
+                                fill="currentColor"
+                                className="w-6 h-6"
                             >
                                 <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M15.75 19.5L8.25 12l7.5-7.5"
+                                    fillRule="evenodd"
+                                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-4.28 9.22a.75.75 0 000 1.06l3 3a.75.75 0 101.06-1.06l-1.72-1.72h5.69a.75.75 0 000-1.5h-5.69l1.72-1.72a.75.75 0 00-1.06-1.06l-3 3z"
+                                    clipRule="evenodd"
                                 />
                             </svg>
                             retour
@@ -106,12 +104,12 @@ export default function Product({ product, categories, websiteSettings }) {
                         <div className=" md:w-[50%] flex justify-center items center">
                             <img
                                 src={urlFor(product?.image?.asset)}
-                                className=" flex  p-4  max-w-[270px] max-h-[240px] "
+                                className=" flex  p-4  lg:max-w-[270px] lg:max-h-[240px] max-w-[230px] max-h-[200px] "
                             />
                         </div>
                         <div className=" flex   w-full p-4 flex-col border-l border-grey-200 pl-6">
                             <p className="font-bold">{product?.title}</p>
-                            <p className="text-[14px] pt-2 pb-4 ">
+                            <p className="text-[12px] pt-2 pb-4 ">
                                 {product?.Subcategory?.title}
                             </p>
                             <p className=" text-[12px] py-1">
@@ -173,7 +171,7 @@ export default function Product({ product, categories, websiteSettings }) {
                                         <div
                                             key={item?._key}
                                             onClick={() => setIsSelected(item)}
-                                            className={` flex fex-row py-2 cursor-pointer  border-b  border-red-200 relative  ${
+                                            className={` flex fex-row py-2 cursor-pointer text-[12px] border-b  border-red-200 relative  ${
                                                 isSelected?._key == item._key
                                                     ? 'bg-gray static '
                                                     : 'bg-orange-50'
@@ -186,14 +184,14 @@ export default function Product({ product, categories, websiteSettings }) {
                                                     'border-t-[10px] border-t-transparent border-l-[15px]  -left-[6px] border-l-red-600 border-b-[10px] border-b-transparent absolute  '
                                                 }   `}
                                             ></div>
-                                            <div className="flex-1 flex text-[15px] text-red-500 font-bold justify-center ">
+                                            <div className="flex-1 flex  text-red-500 font-bold justify-center ">
                                                 {item?.reference}
                                             </div>
                                             <div className="flex-1 flex text-red-500 lowercase justify-center">
                                                 {item?.sizing}
                                             </div>
                                             <div
-                                                className={`flex-1 flex text-[15px] font-bold justify-center ${
+                                                className={`flex-1 flex  font-bold justify-center ${
                                                     isSelected?._key ==
                                                     item._key
                                                         ? 'text-white'
@@ -207,7 +205,7 @@ export default function Product({ product, categories, websiteSettings }) {
                                 })}
                             </div>
 
-                            <div className=" text-[12px] mt-6">
+                            <div className=" text-[11px] mt-6">
                                 Quantite (Pqt):minimum pqt{' '}
                             </div>
                             <div className="flex">

@@ -9,7 +9,7 @@ export default function Categories({ websiteSettings, categories }) {
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between ">
             <Header websiteSettings={websiteSettings} categories={categories} />
-            <div className="lg:max-w-5xl max-w-[80%] flex flex-col items-center mx-auto py-8 h-full  ">
+            <div className="lg:max-w-4xl sm:max-w-2xl  w-[95%] flex flex-col items-center mx-auto py-8 h-full  ">
                 <Link href="/categories" className="   ">
                     <p className="hover:font-bold cursor-pointer w-full">
                         {' '}
@@ -27,7 +27,7 @@ export default function Categories({ websiteSettings, categories }) {
                             key={category._id}
                             className=" w-full  items-center flex flex-col"
                         >
-                            <section className="text-[28px]  uppercase my-6  text-red-700 border-b-gray border-b-[15px] border-dotted ">
+                            <section className="lg:text-[22px] text-[19px] uppercase my-6  text-red-700 border-b-gray lg:border-b-[12px] border-b-[7px] border-dotted ">
                                 {category?.title}
                             </section>
                             <section className=" w-full md:max-w-5xl  flex flex-row flex-wrap    ">

@@ -27,20 +27,20 @@ export default function Footer({ websiteSettings }) {
     return (
         <div className="h-full pb-8 bg-[#FFF8ED] flex flex-col self-end w-full-screen">
             <section className="  py-4   text-[#424242] bg-red-700 ">
-                <div className="lg:max-w-5xl max-w-[90%]  lg:px-0 px-2 mx-auto  flex justify-between">
+                <div className="lg:max-w-4xl max-w-[90%] md:max-w-2xl sm:max-w-[90%] lg:px-0 px-2 mx-auto  flex justify-between">
                     <p className="text-sm text-[#FEDFB6]">
                         Connectez-vous avec nous sur les réseaux sociaux :
                     </p>
                     <div className="flex items-center">
-                        <AiFillFacebook className="mx-1 text-2xl cursor-pointer" />
-                        <BsInstagram className="mx-1 text-xl cursor-pointer" />
-                        <TbBrandTiktok className="mx-1 text-2xl cursor-pointer" />
+                        <AiFillFacebook className="mx-1 text-2xl cursor-pointer text-orange-100" />
+                        <BsInstagram className="mx-1 text-xl cursor-pointer text-orange-100" />
+                        <TbBrandTiktok className="mx-1 text-2xl cursor-pointer text-orange-100" />
                     </div>
                 </div>
             </section>
             <section
                 id="footer search"
-                className="flex-col flex px-4  md:px-0 md:py-2 lg:flex-row lg:flex lg:justify-between lg:max-w-5xl md:max-w-[90%] max-w-[100%]  md:py-6 mx-auto  w-screen"
+                className="flex-col flex px-4  md:px-0 md:py-2 lg:flex-row lg:flex lg:justify-between lg:max-w-4xl max-w-[90%] md:max-w-2xl sm:max-w-[90%] md:py-6 mx-auto  w-screen"
             >
                 <section className=" lg:px-2  flex flex-col  px-6 text-[#424242] ">
                     <p className="   pt-4 pb-2 my-2   lg:w-[204px] lg:py-2 uppercase  text-xs border-b-2 border-red-700 border-0">
@@ -77,38 +77,38 @@ export default function Footer({ websiteSettings }) {
                     <p className="pt-6 pb-2 my-4 lg:my-2    lg:py-2 uppercase  text-xs border-b-2 border-red-700 border-0">
                         Nos produit
                     </p>
-                    <p className="uppercase text-[#424242]  text-xs my-2   lg:w-[204px] cursor-pointer hover:font-bold">
+                    <p className="uppercase text-[#424242]  text-[11px] my-2   lg:w-[204px] cursor-pointer hover:font-bold">
                         emballage alimentaire pour la restauration
                     </p>
-                    <p className="uppercase text-[#424242] text-xs my-2   lg:w-[204px] cursor-pointer hover:font-bold">
+                    <p className="uppercase text-[#424242] text-[11px]  my-2   lg:w-[204px] cursor-pointer hover:font-bold">
                         emballage recyclable biodégradable
                     </p>
-                    <p className="uppercase text-[#424242] text-xs my-2   lg:w-[204px] cursor-pointer hover:font-bold">
+                    <p className="uppercase text-[#424242] text-[11px]  my-2   lg:w-[204px] cursor-pointer hover:font-bold">
                         le professionnel de l'hygiène
                     </p>
                 </section>
-                <section className=" w-full px-6 uppercase text-[#424242] text-xs  ">
+                <section className=" w-full px-6 uppercase text-[11px] text-[#424242] text-xs  ">
                     <p className=" pt-6 pb-2 my-4 lg:my-2    lg:py-2 uppercase  text-xs border-b-2 border-red-700 border-0">
                         Contact
                     </p>
-                    <div className="flex items-center md:pt-2 md:py-0 py-3 pt-0 ">
-                        <ImLocation className="text-lg" />
+                    <div className="flex items-center md:pt-2 md:py-0 py-3 pt-0  ">
+                        <ImLocation className="text-lg mr-1" />
                         {adress}
                     </div>
                     <div className="flex items-center md:pt-2 md:py-0 py-3 pt-0">
-                        <BsTelephoneFill className="text-lg" />
+                        <BsTelephoneFill className="text-lg mr-1" />
                         {phone}
                     </div>
                     <div className="flex items-center  md:pt-2 md:py-0 py-3 pt-0">
-                        <GoDeviceMobile className="text-lg" />
+                        <GoDeviceMobile className="text-lg mr-1" />
                         {mobile}
                     </div>
                     <div className="flex items-center md:pt-2 md:py-0 py-3 pt-0">
-                        <FaFax className="text-lg" />
+                        <FaFax className="text-lg mr-1" />
                         {fax}
                     </div>
                     <div className="flex items-center md:pt-2 md:py-0 py-3 pt-0">
-                        <MdOutlineEmail className="text-xl" />
+                        <MdOutlineEmail className="text-xl mr-1" />
                         {email}
                     </div>
                 </section>

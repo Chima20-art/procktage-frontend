@@ -67,7 +67,7 @@ export default function Contact({ websiteSettings, categories }) {
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between ">
             <Header websiteSettings={websiteSettings} categories={categories} />
-            <div className="w-full lg:max-w-5xl max-w-[90%]  flex lg:flex-row flex-col  mx-auto p-4 my-12 h-fit  border border-grey-200 uppercase text-gray">
+            <div className="w-full lg:max-w-4xl sm:max-w-2xl  w-[95%] flex lg:flex-row flex-col  mx-auto p-4 my-12 h-fit  border border-grey-200 uppercase text-gray">
                 <div className="flex-1  h-fit flex flex-col justify-between">
                     <p>Trouvez nous facilement</p>
                     <div className="lg:w-[455px] lg:h-[605px] w-full h-[500px]  ">
@@ -87,12 +87,12 @@ export default function Contact({ websiteSettings, categories }) {
                     </div>
                 </div>
                 <div className="flex-1  ">
-                    <p className="flex-1  self-top pb-2 pl-4 ">
+                    <p className="flex-1  self-top pb-2 pl-4 lg:pt-0 pt-4 ">
                         contactez-nous
                     </p>
                     <form
                         onSubmit={(e) => onSend(e)}
-                        className="lg:h-[580px] lg:w-[455px] md:w-full  flex flex-col justify-between px-4 py-2 gap-6"
+                        className="lg:h-[580px]  md:w-full  flex flex-col justify-between px-4 py-2 gap-6"
                     >
                         <div className="flex   bg-orange-100 h-[54px] rounded-[50px] items-center px-4  drop-shadow-xl ">
                             {' '}

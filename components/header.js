@@ -181,14 +181,14 @@ export default function Header({ websiteSettings, categories }) {
                         <input
                             value={searchValue}
                             onChange={(e) => setSearchValue(e.target.value)}
-                            type="text"
-                            className="w-40  h-11 focus:outline-none focus:border-0 placeholder:text-[10px] border-0 border-b-2 border-red-700"
-                            placeholder="RECHERCHE UN PRODUIT..."
                             onKeyDown={(e) => {
                                 if (e.key === 'Enter') {
                                     onSearch()
                                 }
                             }}
+                            type="text"
+                            className="w-40  h-11 focus:outline-none focus:border-0 placeholder:text-[10px] border-0 border-b-2 border-red-700"
+                            placeholder="RECHERCHE UN PRODUIT..."
                         />
                         <FaSearch
                             onClick={() => onSearch()}
@@ -516,12 +516,22 @@ export default function Header({ websiteSettings, categories }) {
                             </div>
                         </Link>
                         <div className=" flex h-16 items-center  ">
-                            <FaSearch className="mr-2 text-[16px] text-gray flex  self-center hover:cursor-pointer hover:text-red-700 " />
+                            <FaSearch
+                                onClick={() => onSearch()}
+                                className="mr-2 text-[16px] text-gray flex  self-center hover:cursor-pointer hover:text-red-700 "
+                            />
 
                             <input
                                 type="text"
                                 className="w-[85%]  h-11  placeholder:text-[10px] border-b-2 border-b-red-700 border-0 focus:outline-none  focus:border-0"
                                 placeholder="RECHERCHE UN PRODUIT..."
+                                value={searchValue}
+                                onChange={(e) => setSearchValue(e.target.value)}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter') {
+                                        onSearch()
+                                    }
+                                }}
                             />
                         </div>
                     </div>

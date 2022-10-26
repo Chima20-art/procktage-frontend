@@ -13,7 +13,7 @@ export default function Demandes({ websiteSettings, categories }) {
     const [message, setMessage] = useState('')
 
     const { cart, removeFromCart } = useContext(OrdersContext)
-    console.log('cart:', cart)
+
     const onSend = async (e) => {
         e.preventDefault()
         try {
@@ -248,7 +248,7 @@ export default function Demandes({ websiteSettings, categories }) {
 export async function getStaticProps(context) {
     let websiteSettings = client.fetch(`*[_type == 'settings'][0]`, {})
     let categories = client.fetch(
-        `*[_type == 'category ' && !(_id in path("drafts.**")) ]{
+        `*[_type == 'category' && !(_id in path("drafts.**")) ]{
           _id,
           title,
            subCategories[]->{

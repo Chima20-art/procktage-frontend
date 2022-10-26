@@ -27,7 +27,7 @@ export default function SearchPage({
                                 <Link
                                     href={
                                         '/products/' +
-                                        product?.subCategory?.slug?.current +
+                                        product?.Subcategory?.slug?.current +
                                         '/' +
                                         product?.slug?.current
                                     }

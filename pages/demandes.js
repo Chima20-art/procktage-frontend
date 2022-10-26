@@ -33,7 +33,7 @@ export default function Demandes({ websiteSettings, categories }) {
                 }),
             })
             let result = await response.json()
-            console.log('result', result)
+            //console.log('result', result)
         } catch (error) {
             console.log('error', error)
         }

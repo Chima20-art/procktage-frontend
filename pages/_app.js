@@ -36,12 +36,18 @@ function MyApp({ Component, pageProps }) {
         localStorage.setItem('myCart', JSON.stringify(newCart))
     }
 
+    const emptyCart = () => {
+        setCart([])
+        localStorage.setItem('myCart', JSON.stringify([]))
+    }
+
     return (
         <OrdersProvider
             value={{
                 cart,
                 addToCart,
                 removeFromCart,
+                emptyCart,
             }}
         >
             <Component {...pageProps} />

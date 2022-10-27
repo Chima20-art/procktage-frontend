@@ -39,7 +39,7 @@ export default function Header({ websiteSettings, categories }) {
                 />
             )}
             <div className=" font-raleway h-fit sm:pt-4 pt-2 pb-4 grid content-around  border-b border-b-red-700">
-                <div className="lg:px-2 text-gray text-[10px] md:h-fit w-screen lg:max-w-4xl max-w-[90%] md:max-w-2xl sm:max-w-[90%]  mx-auto  flex flex-row  justify-between  ">
+                <div className="lg:px-2 text-gray text-[10px] md:h-fit  lg:max-w-4xl max-w-[90%] md:max-w-2xl sm:max-w-[90%] w-[98%]  mx-auto  flex flex-row  justify-between  ">
                     <div className="flex flex-row ">
                         <Link href="/">
                             {logo && (

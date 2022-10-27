@@ -8,7 +8,7 @@ export default function Accueil({ homePage }) {
     return (
         <div>
             {' '}
-            <div className="my-8 lg:max-w-4xl md:max-w-2xl sm:max-w-[95%] mx-auto  ">
+            <div className="my-8 lg:max-w-4xl md:max-w-2xl sm:max-w-[95%] mx-auto overflow-hidden  ">
                 {homePage?.Sections?.map((section, index) => {
                     let numberOfProducts = 0
                     section?.refrence?.subCategories?.forEach((item) => {

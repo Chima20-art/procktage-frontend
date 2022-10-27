@@ -11,8 +11,11 @@ export default function Demandes({ websiteSettings, categories }) {
     const [telephone, setTelephone] = useState('')
     const [email, setEmail] = useState('')
     const [message, setMessage] = useState('')
+    const [error, setError] = useState(false)
+    const [loading, setLoading] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
 
-    const { cart, removeFromCart } = useContext(OrdersContext)
+    const { cart, removeFromCart, emptyCart } = useContext(OrdersContext)
     const [isAlertVisible, setIsAlertVisible] = useState(false)
     const handleButtonClick = () => {
         setIsAlertVisible(true)
@@ -20,23 +23,50 @@ export default function Demandes({ websiteSettings, categories }) {
 
     const onSend = async (e) => {
         e.preventDefault()
+        setLoading(true)
         try {
-            const response = await fetch('/api/sendOrder', {
-                method: 'POST',
-                body: JSON.stringify({
-                    name,
-                    nomDuResponsable,
-                    telephone,
-                    email,
-                    message,
-                    cart,
-                }),
-            })
-            let result = await response.json()
-            //console.log('result', result)
+            if (cart?.length >= 1) {
+                const response = await fetch('/api/sendOrder', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        name,
+                        nomDuResponsable,
+                        telephone,
+                        email,
+                        message,
+                        cart,
+                    }),
+                })
+                let result = await response.json()
+                //console.log('result', result)
+                if (result.status) {
+                    setName('')
+                    setNomDuResponsable('')
+                    setTelephone('')
+                    setEmail('')
+                    setMessage('')
+                    emptyCart()
+                } else {
+                    setErrorMessage(
+                        'une erreur est survenue dans le serveur, veuillez réesayer plutard'
+                    )
+                    setError(true)
+                }
+            } else {
+                setErrorMessage(
+                    'Votre carte est vide, veuillez y ajouter des produits'
+                )
+                setError(true)
+            }
         } catch (error) {
+            setErrorMessage(
+                'une erreur est survenue, veuillez réesayer plutard'
+            )
+            setError(true)
             console.log('error', error)
         }
+        setLoading(false)
+        setIsAlertVisible(true)
     }
 
     return (
@@ -222,25 +252,46 @@ export default function Demandes({ websiteSettings, categories }) {
                                 onChange={(e) => setMessage(e.target.value)}
                             />
                         </div>
+
                         <button
-                            onClick={() => handleButtonClick()}
+                            disabled={loading}
                             type="submit"
                             className="flex bg-red-700 h-[64px] rounded-[38px] items-center justify-center  cursor-pointer px-4 py-4  text-white drop-shadow-xl"
                         >
                             {' '}
-                            <div className="pr-2  flex flex-col items-cneter w-fit">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    fill="currentColor"
-                                    className="w-6 h-6"
-                                >
-                                    <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
-                                </svg>
-                            </div>{' '}
+                            {loading ? (
+                                <div role="status">
+                                    <svg
+                                        class="inline mr-2 w-6 h-6 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                                        viewBox="0 0 100 101"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                                            fill="currentColor"
+                                        />
+                                        <path
+                                            d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                                            fill="currentFill"
+                                        />
+                                    </svg>
+                                </div>
+                            ) : (
+                                <div className="pr-2  flex flex-col items-cneter w-fit">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                        className="w-6 h-6"
+                                    >
+                                        <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
+                                    </svg>
+                                </div>
+                            )}{' '}
                             envoyez
                         </button>
-                        {isAlertVisible && (
+                        {isAlertVisible && !error && (
                             <div className="flex text-[10px] items-center w-fit text-black">
                                 {' '}
                                 <svg
@@ -256,6 +307,24 @@ export default function Demandes({ websiteSettings, categories }) {
                                     />
                                 </svg>
                                 <p>votre demande de devis a été envoyée</p>
+                            </div>
+                        )}
+                        {isAlertVisible && error && (
+                            <div className="flex text-[10px] items-center w-fit text-red">
+                                {' '}
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="#f53e49"
+                                    className="w-6 h-6"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                                <p className="text-red-500">{errorMessage}</p>
                             </div>
                         )}
                     </form>

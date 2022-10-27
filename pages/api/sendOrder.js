@@ -55,6 +55,10 @@ export default async function sendOrder(req, res) {
                 .json({ status: false, message: 'wrong method' })
         }
     } catch (error) {
-        return res.status(200).json({ status: false, message: error })
+        console.log('error in sendOrder ', error)
+        return res.status(200).json({
+            status: false,
+            message: 'Something Went Wrong please contact us to fix it',
+        })
     }
 }

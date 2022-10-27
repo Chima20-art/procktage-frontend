@@ -55,7 +55,7 @@ export default function Header({ websiteSettings, categories }) {
                             )}
                         </Link>
 
-                        <div className="hidden  font-bold sm:grid sm:content-end sm:px-4 sm:py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700  hover:text-red-700 ">
+                        <div className="hidden   font-bold sm:grid sm:content-end sm:px-4 sm:py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700  hover:text-red-700 ">
                             <Link href="/">ACCEUIL</Link>
                         </div>
                         <div
@@ -84,7 +84,7 @@ export default function Header({ websiteSettings, categories }) {
                                         initial={{ y: '-20%', opacity: 0 }}
                                         animate={{ y: 0, opacity: 1 }}
                                         exit={{ opacity: 0 }}
-                                        className="z-50 bg-beige flex absolute uppercase text-gray top-[112px] border border-red-700 left-0 min-w-[280px] px-4 py-6  "
+                                        className="z-50 bg-beige flex absolute uppercase text-gray top-[74px] border border-red-700 left-0 min-w-[280px] px-4 py-6  "
                                     >
                                         <ul>
                                             <Link href="/categories">

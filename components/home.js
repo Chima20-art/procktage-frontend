@@ -8,7 +8,27 @@ export default function Accueil({ homePage }) {
     return (
         <div>
             {' '}
-            <div className="my-8 lg:max-w-4xl md:max-w-2xl sm:max-w-[95%] mx-auto overflow-hidden  ">
+            <div className="my-8  lg:max-w-4xl md:max-w-2xl sm:max-w-[95%] mx-auto overflow-hidden ">
+                <div className=" pb-2 lg:max-w-3xl max-w-[90%] md:max-w-2xl sm:max-w-[90%] lg:px-0 px-2 mx-auto  flex  w-full justify-between  px-2 ">
+                    <div className="flex items-center">
+                        <div className="w-2 h-2 bg-orange-200  mr-2"></div>
+                        <p className="text-md capitalize font-bold text-red-700 ">
+                            agencer
+                        </p>
+                    </div>
+                    <div className="flex items-center">
+                        <div className="w-2 h-2 bg-orange-200  mr-2"></div>
+                        <p className="text-md capitalize font-bold text-red-700 ">
+                            emballer
+                        </p>
+                    </div>
+                    <div className="flex items-center">
+                        <div className="w-2 h-2 bg-orange-200  mr-2"></div>
+                        <p className="text-md capitalize font-bold text-red-700 ">
+                            décorer
+                        </p>
+                    </div>
+                </div>
                 {homePage?.Sections?.map((section, index) => {
                     let numberOfProducts = 0
                     section?.refrence?.subCategories?.forEach((item) => {
@@ -70,6 +90,62 @@ export default function Accueil({ homePage }) {
                         </div>
                     )
                 })}
+                <div className="flex justify-between py-4">
+                    <div className="flex items-center flex-col">
+                        <div className="  mr-2  h-[100px] flex items-end p-1">
+                            <img
+                                src="/quality.svg"
+                                width="60px"
+                                height="60px"
+                            />
+                        </div>
+                        <p className=" uppercase text-xs  ">
+                            qualité guarantie
+                        </p>
+                    </div>
+                    <div className="flex items-center   flex-col">
+                        <div className="  mr-2  h-[100px] flex items-end p-2">
+                            {' '}
+                            <img
+                                src="/client.svg"
+                                width="70px"
+                                height="70px"
+                            ></img>
+                        </div>
+
+                        <p className=" uppercase  text-xs ">
+                            service clientèle
+                        </p>
+                    </div>
+                    <div className="flex items-center flex-col ">
+                        {' '}
+                        <div className="  mr-2  h-[100px] flex items-end p-2">
+                            {' '}
+                            <img
+                                src="/stock.svg"
+                                width="70px"
+                                height="70px"
+                            ></img>
+                        </div>
+                        <p className=" uppercase  text-xs ">
+                            disponibilité des references
+                        </p>
+                    </div>
+                    <div className="flex items-center flex-col ">
+                        <div className="  mr-2  h-[100px] flex items-end p-2">
+                            {' '}
+                            <img
+                                src="/shipping.svg"
+                                width="70px"
+                                height="70px"
+                            ></img>
+                        </div>
+
+                        <p className=" uppercase text-xs  ">
+                            livraison gratuite
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     )

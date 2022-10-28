@@ -68,6 +68,32 @@ export default function Demandes({ websiteSettings, categories }) {
         setLoading(false)
         setIsAlertVisible(true)
     }
+    const handleSubmit = async (e) => {
+        console.log('Sending')
+        e.preventDefault()
+        let data = {
+            name,
+            email,
+            message,
+        }
+        const response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json, text/plain, */*',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+        let result = await response.json()
+
+        console.log('Response received!')
+        if (result.status) {
+            console.log('Response succeeded!')
+            setName('')
+            setEmail('')
+            setMessage('')
+        }
+    }
 
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between ">
@@ -129,7 +155,10 @@ export default function Demandes({ websiteSettings, categories }) {
                         demande de devis
                     </div>
                     <form
-                        onSubmit={(e) => onSend(e)}
+                        onSubmit={(e) => {
+                            onSend(e)
+                            handleSubmit(e)
+                        }}
                         className=" lg:w-[400px] md:w-full  flex flex-col justify-between px-4 py-2 gap-6"
                     >
                         <div className="flex   bg-red-100 h-[54px] rounded-[50px] items-center px-4  drop-shadow-xl ">

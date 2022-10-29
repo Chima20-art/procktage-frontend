@@ -6,9 +6,9 @@ export default function a(req, res) {
             host: 'smtp.gmail.com',
             auth: {
                 user: 'michichchaimae@gmail.com',
-                pass: 'mAJID&ççç',
+                pass: 'orkg supg egvr uhgg',
             },
-            secure: false,
+            secure: true,
         })
         const mailData = {
             from: 'michichchaimae@gmail.com',

@@ -52,6 +52,8 @@ function MyApp({ Component, pageProps }) {
             }}
         >
             <NextSeo
+                title="Video Page Title"
+                description="Description of video page"
                 openGraph={{
                     type: 'website',
                     url: 'https://www.procktage.ma/',

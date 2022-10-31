@@ -2781,6 +2781,11 @@
     "@sanity/groq-store" "^0.4.1"
     "groq" "^2.29.3"
 
+"next-seo@^5.13.0":
+  "integrity" "sha512-3n6cOjXydxXlrbMIWcU+D6TllKj72C2rg7IdgoxoKOnfC8ah3U0VUIGRApKXK0wi5ME1m+TBq9isAFFbFdbWXQ=="
+  "resolved" "https://registry.npmjs.org/next-seo/-/next-seo-5.13.0.tgz"
+  "version" "5.13.0"
+
 "next@12.3.1":
   "integrity" "sha512-l7bvmSeIwX5lp07WtIiP9u2ytZMv7jIeB8iacR28PuUEFG5j0HGAPnMqyG5kbZNBG2H7tRsrQ4HCjuMOPnANZw=="
   "resolved" "https://registry.npmjs.org/next/-/next-12.3.1.tgz"

@@ -3,6 +3,7 @@ import App from 'next/app'
 import { client } from '../lib/sanity'
 import { OrdersProvider } from '../OrdersContext'
 import { useEffect, useState } from 'react'
+import { NextSeo } from 'next-seo'
 
 function MyApp({ Component, pageProps }) {
     const [cart, setCart] = useState([])
@@ -50,6 +51,22 @@ function MyApp({ Component, pageProps }) {
                 emptyCart,
             }}
         >
+            <NextSeo
+                openGraph={{
+                    type: 'website',
+                    url: 'https://www.procktage.ma/',
+                    title: 'Procktage',
+                    description: ' Procktage Description',
+                    images: [
+                        {
+                            url: '/Logo procktage.png',
+                            width: 800,
+                            height: 600,
+                            alt: 'Og Image Alt',
+                        },
+                    ],
+                }}
+            />
             <Component {...pageProps} />
         </OrdersProvider>
     )

@@ -6,8 +6,11 @@ import Accueil from '../components/home'
 import { motion } from 'framer-motion'
 import { client } from '../lib/sanity'
 import { NextSeo } from 'next-seo'
+import { setConfig } from 'next/config'
+import { urlFor } from '../lib/sanity'
 
 export default function Home({ websiteSettings, homePage, categories }) {
+    console.log('websiteSettings', websiteSettings)
     return (
         <div className="h-full bg-beige min-h-screen flex flex-col justify-between ">
             <NextSeo
@@ -16,14 +19,13 @@ export default function Home({ websiteSettings, homePage, categories }) {
                 openGraph={{
                     type: 'website',
                     url: 'https://www.procktage.ma/',
-                    title: 'Procktage',
-                    description:
-                        ' emballage Marrakech Marocgrossiste emballage, fournisseur emballage, fournisseur packaging, ... packaging plastique maroc',
+                    title: websiteSettings?.seo?.title,
+                    description: websiteSettings?.seo?.description,
+
                     images: [
                         {
-                            url: '/Logo procktage.png',
-                            width: 800,
-                            height: 600,
+                            url: urlFor(websiteSettings?.seo?.image),
+
                             alt: 'Og Image Alt',
                         },
                     ],

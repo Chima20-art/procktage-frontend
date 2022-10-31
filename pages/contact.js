@@ -116,6 +116,7 @@ export default function Contact({ websiteSettings, categories }) {
                                 onChange={(e) => setName(e.target.value)}
                                 className="w-full bg-transparent uppercase text-[14px] text-gray outline-none h-full"
                                 placeholder="Nom de l'entreprise.."
+                                required
                             />
                         </div>
                         <div className="flex bg-orange-100 h-[54px] rounded-[50px] items-center px-4  drop-shadow-xl">
@@ -187,6 +188,7 @@ export default function Contact({ websiteSettings, categories }) {
                                 onChange={(e) => setTelephone(e.target.value)}
                                 className="w-full bg-transparent uppercase text-[14px] text-gray outline-none h-full"
                                 placeholder="telephone ex(0669875421) "
+                                required
                             />
                         </div>
                         <div className="flex bg-orange-100 min-h-[164px] rounded-[38px] items-start px-4 py-4  drop-shadow-xl">
@@ -212,6 +214,7 @@ export default function Contact({ websiteSettings, categories }) {
                                 placeholder="description... "
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
+                                required
                             />
                         </div>
                         <button

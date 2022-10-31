@@ -58,7 +58,8 @@ function MyApp({ Component, pageProps }) {
                     type: 'website',
                     url: 'https://www.procktage.ma/',
                     title: 'Procktage',
-                    description: ' Procktage Description',
+                    description:
+                        ' Emballage Marrakech Marocgrossiste emballage, fournisseur emballage, fournisseur packaging, ... packaging plastique maroc',
                     images: [
                         {
                             url: '/Logo procktage.png',

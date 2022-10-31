@@ -71,7 +71,7 @@ export default function Accueil({ homePage }) {
                                     transition={{ duration: 1, delay: 0.1 }}
                                 >
                                     {' '}
-                                    <p className="bg-red-700 w-full pb-6 pt-12 px-6 uppercase text-white text-[15px] text-opacity-90">
+                                    <div className="bg-red-700 w-full pb-6 pt-12 px-6 uppercase text-white text-[15px] text-opacity-90">
                                         <Link
                                             href={`/category/${section?.refrence?.slug?.current}`}
                                         >
@@ -80,7 +80,7 @@ export default function Accueil({ homePage }) {
                                                 En savoir plus
                                             </p>
                                         </Link>
-                                    </p>
+                                    </div>
                                     <p className=" px-6 py-6 uppercase text-white text-[10px] text-opacity-90">
                                         Découvrir +{numberOfProducts} differents
                                         produits

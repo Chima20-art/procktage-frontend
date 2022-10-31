@@ -52,14 +52,14 @@ function MyApp({ Component, pageProps }) {
             }}
         >
             <NextSeo
-                title="Video Page Title"
-                description="Description of video page"
+                title="Procktage"
+                description="Emballage Marrakech Marocgrossiste emballage, fournisseur emballage, fournisseur packaging, ... packaging plastique maroc"
                 openGraph={{
                     type: 'website',
                     url: 'https://www.procktage.ma/',
                     title: 'Procktage',
                     description:
-                        ' Emballage Marrakech Marocgrossiste emballage, fournisseur emballage, fournisseur packaging, ... packaging plastique maroc',
+                        ' emballage Marrakech Marocgrossiste emballage, fournisseur emballage, fournisseur packaging, ... packaging plastique maroc',
                     images: [
                         {
                             url: '/Logo procktage.png',

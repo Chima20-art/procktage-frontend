@@ -90,60 +90,66 @@ export default function Accueil({ homePage }) {
                         </div>
                     )
                 })}
-                <div className="flex justify-between py-4">
-                    <div className="flex items-center flex-col">
-                        <div className="  mr-2  h-[100px] flex items-end p-1">
-                            <img
-                                src="/quality.svg"
-                                width="60px"
-                                height="60px"
-                            />
-                        </div>
-                        <p className=" uppercase text-xs  ">
-                            qualité guarantie
-                        </p>
-                    </div>
-                    <div className="flex items-center   flex-col">
-                        <div className="  mr-2  h-[100px] flex items-end p-2">
-                            {' '}
-                            <img
-                                src="/client.svg"
-                                width="70px"
-                                height="70px"
-                            ></img>
-                        </div>
-
-                        <p className=" uppercase  text-xs ">
-                            service clientèle
-                        </p>
-                    </div>
-                    <div className="flex items-center flex-col ">
+                <div className="flex md:flex-row flex-col justify-between py-4">
+                    <div className="flex  w-full justify-around">
                         {' '}
-                        <div className="  mr-2  h-[100px] flex items-end p-2">
-                            {' '}
-                            <img
-                                src="/stock.svg"
-                                width="70px"
-                                height="70px"
-                            ></img>
+                        <div className="flex items-center flex-col">
+                            <div className="  mr-2  h-[100px] flex items-end p-1">
+                                <img
+                                    src="/quality.svg"
+                                    width="60px"
+                                    height="60px"
+                                />
+                            </div>
+                            <p className=" uppercase text-xs  ">
+                                qualité guarantie
+                            </p>
                         </div>
-                        <p className=" uppercase  text-xs ">
-                            disponibilité des references
-                        </p>
-                    </div>
-                    <div className="flex items-center flex-col ">
-                        <div className="  mr-2  h-[100px] flex items-end p-2">
-                            {' '}
-                            <img
-                                src="/shipping.svg"
-                                width="70px"
-                                height="70px"
-                            ></img>
-                        </div>
+                        <div className="flex items-center   flex-col">
+                            <div className="  mr-2  h-[100px] flex items-end p-2">
+                                {' '}
+                                <img
+                                    src="/client.svg"
+                                    width="70px"
+                                    height="70px"
+                                ></img>
+                            </div>
 
-                        <p className=" uppercase text-xs  ">
-                            livraison gratuite
-                        </p>
+                            <p className=" uppercase  text-xs ">
+                                service clientèle
+                            </p>
+                        </div>
+                    </div>
+                    <div className="flex  w-full justify-around">
+                        {' '}
+                        <div className="flex items-center flex-col ">
+                            {' '}
+                            <div className="  mr-2  h-[100px] flex items-end p-2">
+                                {' '}
+                                <img
+                                    src="/stock.svg"
+                                    width="70px"
+                                    height="70px"
+                                ></img>
+                            </div>
+                            <p className=" uppercase  text-xs ">
+                                disponibilité des references
+                            </p>
+                        </div>
+                        <div className="flex items-center flex-col ">
+                            <div className="  mr-2  h-[100px] flex items-end p-2">
+                                {' '}
+                                <img
+                                    src="/shipping.svg"
+                                    width="70px"
+                                    height="70px"
+                                ></img>
+                            </div>
+
+                            <p className=" uppercase text-xs  ">
+                                livraison gratuite
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

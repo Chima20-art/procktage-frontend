@@ -16,7 +16,7 @@ export default async function sendOrder(req, res) {
                 if (email) {
                     const doc = {
                         _type: 'demandes',
-
+                        status: 'New',
                         entrepriseName: name,
                         nomResponsable: nomDuResponsable,
                         email: email,

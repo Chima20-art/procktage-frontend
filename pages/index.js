@@ -5,10 +5,30 @@ import Footer from '../components/footer'
 import Accueil from '../components/home'
 import { motion } from 'framer-motion'
 import { client } from '../lib/sanity'
+import { NextSeo } from 'next-seo'
 
 export default function Home({ websiteSettings, homePage, categories }) {
     return (
         <div className="h-full bg-beige min-h-screen flex flex-col justify-between ">
+            <NextSeo
+                title="Procktage"
+                description="Emballage Marrakech Marocgrossiste emballage, fournisseur emballage, fournisseur packaging, ... packaging plastique maroc"
+                openGraph={{
+                    type: 'website',
+                    url: 'https://www.procktage.ma/',
+                    title: 'Procktage',
+                    description:
+                        ' emballage Marrakech Marocgrossiste emballage, fournisseur emballage, fournisseur packaging, ... packaging plastique maroc',
+                    images: [
+                        {
+                            url: '/Logo procktage.png',
+                            width: 800,
+                            height: 600,
+                            alt: 'Og Image Alt',
+                        },
+                    ],
+                }}
+            />
             <Header websiteSettings={websiteSettings} categories={categories} />
             <Accueil homePage={homePage} />
             <div className="w-screen">

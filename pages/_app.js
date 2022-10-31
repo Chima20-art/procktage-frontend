@@ -3,7 +3,6 @@ import App from 'next/app'
 import { client } from '../lib/sanity'
 import { OrdersProvider } from '../OrdersContext'
 import { useEffect, useState } from 'react'
-import { NextSeo } from 'next-seo'
 
 function MyApp({ Component, pageProps }) {
     const [cart, setCart] = useState([])
@@ -51,25 +50,6 @@ function MyApp({ Component, pageProps }) {
                 emptyCart,
             }}
         >
-            <NextSeo
-                title="Procktage"
-                description="Emballage Marrakech Marocgrossiste emballage, fournisseur emballage, fournisseur packaging, ... packaging plastique maroc"
-                openGraph={{
-                    type: 'website',
-                    url: 'https://www.procktage.ma/',
-                    title: 'Procktage',
-                    description:
-                        ' emballage Marrakech Marocgrossiste emballage, fournisseur emballage, fournisseur packaging, ... packaging plastique maroc',
-                    images: [
-                        {
-                            url: '/Logo procktage.png',
-                            width: 800,
-                            height: 600,
-                            alt: 'Og Image Alt',
-                        },
-                    ],
-                }}
-            />
             <Component {...pageProps} />
         </OrdersProvider>
     )

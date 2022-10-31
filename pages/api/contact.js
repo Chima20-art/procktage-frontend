@@ -15,7 +15,7 @@ export default function a(req, res) {
             to: 'michichchaimae@gmail.com',
             subject: `Nouvelle demande de devis: ${req.body.name}`,
             text: req.body.message + ' | Envoyé par : ' + req.body.email,
-            html: `<div>vous avez reçu une nouvelle demande devis:</div><p>
+            html: `<div>Vous avez reçu une nouvelle demande devis</div><p>
      Nom de l'entreprise: ${req.body.name}</p>
      <p> Nom du responsable: ${req.body.nomDuResponsable}</p>
      <p> Email: ${req.body.email}</p>

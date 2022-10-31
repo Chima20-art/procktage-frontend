@@ -21,10 +21,12 @@ export default function Home({ websiteSettings, homePage, categories }) {
                     url: 'https://www.procktage.ma/',
                     title: websiteSettings?.seo?.title,
                     description: websiteSettings?.seo?.description,
+
                     images: [
                         {
                             url: urlFor(websiteSettings?.seo?.image),
-
+                            width: 600,
+                            height: 400,
                             alt: 'Og Image Alt',
                         },
                     ],

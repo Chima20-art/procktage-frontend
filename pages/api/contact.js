@@ -5,14 +5,14 @@ export default function a(req, res) {
             port: 465,
             host: 'smtp.gmail.com',
             auth: {
-                user: 'michichchaimae@gmail.com',
-                pass: 'orkg supg egvr uhgg',
+                user: 'procktage@gmail.com',
+                pass: 'bbqv zxih zweu yftv',
             },
             secure: true,
         })
         const mailData = {
-            from: 'michichchaimae@gmail.com',
-            to: 'michichchaimae@gmail.com',
+            from: 'procktage@gmail.com',
+            to: 'procktage@gmail.com',
             subject: `Nouvelle demande de devis: ${req.body.name}`,
             text: req.body.message + ' | Envoyé par : ' + req.body.email,
             html: `<div>Vous avez reçu une nouvelle demande devis</div><p>

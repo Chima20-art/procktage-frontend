@@ -41,19 +41,17 @@ export default function Header({ websiteSettings, categories }) {
             <div className=" font-raleway h-fit sm:pt-4 pt-2 pb-4 grid content-around  border-b border-b-red-700">
                 <div className="lg:px-2 text-gray text-[10px] md:h-fit  lg:max-w-4xl max-w-[90%] md:max-w-2xl sm:max-w-[90%] w-[98%]  mx-auto  flex flex-row  justify-between  ">
                     <div className="flex flex-row ">
-                        <Link href="/">
-                            {logo && (
-                                <Link href="/">
-                                    <div className=" lg:mr-4 hover:cursor-pointer object-contain   md:h-full  my-auto  md:flex  md:items-end ">
-                                        <img
-                                            src={urlFor(logo).height(200)}
-                                            alt={alt}
-                                            className="  w-[60px] lg:w-[70px] lg:h-[73px] h-[65px] "
-                                        />
-                                    </div>
-                                </Link>
-                            )}
-                        </Link>
+                        {logo && (
+                            <Link href="/">
+                                <div className=" lg:mr-4 hover:cursor-pointer object-contain   md:h-full  my-auto  md:flex  md:items-end ">
+                                    <img
+                                        src={urlFor(logo).height(200)}
+                                        alt={alt}
+                                        className="  w-[60px] lg:w-[70px] lg:h-[73px] h-[65px] "
+                                    />
+                                </div>
+                            </Link>
+                        )}
 
                         <div className="hidden   font-bold sm:grid sm:content-end sm:px-4 sm:py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700  hover:text-red-700 ">
                             <Link href="/">ACCEUIL</Link>
@@ -62,7 +60,7 @@ export default function Header({ websiteSettings, categories }) {
                             className="hidden  font-bold  sm:grid content-end px-4 py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700
                          hover:text-red-700  "
                         >
-                            ENTREPRISE
+                            <Link href="/entreprise">ENTREPRISE</Link>
                         </div>
                         <div
                             className={`relative hidden font-bold   sm:flex sm:flex-row  items-end  px-4 py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700 hover:text-red-700 ${

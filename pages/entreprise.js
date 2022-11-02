@@ -4,7 +4,6 @@ import { client, urlFor } from '../lib/sanity'
 import Footer from '../components/footer'
 
 export default function Entrerise({ websiteSettings, entreprise, categories }) {
-    console.log('entreeeprise', entreprise)
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between ">
             <Header websiteSettings={websiteSettings} categories={categories} />
@@ -18,7 +17,7 @@ export default function Entrerise({ websiteSettings, entreprise, categories }) {
                             <p className="text-[12px] font-bold px-4 py-1">
                                 {item?.title}
                             </p>
-                            <p className="text-[9px] bg-red-50 text-justify p-4 leading-relaxed">
+                            <p className="text-[9px] bg-orange-100 text-justify p-4 leading-relaxed">
                                 {item?.text}
                             </p>
                         </div>

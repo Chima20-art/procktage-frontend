@@ -407,7 +407,7 @@ export default function Header({ websiteSettings, categories }) {
                             <Link href="/">ACCEUIL</Link>
                         </div>
                         <div className="w-full mt-2 py-4   font-bold hover:cursor-pointer   hover:text-red-700 ">
-                            ENTREPRISE
+                            <Link href="/entreprise">ENTREPRISE</Link>
                         </div>
                         <div
                             className={'relative   font-bold flex flex-col   '}

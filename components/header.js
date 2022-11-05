@@ -47,7 +47,7 @@ export default function Header({ websiteSettings, categories }) {
                                     <img
                                         src={urlFor(logo).height(200)}
                                         alt={alt}
-                                        className="  w-[60px] lg:w-[70px] lg:h-[73px] h-[65px] "
+                                        className="  w-[60px] lg:w-[70px] lg:h-[80px] h-[70px] "
                                     />
                                 </div>
                             </Link>

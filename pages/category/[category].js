@@ -109,7 +109,7 @@ export async function getStaticProps(context) {
         "count":count(*[ _type=='product'  && !(_id in path("drafts.**")) && references(^._id)])
       } }`
     const category = await client.fetch(categoryQuery, {})
-    let websiteSettings = client.fetch(
+    let websiteSettings = await client.fetch(
         `*[_type == 'settings'][0]{
         categories{
             categorie1->,

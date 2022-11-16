@@ -10,7 +10,6 @@ import { setConfig } from 'next/config'
 import { urlFor } from '../lib/sanity'
 
 export default function Home({ websiteSettings, homePage, categories }) {
-    console.log('websiteSettings', websiteSettings)
     return (
         <div className="h-full bg-beige min-h-screen flex flex-col justify-between ">
             <NextSeo

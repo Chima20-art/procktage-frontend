@@ -14,17 +14,31 @@ export default function Home({ websiteSettings, homePage, categories }) {
     return (
         <div className="h-full bg-beige min-h-screen flex flex-col justify-between ">
             <NextSeo
-                title="Procktage"
-                description="Emballage Marrakech Marocgrossiste emballage, fournisseur emballage, fournisseur packaging, ... packaging plastique maroc"
+                title={
+                    websiteSettings?.seo?.title
+                        ? websiteSettings?.seo?.title
+                        : 'Procktage'
+                }
+                description={
+                    websiteSettings?.seo?.description
+                        ? websiteSettings?.seo?.description
+                        : '"Emballage Marrakech Marocgrossiste emballage, fournisseur emballage, fournisseur packaging, ... packaging plastique maroc"'
+                }
                 openGraph={{
                     type: 'website',
                     url: 'https://www.procktage.ma/',
-                    title: websiteSettings?.seo?.title,
-                    description: websiteSettings?.seo?.description,
+                    title: websiteSettings?.seo?.title
+                        ? websiteSettings?.seo?.title
+                        : 'Procktage',
+                    description: websiteSettings?.seo?.description
+                        ? websiteSettings?.seo?.description
+                        : '"Emballage Marrakech Marocgrossiste emballage, fournisseur emballage, fournisseur packaging, ... packaging plastique maroc"',
 
                     images: [
                         {
-                            url: urlFor(websiteSettings?.seo?.image),
+                            url: websiteSettings?.seo?.image
+                                ? urlFor(websiteSettings?.seo?.image)
+                                : 'https://cdn.sanity.io/images/e970xo45/production/ac2545313e3c5494288649bdd7cd719c471165d4-2000x1325.jpg',
                             width: 600,
                             height: 400,
                             alt: 'Og Image Alt',

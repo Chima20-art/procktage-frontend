@@ -299,7 +299,20 @@ export async function getStaticProps(context) {
     let prodcutQuery = `*[_type == 'product'  && slug.current == '${productSlug}' &&  !(_id in path("drafts.**"))  ][0]{ Subcategory->{title,slug,category}, _id,description,image,reference,slug,title }`
     let product = await client.fetch(prodcutQuery, {})
 
-    let websiteSettings = await client.fetch(`*[_type == 'settings'][0]`, {})
+    let websiteSettings = client.fetch(
+        `*[_type == 'settings'][0]{
+        categories{
+            categorie1->,
+            categorie2->,
+            categorie3->
+        },
+        contact,
+        logo,
+        media,
+        seo,
+    }`,
+        {}
+    )
     let categories = await client.fetch(
         `*[_type == 'category'  && !(_id in path("drafts.**"))]{
           _id,

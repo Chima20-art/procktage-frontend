@@ -37,7 +37,20 @@ export default function Entrerise({ websiteSettings, entreprise, categories }) {
 }
 
 export async function getStaticProps(context) {
-    let websiteSettings = client.fetch(`*[_type == 'settings'][0]`, {})
+    let websiteSettings = client.fetch(
+        `*[_type == 'settings'][0]{
+        categories{
+            categorie1->,
+            categorie2->,
+            categorie3->
+        },
+        contact,
+        logo,
+        media,
+        seo,
+    }`,
+        {}
+    )
     let categories = client.fetch(
         `*[_type == 'category' && !(_id in path("drafts.**")) ]{
           _id,
@@ -60,6 +73,7 @@ export async function getStaticProps(context) {
           }`,
         {}
     )
+
     let promises = [websiteSettings, categories, entreprise]
     promises = await Promise.all(promises)
     websiteSettings = promises[0]

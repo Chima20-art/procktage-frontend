@@ -104,10 +104,12 @@ export default function Product({ product, categories, websiteSettings }) {
 
                     <div className="w-full flex  md:flex-row flex-col  ">
                         <div className=" md:w-[50%] flex justify-center items center">
-                            <img
-                                src={urlFor(product?.image?.asset)}
-                                className=" flex  p-4  lg:max-w-[270px] lg:max-h-[240px] max-w-[230px] max-h-[200px] "
-                            />
+                            {product?.image?.asset && (
+                                <img
+                                    src={urlFor(product?.image?.asset)}
+                                    className=" flex  p-4  lg:max-w-[270px] lg:max-h-[240px] max-w-[230px] max-h-[200px] "
+                                />
+                            )}
                         </div>
                         <div className=" flex   w-full p-4 flex-col border-l border-grey-200 pl-6">
                             <p className="font-bold">{product?.title}</p>

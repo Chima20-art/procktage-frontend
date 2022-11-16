@@ -45,19 +45,16 @@ export default function Category({ category, categories, websiteSettings }) {
                                     }
                                 >
                                     <a className="group w-full    m-2   flex flex-col items-center 	 border-[5px] border-grey-200 hover:border-red-700 hover:cursor-pointer ">
-                                        <img
-                                            src={
-                                                subcategory?.image?.image
-                                                    ? urlFor(
-                                                          subcategory?.image
-                                                              ?.image
-                                                      )
-                                                    : ''
-                                            }
-                                            className="object-contain max-w-[140px] h-[140px]  pt-3"
-                                        />
+                                        {subcategory?.image?.image && (
+                                            <img
+                                                src={urlFor(
+                                                    subcategory?.image?.image
+                                                )}
+                                                className="object-contain max-w-[140px] h-[140px]  pt-3"
+                                            />
+                                        )}
                                         <p className="text-[12px] text-gray uppercase py-4">
-                                            {subcategory.title}
+                                            {subcategory?.title}
                                         </p>
                                         <p className=" group-hover:bg-red-700 bg-gray pt-[10px] pb-1 px-2  w-full text-white text-[10px] text-center uppercase  hover:cursor-pointer ">
                                             Découvrir {subcategory?.count}{' '}

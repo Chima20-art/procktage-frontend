@@ -119,11 +119,12 @@ export default function Demandes({ websiteSettings, categories }) {
                                 className="bg-white w-[98%] flex text-gray text-[10px] h-full flex-6 py-3 px-2 "
                             >
                                 <div className="w-[20%]">
-                                    {' '}
-                                    <img
-                                        src={urlFor(item?.product?.image)}
-                                        className="  w-[60px] h-[60px] object-contain"
-                                    />
+                                    {item?.product?.image && (
+                                        <img
+                                            src={urlFor(item?.product?.image)}
+                                            className="  w-[60px] h-[60px] object-contain"
+                                        />
+                                    )}
                                 </div>
                                 <div className="w-[40%] h-full  h-full">
                                     <p className=" pb-1 font-bold">

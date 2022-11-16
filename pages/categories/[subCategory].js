@@ -59,12 +59,17 @@ export default function SubCategory({
                                     }
                                 >
                                     <a className="group w-full py-5 px-4 m-2 flex flex-col items-center border-[5px] border-grey-200 hover:border-red-700 hover:cursor-pointer ">
-                                        <img
-                                            src={urlFor(product?.image?.asset)}
-                                            className="object-contain max-w-[140px] h-[140px] py-2"
-                                        />
+                                        {product?.image?.asset && (
+                                            <img
+                                                src={urlFor(
+                                                    product?.image?.asset
+                                                )}
+                                                className="object-contain max-w-[140px] h-[140px] py-2"
+                                            />
+                                        )}
+
                                         <p className="text-[11px] text-gray uppercase py-2">
-                                            {product.title}
+                                            {product?.title}
                                         </p>
                                         <div className="flex flex-col  justify-center py-2 items-center mx-4">
                                             {product?.reference && (

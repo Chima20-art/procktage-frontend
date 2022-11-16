@@ -41,10 +41,12 @@ export default function Accueil({ homePage }) {
                             key={section?._key}
                             className="h-[500px] relative  "
                         >
-                            <img
-                                src={urlFor(section?.image?.image)}
-                                className="h-[500px] object-cover w-full"
-                            />
+                            {section?.image?.image && (
+                                <img
+                                    src={urlFor(section?.image?.image)}
+                                    className="h-[500px] object-cover w-full"
+                                />
+                            )}
                             <motion.div
                                 initial={{ x: index % 2 == 0 ? '40%' : '-40%' }}
                                 animate={{ x: 0 }}

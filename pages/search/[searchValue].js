@@ -33,10 +33,14 @@ export default function SearchPage({
                                     }
                                 >
                                     <a className="group w-full py-5 px-4 m-2 flex flex-col items-center border-[5px] border-grey-200 hover:border-red-700 hover:cursor-pointer ">
-                                        <img
-                                            src={urlFor(product?.image?.asset)}
-                                            className="object-contain max-w-[140px] h-[140px] py-3"
-                                        />
+                                        {product?.image?.asset && (
+                                            <img
+                                                src={urlFor(
+                                                    product?.image?.asset
+                                                )}
+                                                className="object-contain max-w-[140px] h-[140px] py-3"
+                                            />
+                                        )}
                                         <p className="text-[12px] text-gray uppercase py-3">
                                             {product.title}
                                         </p>

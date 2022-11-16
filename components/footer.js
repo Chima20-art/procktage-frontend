@@ -23,6 +23,7 @@ export default function Footer({ websiteSettings }) {
         //console.log('onSearch')
         router.push(`/search/${searchValue}`)
     }
+    console.log('websiteSettings', websiteSettings)
 
     return (
         <div className=" pb-8 h-full bg-[#FFF8ED] flex flex-col self-end w-full-screen">
@@ -78,15 +79,32 @@ export default function Footer({ websiteSettings }) {
                         <p className="pt-6 pb-2 my-4 lg:my-2    lg:py-2 uppercase  text-xs border-b-2 border-red-700 border-0">
                             Nos produit
                         </p>
-                        <p className="uppercase text-[#424242]  text-[11px] my-2   lg:w-[204px] cursor-pointer hover:font-bold">
-                            emballage alimentaire pour la restauration
-                        </p>
-                        <p className="uppercase text-[#424242] text-[11px]  my-2   lg:w-[204px] cursor-pointer hover:font-bold">
-                            emballage recyclable biodégradable
-                        </p>
-                        <p className="uppercase text-[#424242] text-[11px]  my-2   lg:w-[204px] cursor-pointer hover:font-bold">
-                            le professionnel de l'hygiène
-                        </p>
+                        {websiteSettings?.categories && (
+                            <div>
+                                {' '}
+                                <p
+                                    key={'jdv'}
+                                    className="uppercase text-[#424242]  text-[11px] my-2   lg:w-[204px] cursor-pointer hover:font-bold"
+                                >
+                                    {
+                                        websiteSettings?.categories?.categorie1
+                                            ?.title
+                                    }
+                                </p>
+                                <p className="uppercase text-[#424242]  text-[11px] my-2   lg:w-[204px] cursor-pointer hover:font-bold">
+                                    {
+                                        websiteSettings?.categories?.categorie2
+                                            ?.title
+                                    }
+                                </p>
+                                <p className="uppercase text-[#424242]  text-[11px] my-2   lg:w-[204px] cursor-pointer hover:font-bold">
+                                    {
+                                        websiteSettings?.categories?.categorie3
+                                            ?.title
+                                    }
+                                </p>
+                            </div>
+                        )}
                     </section>
                     <section className=" w-full px-6 uppercase text-[11px] text-[#424242] text-xs  ">
                         <p className=" pt-6 pb-2 my-4 lg:my-2    lg:py-2 uppercase  text-xs border-b-2 border-red-700 border-0">

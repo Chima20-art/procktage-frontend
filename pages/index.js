@@ -56,7 +56,20 @@ export default function Home({ websiteSettings, homePage, categories }) {
 }
 
 export async function getStaticProps(context) {
-    let websiteSettings = client.fetch(`*[_type == 'settings'][0]`, {})
+    let websiteSettings = client.fetch(
+        `*[_type == 'settings'][0]{
+        categories{
+            categorie1->,
+            categorie2->,
+            categorie3->
+        },
+        contact,
+        logo,
+        media,
+        seo,
+    }`,
+        {}
+    )
     let homePage = client.fetch(
         `*[_type == 'homePage' && !(_id in path("drafts.**"))][0]{
         Sections[]{

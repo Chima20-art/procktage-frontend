@@ -194,7 +194,7 @@ export async function getStaticProps(context) {
     const subCategoryTitle = context?.params?.subCategory
     const subCategoryQuery = `*[_type == 'subCategory'  && !(_id in path("drafts.**")) && slug.current == '${subCategoryTitle}' ][0]{ _id, image, slug, title, "products":*[_type=='product' && references(^._id) ] }`
     const subCategory = await client.fetch(subCategoryQuery, {})
-    let websiteSettings = client.fetch(
+    let websiteSettings = await client.fetch(
         `*[_type == 'settings'][0]{
         categories{
             categorie1->,

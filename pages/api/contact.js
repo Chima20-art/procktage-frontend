@@ -5,8 +5,8 @@ export default function a(req, res) {
             port: 465,
             host: 'smtp.gmail.com',
             auth: {
-                user: 'procktage@gmail.com',
-                pass: 'bbqv zxih zweu yftv',
+                user: process.env.SMTP_EMAIL,
+                pass: process.env.SMTP_PASSWORD,
             },
             secure: true,
         })

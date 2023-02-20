@@ -9,7 +9,7 @@ export default function SearchPage({
     websiteSettings,
     categories,
 }) {
-    //console.log('searchRes', searchRes)
+    console.log('websiteSettings 2', websiteSettings)
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-full flex flex-col justify-between ">
             <Header websiteSettings={websiteSettings} categories={categories} />
@@ -156,7 +156,20 @@ export async function getServerSideProps(context) {
         slug,
         title,
       }`
-    let websiteSettings = await client.fetch(`*[_type == 'settings' ][0]`, {})
+    let websiteSettings = await client.fetch(
+        `*[_type == 'settings'][0]{
+        categories{
+            categorie1->,
+            categorie2->,
+            categorie3->
+        },
+        contact,
+        logo,
+        media,
+        seo,
+    }`,
+        {}
+    )
     let categories = await client.fetch(
         `*[_type == 'category' && !(_id in path("drafts.**")) ]{
           _id,

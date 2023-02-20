@@ -392,7 +392,7 @@ export default function Header({ websiteSettings, categories }) {
                                         </div>
                                         <Link href="/demandes">
                                             <button className=" hover:bg-red-700 hover:text-white py-3 border-red-00 border-2 rounded-[50px] mt-4 text-[10px] text-red-700 uppercase mx-auto px-12 w-full  ">
-                                                Completer
+                                                Compléter
                                             </button>
                                         </Link>
                                     </div>
@@ -409,9 +409,7 @@ export default function Header({ websiteSettings, categories }) {
                         <div className="w-full mt-2 py-4   font-bold hover:cursor-pointer   hover:text-red-700 ">
                             <Link href="/entreprise">ENTREPRISE</Link>
                         </div>
-                        <div
-                            className={'relative   font-bold flex flex-col   '}
-                        >
+                        <div className={'relative   font-bold flex flex-col'}>
                             <div
                                 className="w-full mt-2 py-4 flex font-bold hover:cursor-pointer  items-center  hover:text-red-700 "
                                 onClick={() => setMobileClicked(!mobileClicked)}

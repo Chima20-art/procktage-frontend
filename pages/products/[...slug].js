@@ -85,7 +85,7 @@ export default function Product({ product, categories, websiteSettings }) {
                     <Link
                         href={`/categories/${product?.Subcategory?.slug?.current}`}
                     >
-                        <div className="lowercase  hover:underline cursor-pointer flex">
+                        <a className="lowercase  hover:underline cursor-pointer flex">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 24 24"
@@ -99,7 +99,7 @@ export default function Product({ product, categories, websiteSettings }) {
                                 />
                             </svg>
                             retour
-                        </div>
+                        </a>
                     </Link>
 
                     <div className="w-full flex  md:flex-row flex-col  ">

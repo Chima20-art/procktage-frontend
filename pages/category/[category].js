@@ -17,7 +17,7 @@ export default function Category({ category, categories, websiteSettings }) {
                 className=" w-[90%] lg:max-w-5xl mx-auto  items-center flex flex-col py-6"
             >
                 <div className=" w-full uppercase text-xs hover:font-bold ">
-                    <Link href="/categories">Nos Produits </Link> {' / '}
+                    <Link href="/categories">Nos Produits </Link>
                 </div>
                 <div className="text-[28px]  uppercase my-6  text-red-700 border-b-gray border-b-[15px] border-dotted ">
                     {category?.title}

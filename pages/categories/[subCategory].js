@@ -29,15 +29,15 @@ export default function SubCategory({
             <div className="lg:max-w-4xl sm:max-w-2xl  w-[95%]   flex flex-col items-center mx-auto py-8 h-full  ">
                 <div className=" w-full uppercase text-xs flex ">
                     <Link href="/categories">
-                        <p className="hover:font-bold cursor-pointer ">
+                        <a className="hover:font-bold cursor-pointer ">
                             Nos Produits
-                        </p>
+                        </a>
                     </Link>{' '}
                     {'  / '}
                     <Link href={`/category/${category?.slug?.current}`}>
-                        <p className="hover:font-bold cursor-pointer ">
+                        <a className="hover:font-bold cursor-pointer ">
                             {category?.title}
-                        </p>
+                        </a>
                     </Link>
                 </div>
                 <section className="text-[20px] uppercase my-6  text-red-700 border-b-gray border-b-[10px] border-dotted ">

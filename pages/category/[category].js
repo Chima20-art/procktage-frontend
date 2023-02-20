@@ -36,7 +36,7 @@ export default function Category({ category, categories, websiteSettings }) {
                         return (
                             <div
                                 key={index}
-                                className={` w-[100%] sm:w-1/2 md:w-1/3 lg:w-1/4 flex justify-center `}
+                                className={` w-[100%] sm:w-1/2 md:w-fit   flex  flex-col justify-center items-center `}
                             >
                                 <Link
                                     href={
@@ -44,7 +44,7 @@ export default function Category({ category, categories, websiteSettings }) {
                                         subcategory?.slug?.current
                                     }
                                 >
-                                    <a className="group w-full    m-2   flex flex-col items-center 	 border-[5px] border-grey-200 hover:border-red-700 hover:cursor-pointer ">
+                                    <a className="group w-full   m-2   flex flex-col items-center w-fit	 border-[5px] border-grey-200 hover:border-red-700 hover:cursor-pointer ">
                                         {subcategory?.image?.image && (
                                             <img
                                                 src={urlFor(

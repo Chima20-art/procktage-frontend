@@ -8,6 +8,7 @@ import { FaFax } from 'react-icons/fa'
 import { GoDeviceMobile } from 'react-icons/go'
 import { useRouter } from 'next/router'
 import { MdOutlineEmail } from 'react-icons/md'
+import Link from 'next/link'
 
 export default function Footer({ websiteSettings }) {
     //console.log('setting:', websiteSettings)
@@ -24,7 +25,7 @@ export default function Footer({ websiteSettings }) {
         router.push(`/search/${searchValue}`)
     }
     console.log('websiteSettings', websiteSettings)
-
+    console.log(websiteSettings?.categories?.categorie1?.slug)
     return (
         <div className=" pb-8 h-full bg-[#FFF8ED] flex flex-col self-end w-full-screen">
             <div>
@@ -74,15 +75,16 @@ export default function Footer({ websiteSettings }) {
                     </section>
                     <section
                         className="
-                     px-6 flex flex-col justify-between text-[#424242]"
+                     w-full px-6 flex flex-col justify-between text-[#424242]"
                     >
-                        <p className="pt-6 pb-2 my-4 lg:my-2    lg:py-2 uppercase  text-xs border-b-2 border-red-700 border-0">
+                        <p className="pt-6 pb-2 my-4 lg:my-2     lg:py-2 uppercase  text-xs border-b-2 border-red-700 border-0">
                             Nos produit
                         </p>
                         {websiteSettings?.categories && (
-                            <div>
+                            <div className="flex flex-col  h-full pt-6 text-md flex flex-col justify-between">
                                 {' '}
-                                <p
+                                <Link
+                                    href={`/category/${websiteSettings?.categories?.categorie1?.slug?.current}`}
                                     key={'jdv'}
                                     className="uppercase text-[#424242]  text-[11px] my-2   lg:w-[204px] cursor-pointer hover:font-bold"
                                 >
@@ -90,19 +92,25 @@ export default function Footer({ websiteSettings }) {
                                         websiteSettings?.categories?.categorie1
                                             ?.title
                                     }
-                                </p>
-                                <p className="uppercase text-[#424242]  text-[11px] my-2   lg:w-[204px] cursor-pointer hover:font-bold">
+                                </Link>
+                                <Link
+                                    href={`/category/${websiteSettings?.categories?.categorie2?.slug?.current}`}
+                                    className="uppercase text-[#424242]  text-[11px] my-2   lg:w-[204px] cursor-pointer hover:font-bold"
+                                >
                                     {
                                         websiteSettings?.categories?.categorie2
                                             ?.title
                                     }
-                                </p>
-                                <p className="uppercase text-[#424242]  text-[11px] my-2   lg:w-[204px] cursor-pointer hover:font-bold">
+                                </Link>
+                                <Link
+                                    href={`/category/${websiteSettings?.categories?.categorie3?.slug?.current}`}
+                                    className="uppercase text-[#424242]  text-[11px] my-2   lg:w-[204px] cursor-pointer hover:font-bold"
+                                >
                                     {
                                         websiteSettings?.categories?.categorie3
                                             ?.title
                                     }
-                                </p>
+                                </Link>
                             </div>
                         )}
                     </section>

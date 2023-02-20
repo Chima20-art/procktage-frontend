@@ -35,9 +35,15 @@ export default function Footer({ websiteSettings }) {
                             Connectez-vous avec nous sur les réseaux sociaux :
                         </p>
                         <div className="flex items-center">
-                            <AiFillFacebook className="mx-1 text-2xl cursor-pointer text-orange-100" />
-                            <BsInstagram className="mx-1 text-xl cursor-pointer text-orange-100" />
-                            <TbBrandTiktok className="mx-1 text-2xl cursor-pointer text-orange-100" />
+                            <Link href={websiteSettings?.media?.facebook}>
+                                <AiFillFacebook className="mx-1 text-2xl cursor-pointer text-orange-100" />
+                            </Link>
+                            <Link href={websiteSettings?.media?.instagram}>
+                                <BsInstagram className="mx-1 text-xl cursor-pointer text-orange-100" />
+                            </Link>
+                            <Link href={websiteSettings?.media?.instagram}>
+                                <TbBrandTiktok className="mx-1 text-2xl cursor-pointer text-orange-100" />
+                            </Link>
                         </div>
                     </div>
                 </section>

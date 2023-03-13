@@ -2,8 +2,13 @@ import React, { useContext, useState } from 'react'
 import Header from '../components/header'
 import { client, urlFor } from '../lib/sanity'
 import Footer from '../components/footer'
+import getYouTubeID from 'get-youtube-id'
+import LiteYouTubeEmbed from 'react-lite-youtube-embed'
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 
 export default function Entrerise({ websiteSettings, entreprise, categories }) {
+    var youtubeId = entreprise ? getYouTubeID(entreprise?.youtubeUrl) : null
+    //console.log('youtubeId ', youtubeId)
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between ">
             <Header websiteSettings={websiteSettings} categories={categories} />
@@ -12,6 +17,9 @@ export default function Entrerise({ websiteSettings, entreprise, categories }) {
                     {entreprise?.image?.image && (
                         <img src={urlFor(entreprise?.image?.image)} />
                     )}
+                </div>
+                <div className=" my-2.5 w-full h-fit">
+                    <LiteYouTubeEmbed id={youtubeId} />
                 </div>
                 {entreprise?.content?.map((item) => {
                     return (
@@ -66,6 +74,7 @@ export async function getStaticProps(context) {
             image,
             content,
             _id,
+            youtubeUrl
             
           }`,
         {}

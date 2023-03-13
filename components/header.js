@@ -91,8 +91,16 @@ export default function Header({ websiteSettings, categories }) {
                                                 </p>
                                             </Link>
 
-                                            {categories?.map(
-                                                (category, index) => {
+                                            {categories
+                                                ?.filter(
+                                                    (item) =>
+                                                        item?.subCategories
+                                                            ?.length > 0
+                                                )
+                                                ?.map((category, index) => {
+                                                    console.log(
+                                                        category.subCategories
+                                                    )
                                                     return (
                                                         <div
                                                             key={category?._id}
@@ -167,8 +175,7 @@ export default function Header({ websiteSettings, categories }) {
                                                             )}
                                                         </div>
                                                     )
-                                                }
-                                            )}
+                                                })}
                                         </ul>
                                     </motion.div>
                                 )}
@@ -434,8 +441,14 @@ export default function Header({ websiteSettings, categories }) {
                                                         Tous nos categories
                                                     </p>
                                                 </Link>
-                                                {categories?.map(
-                                                    (category, index) => {
+                                                {categories
+                                                    ?.filter(
+                                                        (category) =>
+                                                            category
+                                                                ?.subCategories
+                                                                ?.length > 0
+                                                    )
+                                                    .map((category, index) => {
                                                         return (
                                                             <div
                                                                 key={
@@ -512,8 +525,7 @@ export default function Header({ websiteSettings, categories }) {
                                                                 )}
                                                             </div>
                                                         )
-                                                    }
-                                                )}
+                                                    })}
                                             </ul>
                                         </motion.div>
                                     )}

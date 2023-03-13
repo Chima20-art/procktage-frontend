@@ -300,7 +300,7 @@ export async function getStaticProps(context) {
     let product = await client.fetch(prodcutQuery, {})
 
     let websiteSettings = await client.fetch(
-        `*[_type == 'settings'][0]{
+        `*[_id == 'settings'][0]{
         categories{
             categorie1->,
             categorie2->,

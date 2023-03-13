@@ -110,7 +110,7 @@ export async function getStaticProps(context) {
       } }`
     const category = await client.fetch(categoryQuery, {})
     let websiteSettings = await client.fetch(
-        `*[_type == 'settings'][0]{
+        `*[_id == 'settings'][0]{
         categories{
             categorie1->,
             categorie2->,

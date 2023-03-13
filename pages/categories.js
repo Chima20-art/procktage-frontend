@@ -98,7 +98,7 @@ export default function Categories({ websiteSettings, categories }) {
 
 export async function getStaticProps(context) {
     let websiteSettings = client.fetch(
-        `*[_type == 'settings'][0]{
+        `*[_id == 'settings'][0]{
         categories{
             categorie1->,
             categorie2->,

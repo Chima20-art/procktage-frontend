@@ -31,7 +31,7 @@ export default function Footer({ websiteSettings }) {
         <div className=" pb-8 h-full bg-[#FFF8ED] flex flex-col self-end w-full-screen">
             <div>
                 <section className="  py-4   text-[#424242] bg-red-700 ">
-                    <div className="lg:max-w-4xl max-w-[90%] md:max-w-2xl sm:max-w-[90%] lg:px-0 px-2 mx-auto  flex justify-between">
+                    <div className="lg:max-w-[80%] max-w-[90%] md:max-w-2xl sm:max-w-[90%] lg:px-0 px-2 mx-auto  flex justify-between">
                         <p className="text-sm text-[#FEDFB6]">
                             Connectez-vous avec nous sur les réseaux sociaux :
                         </p>
@@ -50,7 +50,7 @@ export default function Footer({ websiteSettings }) {
                 </section>
                 <section
                     id="footer search"
-                    className="flex-col flex px-4  md:px-0 md:py-2 lg:flex-row lg:flex lg:justify-between lg:max-w-4xl max-w-[90%] md:max-w-2xl sm:max-w-[90%] md:py-6 mx-auto  w-screen"
+                    className="flex-col flex px-4  md:px-0 md:py-2 lg:flex-row lg:flex lg:justify-between lg:max-w-[80%] max-w-[90%] md:max-w-2xl sm:max-w-[90%] md:py-6 mx-auto  w-screen"
                 >
                     <section className=" lg:px-2  flex flex-col  px-6 text-[#424242] ">
                         <p className="   pt-4 pb-2 my-2   lg:w-[204px] lg:py-2 uppercase  text-xs border-b-2 border-red-700 border-0">

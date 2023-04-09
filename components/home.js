@@ -5,10 +5,31 @@ import Link from 'next/link'
 
 export default function Accueil({ homePage }) {
     //console.log('homePage', homePage)
+    console.log(homePage?.Sections[0])
+    let numberOfProducts0 = 0
+    homePage?.Sections[0]?.refrence?.subCategories?.forEach((item) => {
+        numberOfProducts0 = numberOfProducts0 + (item?.count ? item?.count : 0)
+    })
+    let numberOfProducts1 = 0
+    homePage?.Sections[0]?.refrence?.subCategories?.forEach((item) => {
+        numberOfProducts1 = numberOfProducts1 + (item?.count ? item?.count : 0)
+    })
+    let numberOfProducts2 = 0
+    homePage?.Sections[0]?.refrence?.subCategories?.forEach((item) => {
+        numberOfProducts2 = numberOfProducts2 + (item?.count ? item?.count : 0)
+    })
+    let numberOfProducts3 = 0
+    homePage?.Sections[0]?.refrence?.subCategories?.forEach((item) => {
+        numberOfProducts3 = numberOfProducts3 + (item?.count ? item?.count : 0)
+    })
+    let numberOfProducts4 = 0
+    homePage?.Sections[0]?.refrence?.subCategories?.forEach((item) => {
+        numberOfProducts4 = numberOfProducts4 + (item?.count ? item?.count : 0)
+    })
     return (
         <div>
             {' '}
-            <div className="my-8  lg:max-w-4xl md:max-w-2xl sm:max-w-[95%] mx-auto overflow-hidden ">
+            <div className="my-8  lg:max-w-[70%] md:max-w-2xl sm:max-w-[95%] mx-auto overflow-hidden ">
                 <div className=" pb-2 lg:max-w-3xl max-w-[90%] md:max-w-2xl sm:max-w-[90%] lg:px-0 px-2 mx-auto  flex  w-full justify-between  px-2 ">
                     <div className="flex items-center">
                         <div className="w-2 h-2 bg-orange-200  mr-2"></div>
@@ -29,69 +50,124 @@ export default function Accueil({ homePage }) {
                         </p>
                     </div>
                 </div>
-                {homePage?.Sections?.map((section, index) => {
-                    let numberOfProducts = 0
-                    section?.refrence?.subCategories?.forEach((item) => {
-                        numberOfProducts =
-                            numberOfProducts + (item?.count ? item?.count : 0)
-                    })
-
-                    return (
-                        <div
-                            key={section?._key}
-                            className="h-[500px] relative  "
-                        >
-                            {section?.image?.image && (
-                                <img
-                                    src={urlFor(section?.image?.image)}
-                                    className="h-[500px] object-cover w-full"
-                                />
-                            )}
-                            <motion.div
-                                initial={{ x: index % 2 == 0 ? '40%' : '-40%' }}
-                                animate={{ x: 0 }}
-                                transition={{ duration: 1, delay: 0.1 }}
-                                className={`absolute flex flex-col justify-between bottom-0 w-full max-h-1/2  md:inset-y-0 md:pt-12 	 ${
-                                    index % 2 == 0 ? 'left-0' : 'right-0'
-                                } bg-black bg-opacity-40 z-20 md:w-2/5 md:h-full`}
-                            >
-                                <motion.h1
-                                    initial={{
-                                        x: index % 2 == 0 ? '15%' : '-15%',
-                                    }}
-                                    animate={{ x: 0 }}
-                                    transition={{ duration: 1, delay: 0.1 }}
-                                    className="text-[20px] uppercase text-white p-6 leading-10 opacity-90"
-                                >
-                                    {section?.title}
-                                </motion.h1>
-                                <motion.div
-                                    initial={{
-                                        x: index % 2 == 0 ? '15%' : '-15%',
-                                    }}
-                                    animate={{ x: 0 }}
-                                    transition={{ duration: 1, delay: 0.1 }}
-                                >
-                                    {' '}
-                                    <div className="bg-red-700 w-full pb-6 pt-12 px-6 uppercase text-white text-[15px] text-opacity-90">
-                                        <Link
-                                            href={`/category/${section?.refrence?.slug?.current}`}
-                                        >
-                                            <p className="hover:underline hover:cursor-pointer">
-                                                {' '}
-                                                En savoir plus
-                                            </p>
-                                        </Link>
-                                    </div>
-                                    <p className=" px-6 py-6 uppercase text-white text-[10px] text-opacity-90">
-                                        Découvrir +{numberOfProducts} differents
-                                        produits
-                                    </p>
-                                </motion.div>
-                            </motion.div>
+                <div className="flex flex-row w-full h-full gap-2">
+                    <Link
+                        href={`/category/${homePage?.Sections[0].refrence?.slug?.current}`}
+                    >
+                        <div className="md:w-[45%] w-[55%] cursor-pointer h-full flex flex-col bg-blue-600 relative  ">
+                            <img
+                                src={urlFor(
+                                    homePage?.Sections[0]?.image?.image
+                                )}
+                                className="w-full h-full object-contain"
+                            />
+                            <div className="text-clack lg:w-[70%] text-center  w-[90%] h-fit border border-black md:py-8 py-2  bg-white/90  absolute left-0 top-0 bottom-0 right-0 m-auto ">
+                                {' '}
+                                <h1 className="lg:text-4xl md:text-xl text-md font-[500] ">
+                                    {homePage?.Sections[0]?.title}
+                                </h1>
+                                <p className="  w-full text-sm  ">
+                                    + {numberOfProducts0} produits differents
+                                </p>
+                            </div>
                         </div>
-                    )
-                })}
+                    </Link>
+                    <div className=" flex flex-col md:w-[32%] w-[45%] gap-2  ">
+                        <Link
+                            href={`/category/${homePage?.Sections[1].refrence?.slug?.current}`}
+                        >
+                            <div className="w-full h-full cursor-pointer relative ">
+                                <img
+                                    src={urlFor(
+                                        homePage?.Sections[1]?.image?.image
+                                    )}
+                                    className="w-full h-full  object-cover"
+                                />
+                                <div className="text-clack lg:w-[70%] text-center  w-[90%] h-fit py-2 bg-white/90  text-xs absolute left-0 top-0 bottom-0 right-0 m-auto ">
+                                    {' '}
+                                    <h1 className="lg:text-2xl md:text-md text-md font-[500] mb-0pb-0 ">
+                                        {homePage?.Sections[1]?.title}
+                                    </h1>
+                                    <p className="  w-full text-[10px] mt-0 pt-0 ">
+                                        {' '}
+                                        + {numberOfProducts1} produits
+                                    </p>
+                                </div>
+                            </div>
+                        </Link>
+                        <Link
+                            href={`/category/${homePage?.Sections[2].refrence?.slug?.current}`}
+                        >
+                            <div className="w-full flex cursor-pointer relative ">
+                                {' '}
+                                <img
+                                    src={urlFor(
+                                        homePage?.Sections[2]?.image?.image
+                                    )}
+                                    className="w-full  object-cover"
+                                />
+                                <div className="text-clack lg:w-[70%] text-center  w-[90%] h-fit py-2 px-4 bg-white/90  absolute left-0 top-0 bottom-0 right-0 m-auto ">
+                                    {' '}
+                                    <h1 className="lg:text-2xl md:text-md text-md font-[500] ">
+                                        {homePage?.Sections[2]?.title}
+                                    </h1>
+                                    <p className="  w-full text-sm  ">
+                                        {' '}
+                                        + {numberOfProducts2} produits
+                                    </p>
+                                </div>
+                            </div>
+                        </Link>
+                    </div>
+
+                    <div className="hidden md:flex  flex-col w-[30%] gap-2">
+                        <Link
+                            href={`/category/${homePage?.Sections[3].refrence?.slug?.current}`}
+                        >
+                            <div className="w-full h-full cursor-pointer relative">
+                                <img
+                                    src={urlFor(
+                                        homePage?.Sections[3]?.image?.image
+                                    )}
+                                    className="w-full  h-full object-cover"
+                                />
+                                <div className="text-clack lg:w-[70%] text-center  w-[90%] h-fit py-2 px-4 bg-white/90  absolute left-0 top-0 bottom-0 right-0 m-auto ">
+                                    {' '}
+                                    <h1 className="lg:text-2xl md:text-md text-md font-[500] ">
+                                        {homePage?.Sections[3]?.title}
+                                    </h1>
+                                    <p className="  w-full text-sm  ">
+                                        {' '}
+                                        + {numberOfProducts3} produits
+                                    </p>
+                                </div>
+                            </div>
+                        </Link>
+                        <Link
+                            href={`/category/${homePage?.Sections[4].refrence?.slug?.current}`}
+                        >
+                            <div className="w-full h-full cursor-pointer relative">
+                                <img
+                                    src={urlFor(
+                                        homePage?.Sections[4]?.image?.image
+                                    )}
+                                    className="w-full h-full object-cover"
+                                />
+                                <div className="text-clack lg:w-[70%] text-center  w-[90%] h-fit py-2 px-4 bg-white/90  absolute left-0 top-0 bottom-0 right-0 m-auto ">
+                                    {' '}
+                                    <h1 className="lg:text-2xl md:text-md text-md font-[500] ">
+                                        {homePage?.Sections[4]?.title}
+                                    </h1>
+                                    <p className="  w-full text-sm  ">
+                                        {' '}
+                                        + {numberOfProducts4} produits
+                                    </p>
+                                </div>
+                            </div>
+                        </Link>
+                    </div>
+                </div>
+
                 <div className="flex md:flex-row flex-col justify-between py-4">
                     <div className="flex  w-full justify-around">
                         {' '}

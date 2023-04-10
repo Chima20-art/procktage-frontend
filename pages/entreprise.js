@@ -12,13 +12,15 @@ export default function Entrerise({ websiteSettings, entreprise, categories }) {
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between ">
             <Header websiteSettings={websiteSettings} categories={categories} />
-            <div className="lg:max-w-4xl sm:max-w-2xl  w-[95%] uppercase  text-grey-700 flex flex-col items-center mx-auto py-8 h-full    ">
-                <div className=" md:max-w-[60%] max-w-[80%] my-12">
-                    {entreprise?.image?.image && (
-                        <img src={urlFor(entreprise?.image?.image)} />
-                    )}
-                </div>
-                <div className=" my-2.5 w-full h-fit">
+            <div className="lg:max-w-[70%] sm:max-w-2xl  w-[95%] uppercase  text-grey-700 flex flex-col items-center mx-auto py-8 h-full    ">
+                {entreprise?.image && (
+                    <div className=" md:max-w-[60%] max-w-[80%] my-12">
+                        {entreprise?.image?.image && (
+                            <img src={urlFor(entreprise?.image?.image)} />
+                        )}
+                    </div>
+                )}
+                <div className=" my-2.5  md:w-[60%] w-full mx-auto h-fit">
                     <LiteYouTubeEmbed id={youtubeId} />
                 </div>
                 {entreprise?.content?.map((item) => {

@@ -24,9 +24,9 @@ export default function Footer({ websiteSettings }) {
         //console.log('onSearch')
         router.push(`/search/${searchValue}`)
     }
-    console.log('websiteSettings', websiteSettings)
-    console.log(websiteSettings?.categories?.categorie1?.slug)
-    console.log(websiteSettings?.categories?.categorie2?.title)
+    //console.log('websiteSettings', websiteSettings)
+    //console.log(websiteSettings?.categories?.categorie1?.slug)
+    //console.log(websiteSettings?.categories?.categorie2?.title)
     return (
         <div className=" pb-8 h-full bg-[#FFF8ED] flex flex-col self-end w-full-screen">
             <div>

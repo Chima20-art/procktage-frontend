@@ -11,7 +11,7 @@ import { urlFor } from '../lib/sanity'
 
 export default function Home({ websiteSettings, homePage, categories }) {
     return (
-        <div className="h-full bg-beige min-h-screen flex flex-col justify-between ">
+        <div className="h-full bg-b min-h-screen flex flex-col justify-between ">
             <NextSeo
                 title={
                     websiteSettings?.seo?.title

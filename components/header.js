@@ -24,6 +24,7 @@ export default function Header({ websiteSettings, categories }) {
     const [searchValue, setSearchValue] = useState('')
     const onSearch = () => {
         //console.log('onSearch')
+        setIsOpen(false)
         router.push(`/search/${searchValue}`)
     }
 
@@ -411,10 +412,27 @@ export default function Header({ websiteSettings, categories }) {
                 {isOpen && (
                     <div className="md:hidden text-[10px] pb-4  top-[20px] px-6 flex flex-col z-1000 ">
                         <div className="w-full mt-2 py-4  font-bold hover:cursor-pointer   hover:text-red-700 ">
-                            <Link href="/">ACCEUIL</Link>
+                            <Link href="/">
+                                <p
+                                    onClick={() => {
+                                        setIsOpen(false)
+                                    }}
+                                >
+                                    {' '}
+                                    ACCEUIL
+                                </p>
+                            </Link>
                         </div>
                         <div className="w-full mt-2 py-4   font-bold hover:cursor-pointer   hover:text-red-700 ">
-                            <Link href="/entreprise">ENTREPRISE</Link>
+                            <Link href="/entreprise">
+                                <p
+                                    onClick={() => {
+                                        setIsOpen(false)
+                                    }}
+                                >
+                                    ENTREPRISE
+                                </p>
+                            </Link>
                         </div>
                         <div className={'relative   font-bold flex flex-col'}>
                             <div
@@ -437,7 +455,12 @@ export default function Header({ websiteSettings, categories }) {
                                         >
                                             <ul>
                                                 <Link href="/categories">
-                                                    <p className="hover:text-red-700 pt-2">
+                                                    <p
+                                                        onClick={() => {
+                                                            setIsOpen(false)
+                                                        }}
+                                                        className="hover:text-red-700 pt-2"
+                                                    >
                                                         Tous nos categories
                                                     </p>
                                                 </Link>
@@ -507,6 +530,11 @@ export default function Header({ websiteSettings, categories }) {
                                                                                         href={`/categories/${subcategory?.slug.current}`}
                                                                                     >
                                                                                         <li
+                                                                                            onClick={() => {
+                                                                                                setIsOpen(
+                                                                                                    false
+                                                                                                )
+                                                                                            }}
                                                                                             key={
                                                                                                 subcategory?._id
                                                                                             }
@@ -534,7 +562,12 @@ export default function Header({ websiteSettings, categories }) {
                         </div>
 
                         <Link href="/contact">
-                            <div className="w-full mt-2 py-4    font-bold hover:cursor-pointer   hover:text-red-700 ">
+                            <div
+                                onClick={() => {
+                                    setIsOpen(false)
+                                }}
+                                className="w-full mt-2 py-4    font-bold hover:cursor-pointer   hover:text-red-700 "
+                            >
                                 CONTACT
                             </div>
                         </Link>

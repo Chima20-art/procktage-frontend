@@ -74,6 +74,8 @@ export async function getStaticProps(context) {
         Sections[]{
           image,
           title,
+          description,
+          descriptionTitle,
           refrence->{
             title,
             slug,

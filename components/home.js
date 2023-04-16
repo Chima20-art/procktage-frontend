@@ -7,8 +7,8 @@ export default function Accueil({ homePage }) {
     let homePageSections = homePage?.Sections
     let reversedSections = [...homePageSections].reverse()
 
-    console.log('reversedSections', reversedSections)
-    console.log('homePageSections', homePageSections)
+    //console.log('reversedSections', reversedSections)
+    //console.log('homePageSections', homePageSections)
 
     let numberOfProducts0 = 0
     homePageSections[0]?.refrence?.subCategories?.forEach((item) => {
@@ -54,7 +54,7 @@ export default function Accueil({ homePage }) {
                         </p>
                     </div>
                 </div>
-                <div className="flex flex-row w-[90%] mx-auto h-full gap-2 ">
+                <div className="flex flex-row md:w-[90%] my-4 mx-auto h-full gap-2 ">
                     <Link
                         href={`/category/${homePageSections[0].refrence?.slug?.current}`}
                     >
@@ -165,7 +165,7 @@ export default function Accueil({ homePage }) {
                         </Link>
                     </div>
                 </div>
-                <div className="hidden flex flex-col text-center md:my-16  mt-8 mb-16">
+                <div className=" flex flex-col text-center md:my-16  mt-8 mb-16">
                     <h1 className="md:text-2xl text-md tracking-wide max-w-[90%] mx-auto mb-4 font-semibold uppercase leading-relaxed my-2	">
                         Emballages de qualité pour toutes les occasions chez
                         Procktage{' '}
@@ -175,27 +175,40 @@ export default function Accueil({ homePage }) {
                         ajoutez une touche professionnelle à votre projet!
                     </p>
                 </div>
-                <div className=" hidden flex flex-col text-center md:my-6 my-1 ">
+                <div className="  flex flex-col text-center md:my-6 my-1 ">
                     <h1 className="md:text-2xl text-[22px] font-semibold uppercase  tracking-wide leading-relaxed my-2 underline underline-offset-4 ">
                         Acheter par catégorie
                     </h1>
-                    <div>
+                    <div className="bg-grey-100 ">
                         {reversedSections?.map((section) => {
+                            console.log('section', section)
                             return (
                                 <div
                                     key={section?.key}
                                     className="max-w-[80%] mx-auto my-4 cursor-pointer "
                                 >
-                                    <div className="rounded-3xl  shadow-xl relative w-fit h-fit bd-red-300">
-                                        {' '}
-                                        <img
-                                            src={urlFor(section?.image?.image)}
-                                            className="rounded-3xl  shadow-xl relative"
-                                        />
-                                        <p className="absolute bg-red-700 text-white uppercase text-xs p-1 top-2 right-0 ">
-                                            {section?.title}
-                                        </p>
-                                    </div>
+                                    <Link
+                                        href={`/category/${section.refrence?.slug?.current}`}
+                                    >
+                                        <div className="relative w-fit h-fit bd-red-300">
+                                            {' '}
+                                            <img
+                                                src={urlFor(
+                                                    section?.image?.image
+                                                )}
+                                                className="rounded-3xl  shadow-xl relative"
+                                            />
+                                            <p className="absolute bg-red-700 text-white uppercase text-xs p-1 top-2 right-0 ">
+                                                {section?.title}
+                                            </p>
+                                            <p className="text-grey-400 uppercase text-[11px] text-left px-2 mt-4 mb-1">
+                                                {section?.descriptionTitle}
+                                            </p>
+                                            <p className="text text-[12px] text-left px-2 mb-12">
+                                                {section?.description}
+                                            </p>
+                                        </div>
+                                    </Link>
                                 </div>
                             )
                         })}

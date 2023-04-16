@@ -165,7 +165,7 @@ export default function Accueil({ homePage }) {
                         </Link>
                     </div>
                 </div>
-                <div className=" flex flex-col text-center md:my-16  mt-8 mb-16">
+                <div className="md:hidden flex flex-col text-center md:my-16  mt-8 mb-16">
                     <h1 className="md:text-2xl text-md tracking-wide max-w-[90%] mx-auto mb-4 font-semibold uppercase leading-relaxed my-2	">
                         Emballages de qualité pour toutes les occasions chez
                         Procktage{' '}
@@ -175,11 +175,11 @@ export default function Accueil({ homePage }) {
                         ajoutez une touche professionnelle à votre projet!
                     </p>
                 </div>
-                <div className="  flex flex-col text-center md:my-6 my-1 ">
-                    <h1 className="md:text-2xl text-[22px] font-semibold uppercase  tracking-wide leading-relaxed my-2 underline underline-offset-4 ">
+                <div className="md:hidden  flex flex-col text-center md:my-6 my-1 ">
+                    <h1 className="md:text-2xl text-[18x] font-semibold uppercase  tracking-wide leading-relaxed my-2 underline underline-offset-4 ">
                         Acheter par catégorie
                     </h1>
-                    <div className="bg-grey-100 ">
+                    <div className=" ">
                         {reversedSections?.map((section) => {
                             console.log('section', section)
                             return (

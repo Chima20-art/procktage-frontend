@@ -52,7 +52,7 @@ export default function Categories({ websiteSettings, categories }) {
                                                                 ?.current
                                                         }
                                                     >
-                                                        <a className="group w-full    m-2   flex flex-col items-center 	 border-[5px] border-grey-200 hover:border-red-700 hover:cursor-pointer ">
+                                                        <div className="group w-full  pb-0 m-4 flex flex-col items-center  border-[5px] border-grey-200 hover:border-red-700 hover:cursor-pointer ">
                                                             {subcategory?.image
                                                                 ?.image && (
                                                                 <img
@@ -65,12 +65,12 @@ export default function Categories({ websiteSettings, categories }) {
                                                                 />
                                                             )}
 
-                                                            <p className="text-[12px] text-gray uppercase py-4">
+                                                            <p className="text-[12px] text-gray  uppercase py-4">
                                                                 {
                                                                     subcategory.title
                                                                 }
                                                             </p>
-                                                            <p className=" group-hover:bg-red-700 bg-gray pt-[10px] pb-1 px-2  w-full text-white text-[10px] text-center uppercase  hover:cursor-pointer ">
+                                                            <p className=" group-hover:bg-red-700 bg-gray pt-[10px] pb-1 px-2 mb-0  bottom-0 w-full text-white text-[10px] text-center uppercase  hover:cursor-pointer ">
                                                                 Découvrir{' '}
                                                                 {
                                                                     subcategory?.count
@@ -78,7 +78,7 @@ export default function Categories({ websiteSettings, categories }) {
                                                                 differents
                                                                 produits
                                                             </p>
-                                                        </a>
+                                                        </div>
                                                     </Link>
                                                 </div>
                                             )

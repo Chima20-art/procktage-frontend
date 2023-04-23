@@ -9,7 +9,12 @@ import { NextSeo } from 'next-seo'
 import { setConfig } from 'next/config'
 import { urlFor } from '../lib/sanity'
 
-export default function Home({ websiteSettings, homePage, categories }) {
+export default function Home({
+    websiteSettings,
+    homePage,
+    categories,
+    products,
+}) {
     return (
         <div className="h-full bg-b min-h-screen flex flex-col justify-between ">
             <NextSeo
@@ -46,7 +51,7 @@ export default function Home({ websiteSettings, homePage, categories }) {
                 }}
             />
             <Header websiteSettings={websiteSettings} categories={categories} />
-            <Accueil homePage={homePage} />
+            <Accueil products={products} homePage={homePage} />
             <div className="w-screen">
                 <Footer websiteSettings={websiteSettings} />
             </div>
@@ -108,9 +113,23 @@ export async function getStaticProps(context) {
     homePage = promises[1]
     categories = promises[2]
 
-    console.log('websiteSettings ', websiteSettings)
+    //console.log('websiteSettings ', websiteSettings)
+
+    const products = await client.fetch(
+        `*[_type == 'product' && !(_id in path("drafts.**")) ][0..10]{
+            image,
+            reference,
+            slug,
+            title,
+            _id,
+            Subcategory->
+    
+        }
+            `,
+        {}
+    )
 
     return {
-        props: { websiteSettings, homePage, categories }, // will be passed to the page component as props
+        props: { websiteSettings, homePage, categories, products }, // will be passed to the page component as props
     }
 }

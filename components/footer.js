@@ -28,14 +28,14 @@ export default function Footer({ websiteSettings }) {
     //console.log(websiteSettings?.categories?.categorie1?.slug)
     //console.log(websiteSettings?.categories?.categorie2?.title)
     return (
-        <div className=" pb-8 h-full bg-[#FFF8ED] flex flex-col self-end w-full-screen">
+        <div className=" pb-8 h-full bg-white flex flex-col self-end w-full-screen">
             <div>
                 <section className="  py-4   text-[#424242] bg-red-700 ">
                     <div className="lg:max-w-[80%] max-w-[90%] md:max-w-2xl sm:max-w-[90%] lg:px-0 px-2 mx-auto  flex justify-between">
-                        <p className="text-sm text-[#FEDFB6]">
+                        <p className="text-sm text-orange-100">
                             Connectez-vous avec nous sur les réseaux sociaux :
                         </p>
-                        <div className="flex items-center">
+                        <div className="flex items-center text-white">
                             <Link href={websiteSettings?.media?.facebook}>
                                 <AiFillFacebook className="mx-1 text-2xl cursor-pointer text-orange-100" />
                             </Link>

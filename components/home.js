@@ -2,8 +2,11 @@ import React from 'react'
 import { urlFor } from '../lib/sanity'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Slider from './slider1'
+import Slider2 from './slider2'
+import Slider1 from './slider1'
 
-export default function Accueil({ homePage }) {
+export default function Accueil({ homePage, products }) {
     let homePageSections = homePage?.Sections
     let reversedSections = [...homePageSections].reverse()
 
@@ -15,25 +18,25 @@ export default function Accueil({ homePage }) {
         numberOfProducts0 = numberOfProducts0 + (item?.count ? item?.count : 0)
     })
     let numberOfProducts1 = 0
-    homePageSections[0]?.refrence?.subCategories?.forEach((item) => {
+    homePageSections[1]?.refrence?.subCategories?.forEach((item) => {
         numberOfProducts1 = numberOfProducts1 + (item?.count ? item?.count : 0)
     })
     let numberOfProducts2 = 0
-    homePageSections[0]?.refrence?.subCategories?.forEach((item) => {
+    homePageSections[2]?.refrence?.subCategories?.forEach((item) => {
         numberOfProducts2 = numberOfProducts2 + (item?.count ? item?.count : 0)
     })
     let numberOfProducts3 = 0
-    homePageSections[0]?.refrence?.subCategories?.forEach((item) => {
+    homePageSections[3]?.refrence?.subCategories?.forEach((item) => {
         numberOfProducts3 = numberOfProducts3 + (item?.count ? item?.count : 0)
     })
     let numberOfProducts4 = 0
-    homePageSections[0]?.refrence?.subCategories?.forEach((item) => {
+    homePageSections[4]?.refrence?.subCategories?.forEach((item) => {
         numberOfProducts4 = numberOfProducts4 + (item?.count ? item?.count : 0)
     })
     return (
         <div>
             {' '}
-            <div className="mb-8  lg:max-w-[70%] md:max-w-2xl sm:max-w-[95%] mx-auto overflow-hidden ">
+            <div className="mb-8  lg:max-w-[70%] md:max-w-2xl sm:max-w-[95%] mx-auto  ">
                 <div className=" hidden pb-2 lg:max-w-3xl max-w-[90%] md:max-w-2xl sm:max-w-[90%] lg:px-0 px-2 mx-auto  flex  w-full justify-between  px-2 ">
                     <div className="flex items-center">
                         <div className="w-2 h-2 bg-orange-200  mr-2"></div>
@@ -165,8 +168,8 @@ export default function Accueil({ homePage }) {
                         </Link>
                     </div>
                 </div>
-                <div className="md:hidden flex flex-col text-center md:my-16  mt-8 mb-16">
-                    <h1 className="md:text-2xl text-md tracking-wide max-w-[90%] mx-auto mb-4 font-semibold uppercase leading-relaxed my-2	">
+                <div className=" flex flex-col text-center md:my-16  mt-8 mb-10">
+                    <h1 className="md:text-xl text-md tracking-wide max-w-[90%] mx-auto mb-4 font-semibold uppercase leading-relaxed my-2	">
                         Emballages de qualité pour toutes les occasions chez
                         Procktage{' '}
                     </h1>
@@ -175,7 +178,7 @@ export default function Accueil({ homePage }) {
                         ajoutez une touche professionnelle à votre projet!
                     </p>
                 </div>
-                <div className="md:hidden  flex flex-col text-center md:my-6 my-1 ">
+                <div className="hidden  flex flex-col text-center md:my-6 my-1 ">
                     <h1 className="md:text-2xl text-[18x] font-semibold uppercase  tracking-wide leading-relaxed my-2 underline underline-offset-4 ">
                         Acheter par catégorie
                     </h1>
@@ -214,64 +217,63 @@ export default function Accueil({ homePage }) {
                         })}
                     </div>
                 </div>
+                <div>
+                    <div className="flex sm:hidden flex-col justify-between py-4 md:w-[95%] mx-auto">
+                        <h1 className="md:text-2xl text-[20px] text-center font-semibold uppercase  tracking-wide leading-relaxed my-2 underline underline-offset-4 ">
+                            Acheter par catégorie
+                        </h1>
+                        <Slider2
+                            homePageSections={homePageSections}
+                            reversedSections={reversedSections}
+                        />
+                    </div>
+                </div>
+                <h1 className="md:text-2xl text-[20px] text-center font-semibold uppercase  tracking-wide leading-relaxed my-2 underline underline-offset-4 ">
+                    Nouveau Produits
+                </h1>
 
-                <div className="flex md:flex-row flex-col justify-between py-4">
+                <div className="flex md:flex-row flex-col justify-between py-4 md:w-[95%] mx-auto">
+                    <Slider1 products={products} />
+                </div>
+
+                <div className="flex md:flex-row justify-between py-4 ">
                     <div className="flex  w-full justify-around">
-                        {' '}
-                        <div className="flex items-center flex-col">
-                            <div className="  mr-2  h-[100px] flex items-end p-1">
-                                <img
-                                    src="/quality.svg"
-                                    width="60px"
-                                    height="60px"
-                                />
+                        <div className="flex items-center  flex-col mx-2 ">
+                            <div className="flex items-end p-1  md:w-[60px] md:h-[60px] w-[40px] h-[42px] ">
+                                <img src="/quality.svg" className="h-full" />
                             </div>
-                            <p className=" uppercase text-xs  ">
+                            <p className=" uppercase text-[10px] lg:text-[16px] text-center  ">
                                 qualité guarantie
                             </p>
                         </div>
-                        <div className="flex items-center   flex-col">
-                            <div className="  mr-2  h-[100px] flex items-end p-2">
-                                {' '}
+                        <div className="flex items-center flex-col mx-2">
+                            <div className="  flex items-end p-1  md:w-[60px] md:h-[60px] w-[40px] h-[40px]">
                                 <img
                                     src="/client.svg"
-                                    width="70px"
-                                    height="70px"
+                                    className="w-full h-full"
                                 ></img>
                             </div>
 
-                            <p className=" uppercase  text-xs ">
+                            <p className=" uppercase  text-[10px] lg:text-[16px] text-center  ">
                                 service clientèle
                             </p>
                         </div>
                     </div>
                     <div className="flex  w-full justify-around">
-                        {' '}
-                        <div className="flex items-center flex-col ">
-                            {' '}
-                            <div className="  mr-2  h-[100px] flex items-end p-2">
-                                {' '}
-                                <img
-                                    src="/stock.svg"
-                                    width="70px"
-                                    height="70px"
-                                ></img>
+                        <div className="flex items-center flex-col  mx-2 ">
+                            <div className="flex items-end p-1  md:w-[60px] md:h-[60px] w-[40px] h-[40px]">
+                                <img src="/stock.svg"></img>
                             </div>
-                            <p className=" uppercase  text-xs ">
+                            <p className=" uppercase  text-[10px] lg:text-[16px] text-center ">
                                 disponibilité des references
                             </p>
                         </div>
-                        <div className="flex items-center flex-col ">
-                            <div className="  mr-2  h-[100px] flex items-end p-2">
-                                {' '}
-                                <img
-                                    src="/shipping.svg"
-                                    width="70px"
-                                    height="70px"
-                                ></img>
+                        <div className="flex items-center flex-col mx-2">
+                            <div className="flex items-end p-1  md:w-[60px] md:h-[60px] w-[40px] h-[40px]">
+                                <img src="/shipping.svg"></img>
                             </div>
 
-                            <p className=" uppercase text-xs  ">
+                            <p className=" uppercase text-[10px] lg:text-[16px] text-center ">
                                 livraison gratuite
                             </p>
                         </div>

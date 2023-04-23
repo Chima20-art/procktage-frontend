@@ -54,6 +54,7 @@ export default function Product({ product, categories, websiteSettings }) {
             count,
         }
         addToCart(item)
+        setCount(0)
     }
 
     return (
@@ -107,7 +108,7 @@ export default function Product({ product, categories, websiteSettings }) {
                             {product?.image?.asset && (
                                 <img
                                     src={urlFor(product?.image?.asset)}
-                                    className=" flex  p-4  lg:max-w-[270px] lg:max-h-[240px] max-w-[230px] max-h-[200px] "
+                                    className=" hover:scale-150 transition-all duration-500 cursor-pointer flex  p-4  lg:max-w-[270px] lg:max-h-[240px] max-w-[230px] max-h-[200px] "
                                 />
                             )}
                         </div>

@@ -113,7 +113,7 @@ export async function getStaticProps(context) {
     homePage = promises[1]
     categories = promises[2]
 
-    console.log('websiteSettings ', websiteSettings)
+    //console.log('websiteSettings ', websiteSettings)
 
     const products = await client.fetch(
         `*[_type == 'product' && !(_id in path("drafts.**")) ][0..10]{

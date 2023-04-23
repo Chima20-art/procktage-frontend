@@ -2,7 +2,9 @@ import React from 'react'
 import { urlFor } from '../lib/sanity'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import Slider from './slider'
+import Slider from './slider1'
+import Slider2 from './slider2'
+import Slider1 from './slider1'
 
 export default function Accueil({ homePage, products }) {
     let homePageSections = homePage?.Sections
@@ -176,7 +178,7 @@ export default function Accueil({ homePage, products }) {
                         ajoutez une touche professionnelle à votre projet!
                     </p>
                 </div>
-                <div className="md:hidden  flex flex-col text-center md:my-6 my-1 ">
+                <div className="hidden  flex flex-col text-center md:my-6 my-1 ">
                     <h1 className="md:text-2xl text-[18x] font-semibold uppercase  tracking-wide leading-relaxed my-2 underline underline-offset-4 ">
                         Acheter par catégorie
                     </h1>
@@ -215,12 +217,22 @@ export default function Accueil({ homePage, products }) {
                         })}
                     </div>
                 </div>
-                <h1 className="md:text-2xl text-center  text-[18x] font-semibold uppercase  tracking-wide leading-relaxed my-2 underline underline-offset-4 ">
-                    Derniers Produits
-                </h1>
-                <div className="flex md:flex-row flex-col justify-between py-4 md:w-[95%] mx-auto">
-                    <Slider products={products} />
+                <div>
+                    <div className="flex md:flex-row flex-col justify-between py-4 md:w-[95%] mx-auto">
+                        <h1 className="md:text-2xl text-[20px] text-center font-semibold uppercase  tracking-wide leading-relaxed my-2 underline underline-offset-4 ">
+                            Acheter par catégorie
+                        </h1>
+                        <Slider2 reversedSections={reversedSections} />
+                    </div>
                 </div>
+                <h1 className="md:text-2xl text-[20px] text-center font-semibold uppercase  tracking-wide leading-relaxed my-2 underline underline-offset-4 ">
+                    Nouveau Produits
+                </h1>
+
+                <div className="flex md:flex-row flex-col justify-between py-4 md:w-[95%] mx-auto">
+                    <Slider1 products={products} />
+                </div>
+
                 <div className="flex md:flex-row justify-between py-4 ">
                     <div className="flex  w-full justify-around">
                         <div className="flex items-center  flex-col mx-2 ">

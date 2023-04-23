@@ -43,7 +43,7 @@ export default function SubCategory({
                 <section className="text-[20px] uppercase my-6  text-red-700 border-b-gray border-b-[10px] border-dotted ">
                     {subCategory?.title}
                 </section>
-                <section className="lg:w-full   flex flex-row flex-wrap">
+                <section className="lg:w-full flex flex-row flex-wrap">
                     {subCategory?.products?.map((product, index) => {
                         return (
                             <div

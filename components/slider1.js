@@ -30,14 +30,14 @@ export default function Slider1({ products, reversedSections }) {
                 src="/left.svg"
                 color="#fff"
                 size="24px"
-                className="md:w-[28px] bg-black/40 md:h-[28px]  absolute  left-2  md:-left-12 z-50 top-[50%] transform -translate-y-1/2 hover:scale-105 hover:cursor-pointer"
+                className="md:w-[28px] bg-black/40 md:h-[28px]  absolute  left-0  md:-left-12 z-50 md:top-[50%] top-[45%] transform -translate-y-1/2 hover:scale-105 hover:cursor-pointer"
             />
             <AiOutlineArrowRight
                 onClick={handleNext}
                 src="/left.svg"
                 color="#fff"
                 size="24px"
-                className="md:w-[28px] bg-black/40 md:h-[28px]  absolute right-2 md:-right-12 z-20 top-1/2 transform -translate-y-1/2 hover:scale-105 hover:cursor-pointer"
+                className="md:w-[28px] bg-black/40 md:h-[28px]  absolute right-2 md:-right-12 z-20 md:top-1/2 top-[45%]  transform -translate-y-1/2 hover:scale-105 hover:cursor-pointer"
             />
 
             <Swiper
@@ -70,7 +70,7 @@ export default function Slider1({ products, reversedSections }) {
                 {products?.map((product, index) => {
                     return (
                         <SwiperSlide className=" " key={index}>
-                            <div className=" flex flex-col flex-1 h-full">
+                            <div className=" flex flex-col flex-1 mx-auto h-full">
                                 <Link
                                     href={
                                         '/products/' +

@@ -24,20 +24,20 @@ export default function Slider2({ products, reversedSections }) {
     }
 
     return (
-        <div className="relative w-[85%] mx-auto md:w-full  h-full ">
+        <div className="relative w-[85%]   mx-auto md:w-full  h-full ">
             <AiOutlineArrowLeft
                 onClick={handlePrevious}
                 src="/left.svg"
                 color="#fff"
                 size="24px"
-                className="md:w-[28px] bg-black/40 md:h-[28px]  absolute  left-2  md:-left-12 z-50 top-[40%] md:top-[50%] transform -translate-y-1/2 hover:scale-105 hover:cursor-pointer"
+                className="md:w-[28px] bg-black/40 md:h-[28px]  absolute  left-0  md:-left-12 z-50 top-[35%] md:top-[50%] transform -translate-y-1/2 hover:scale-105 hover:cursor-pointer"
             />
             <AiOutlineArrowRight
                 onClick={handleNext}
                 src="/left.svg"
                 color="#fff"
                 size="24px"
-                className="md:w-[28px] bg-black/40 md:h-[28px]  absolute right-2 md:-right-12 z-20 top-[40%] md:top-[50%] transform -translate-y-1/2 hover:scale-105 hover:cursor-pointer"
+                className="md:w-[28px] bg-black/40 md:h-[28px]  absolute right-0 md:-right-12 z-20 top-[35%] md:top-[50%] transform -translate-y-1/2 hover:scale-105 hover:cursor-pointer"
             />
 
             <Swiper
@@ -75,7 +75,7 @@ export default function Slider2({ products, reversedSections }) {
                                 <Link
                                     href={`/category/${section.refrence?.slug?.current}`}
                                 >
-                                    <div className="flex-1  bg-[#F7F7F7]  flex items-center justify-center  mb-[35px] hover:cursor-pointer">
+                                    <div className="flex-1  bg-[#F7F7F7] w-[85%] mx-auto  flex items-center justify-center  my-[15px]  hover:cursor-pointer">
                                         <img
                                             src={urlFor(section?.image?.image)}
                                             className="rounded-3xl  shadow-xl relative"
@@ -85,7 +85,7 @@ export default function Slider2({ products, reversedSections }) {
                                 <p className="absolute bg-red-700 text-white uppercase text-xs p-1 top-2 right-0 ">
                                     {section?.title}
                                 </p>
-                                <p className="text-grey-400 uppercase text-[12px] text-left px-2 mt-4 mb-1">
+                                <p className="text-grey-400 uppercase  text-[12px] text-left px-2 mt-4 mb-1">
                                     {section?.descriptionTitle}
                                 </p>
                                 <p className="text text-[13px] text-left px-2 mb-12">

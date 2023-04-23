@@ -18,19 +18,19 @@ export default function Accueil({ homePage, products }) {
         numberOfProducts0 = numberOfProducts0 + (item?.count ? item?.count : 0)
     })
     let numberOfProducts1 = 0
-    homePageSections[0]?.refrence?.subCategories?.forEach((item) => {
+    homePageSections[1]?.refrence?.subCategories?.forEach((item) => {
         numberOfProducts1 = numberOfProducts1 + (item?.count ? item?.count : 0)
     })
     let numberOfProducts2 = 0
-    homePageSections[0]?.refrence?.subCategories?.forEach((item) => {
+    homePageSections[2]?.refrence?.subCategories?.forEach((item) => {
         numberOfProducts2 = numberOfProducts2 + (item?.count ? item?.count : 0)
     })
     let numberOfProducts3 = 0
-    homePageSections[0]?.refrence?.subCategories?.forEach((item) => {
+    homePageSections[3]?.refrence?.subCategories?.forEach((item) => {
         numberOfProducts3 = numberOfProducts3 + (item?.count ? item?.count : 0)
     })
     let numberOfProducts4 = 0
-    homePageSections[0]?.refrence?.subCategories?.forEach((item) => {
+    homePageSections[4]?.refrence?.subCategories?.forEach((item) => {
         numberOfProducts4 = numberOfProducts4 + (item?.count ? item?.count : 0)
     })
     return (
@@ -168,7 +168,7 @@ export default function Accueil({ homePage, products }) {
                         </Link>
                     </div>
                 </div>
-                <div className=" flex flex-col text-center md:my-16  mt-8 mb-16">
+                <div className=" flex flex-col text-center md:my-16  mt-8 mb-10">
                     <h1 className="md:text-xl text-md tracking-wide max-w-[90%] mx-auto mb-4 font-semibold uppercase leading-relaxed my-2	">
                         Emballages de qualité pour toutes les occasions chez
                         Procktage{' '}
@@ -218,11 +218,14 @@ export default function Accueil({ homePage, products }) {
                     </div>
                 </div>
                 <div>
-                    <div className="flex md:flex-row flex-col justify-between py-4 md:w-[95%] mx-auto">
+                    <div className="flex sm:hidden flex-col justify-between py-4 md:w-[95%] mx-auto">
                         <h1 className="md:text-2xl text-[20px] text-center font-semibold uppercase  tracking-wide leading-relaxed my-2 underline underline-offset-4 ">
                             Acheter par catégorie
                         </h1>
-                        <Slider2 reversedSections={reversedSections} />
+                        <Slider2
+                            homePageSections={homePageSections}
+                            reversedSections={reversedSections}
+                        />
                     </div>
                 </div>
                 <h1 className="md:text-2xl text-[20px] text-center font-semibold uppercase  tracking-wide leading-relaxed my-2 underline underline-offset-4 ">

@@ -18,3 +18,7 @@ a {
 * {
     box-sizing: border-box;
 }
+
+.swiper .swiper-slide {
+    height: auto;
+}

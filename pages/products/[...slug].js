@@ -54,6 +54,7 @@ export default function Product({ product, categories, websiteSettings }) {
             count,
         }
         addToCart(item)
+        setCount(0)
     }
 
     return (

@@ -127,19 +127,17 @@ export default function Accueil({ homePage, products }) {
                         >
                             <div className="w-full h-full cursor-pointer relative">
                                 <img
-                                    src={urlFor(
-                                        homePageSections[3]?.image?.image
-                                    )}
+                                    src="/restauration.png"
                                     className="w-full  h-full object-cover"
                                 />
-                                <div className="text-clack lg:w-[70%] text-center  w-[90%] h-fit py-2 px-4 bg-white/90  absolute left-0 top-0 bottom-0 right-0 m-auto ">
+                                <div className="text-clack lg:w-[70%] text-center  w-[90%] h-fit py-2 bg-white/90  text-xs absolute left-0 top-0 bottom-0 right-0 m-auto ">
                                     {' '}
-                                    <h1 className="lg:text-2xl md:text-md text-md font-[500] ">
+                                    <h1 className="lg:text-2xl md:text-md text-md font-[500] mb-0pb-0 ">
                                         {homePageSections[3]?.title}
                                     </h1>
-                                    <p className="  w-full text-sm  ">
+                                    <p className="  w-full text-[10px] mt-0 pt-0 ">
                                         {' '}
-                                        + {numberOfProducts3} produits
+                                        + {numberOfProducts1} produits
                                     </p>
                                 </div>
                             </div>
@@ -149,19 +147,17 @@ export default function Accueil({ homePage, products }) {
                         >
                             <div className="w-full h-full cursor-pointer relative">
                                 <img
-                                    src={urlFor(
-                                        homePageSections[4]?.image?.image
-                                    )}
+                                    src="/demenagement.png"
                                     className="w-full h-full object-cover"
                                 />
-                                <div className="text-clack lg:w-[70%] text-center  w-[90%] h-fit py-2 px-4 bg-white/90  absolute left-0 top-0 bottom-0 right-0 m-auto ">
+                                <div className="text-clack lg:w-[70%] text-center  w-[90%] h-fit py-2 bg-white/90  text-xs absolute left-0 top-0 bottom-0 right-0 m-auto ">
                                     {' '}
-                                    <h1 className="lg:text-2xl md:text-md text-md font-[500] ">
+                                    <h1 className="lg:text-2xl md:text-md text-md font-[500] mb-0pb-0 ">
                                         {homePageSections[4]?.title}
                                     </h1>
-                                    <p className="  w-full text-sm  ">
+                                    <p className="  w-full text-[10px] mt-0 pt-0 ">
                                         {' '}
-                                        + {numberOfProducts4} produits
+                                        + {numberOfProducts1} produits
                                     </p>
                                 </div>
                             </div>
@@ -236,7 +232,7 @@ export default function Accueil({ homePage, products }) {
                     <Slider1 products={products} />
                 </div>
 
-                <div className="flex md:flex-row justify-between py-4 ">
+                <div className="hidden flex md:flex-row justify-between py-4 ">
                     <div className="flex  w-full justify-around">
                         <div className="flex items-center  flex-col mx-2 ">
                             <div className="flex items-end p-1  md:w-[60px] md:h-[60px] w-[40px] h-[42px] ">

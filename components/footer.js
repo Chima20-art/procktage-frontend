@@ -28,11 +28,11 @@ export default function Footer({ websiteSettings }) {
     //console.log(websiteSettings?.categories?.categorie1?.slug)
     //console.log(websiteSettings?.categories?.categorie2?.title)
     return (
-        <div className=" pb-8 h-full bg-white flex flex-col self-end w-full-screen">
+        <div className="  h-full bg-white flex flex-col self-end w-full-screen pb-4">
             <div>
                 <section className="  py-4   text-[#424242] bg-red-700 ">
-                    <div className="lg:max-w-[80%] max-w-[90%] md:max-w-2xl sm:max-w-[90%] lg:px-0 px-2 mx-auto  flex justify-between">
-                        <p className="text-sm text-orange-100">
+                    <div className="lg:max-w-[80%] max-w-[100%] md:max-w-2xl sm:max-w-[90%] lg:px-0 px-2 mx-auto  flex justify-between">
+                        <p className="text-xs text-orange-100">
                             Connectez-vous avec nous sur les réseaux sociaux :
                         </p>
                         <div className="flex items-center text-white">
@@ -82,7 +82,7 @@ export default function Footer({ websiteSettings }) {
                     </section>
                     <section
                         className="
-                     w-full px-6 flex flex-col justify-between text-[#424242]"
+                     w-full px-6 md:flex hidden flex-col justify-between text-[#424242]"
                     >
                         <p className="pt-6 pb-2 my-4 lg:my-2     lg:py-2 uppercase  text-xs border-b-2 border-red-700 border-0">
                             Nos produit
@@ -147,6 +147,64 @@ export default function Footer({ websiteSettings }) {
                         </div>
                     </section>
                 </section>
+                <section className="hidden py-4  text-[#424242] bg-red-700 text-orange-100  ">
+                    <p className="text-xs text-center  pb-1">
+                        © Copyright Procktage. Tous droits réservés
+                    </p>
+                    <p className="text-xs text-center ">
+                        Développé par{' '}
+                        <a
+                            href="https://michich.com"
+                            className="font-bold cursor-pointer"
+                        >
+                            Michich
+                        </a>{' '}
+                        Development
+                    </p>
+                </section>
+                <div className="flex md:flex-row justify-between pt-8 ">
+                    <div className="flex  w-full justify-around">
+                        <div className="flex items-center  flex-col mx-2 ">
+                            <div className="flex items-end p-1  md:w-[60px] md:h-[60px] w-[40px] h-[42px] ">
+                                <img src="/quality.svg" className="h-full" />
+                            </div>
+                            <p className=" uppercase text-[8px] lg:text-[16px] text-center  ">
+                                qualité guarantie
+                            </p>
+                        </div>
+                        <div className="flex items-center flex-col mx-2">
+                            <div className="  flex items-end p-1  md:w-[60px] md:h-[60px] w-[40px] h-[40px]">
+                                <img
+                                    src="/client.svg"
+                                    className="w-full h-full"
+                                ></img>
+                            </div>
+
+                            <p className=" uppercase  text-[8px] lg:text-[16px] text-center  ">
+                                service clientèle
+                            </p>
+                        </div>
+                    </div>
+                    <div className="flex  w-full justify-around">
+                        <div className="flex items-center flex-col  mx-2 ">
+                            <div className="flex items-end p-1  md:w-[60px] md:h-[60px] w-[40px] h-[40px]">
+                                <img src="/stock.svg"></img>
+                            </div>
+                            <p className=" uppercase  text-[8px] lg:text-[16px] text-center ">
+                                disponibilité des references
+                            </p>
+                        </div>
+                        <div className="flex items-center flex-col mx-2">
+                            <div className="flex items-end p-1  md:w-[60px] md:h-[60px] w-[40px] h-[40px]">
+                                <img src="/shipping.svg"></img>
+                            </div>
+
+                            <p className=" uppercase text-[8px] lg:text-[16px] text-center ">
+                                livraison gratuite
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )

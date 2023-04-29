@@ -162,7 +162,7 @@ export default function Footer({ websiteSettings }) {
                         Development
                     </p>
                 </section>
-                <div className="flex md:flex-row justify-between pt-8 ">
+                <div className="md:hidden flex md:flex-row justify-between pt-8 ">
                     <div className="flex  w-full justify-around">
                         <div className="flex items-center  flex-col mx-2 ">
                             <div className="flex items-end p-1  md:w-[60px] md:h-[60px] w-[40px] h-[42px] ">

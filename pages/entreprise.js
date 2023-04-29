@@ -10,7 +10,7 @@ export default function Entrerise({ websiteSettings, entreprise, categories }) {
     var youtubeId = entreprise ? getYouTubeID(entreprise?.youtubeUrl) : null
     //console.log('youtubeId ', youtubeId)
     return (
-        <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between ">
+        <div className="h-full bg-white min-h-screen w-screen flex flex-col justify-between ">
             <Header websiteSettings={websiteSettings} categories={categories} />
             <div className="lg:max-w-[70%] sm:max-w-2xl  w-[95%] uppercase  text-grey-700 flex flex-col items-center mx-auto py-8 h-full    ">
                 {entreprise?.image && (
@@ -26,10 +26,10 @@ export default function Entrerise({ websiteSettings, entreprise, categories }) {
                 {entreprise?.content?.map((item) => {
                     return (
                         <div key={item?._key} className="my-2">
-                            <p className="text-[12px] font-bold px-4 py-1">
+                            <p className="text-[12px] font-bold px-4 pt-4 pb-2 text-black">
                                 {item?.title}
                             </p>
-                            <p className="text-[9px] bg-orange-100 text-justify p-4 leading-relaxed">
+                            <p className="text-[11px] bg-grey-100 text-justify p-4 tracking-6 leading-relaxed">
                                 {item?.text}
                             </p>
                         </div>

@@ -44,7 +44,7 @@ export default function Header({ websiteSettings, categories }) {
                     <div className="flex flex-row ">
                         {logo && (
                             <Link href="/">
-                                <div className=" lg:mr-4 hover:cursor-pointer object-contain   md:h-full  my-auto  md:flex  md:items-end ">
+                                <div className=" lg:mr-4 hover:cursor-pointer object-contain   h-full w-full my-auto  md:flex  md:items-end ">
                                     <img
                                         src={urlFor(logo).height(200)}
                                         alt={alt}

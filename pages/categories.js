@@ -9,7 +9,7 @@ export default function Categories({ websiteSettings, categories }) {
     return (
         <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between ">
             <Header websiteSettings={websiteSettings} categories={categories} />
-            <div className="lg:max-w-4xl sm:max-w-2xl  w-[95%] flex flex-col items-center mx-auto py-8 h-full  ">
+            <div className="md:max-w-[80%] sm:max-w-2xl  w-[95%] flex flex-col items-center mx-auto py-8 h-full  ">
                 <Link href="/categories" className="   ">
                     <p className="hover:font-bold cursor-pointer w-full">
                         {' '}
@@ -27,12 +27,12 @@ export default function Categories({ websiteSettings, categories }) {
                         return (
                             <div
                                 key={category._id}
-                                className=" w-full  items-center flex flex-col"
+                                className=" w-full  items-center flex flex-col "
                             >
                                 <section className="lg:text-[22px] text-[19px] uppercase my-6  text-red-700 border-b-gray lg:border-b-[12px] border-b-[7px] border-dotted ">
                                     {category?.title}
                                 </section>
-                                <section className=" w-full md:max-w-5xl  flex flex-row flex-wrap    ">
+                                <section className=" w-full md:max-w-full  flex flex-row flex-wrap  gap-4 justify  bg-blue-100 ">
                                     {category?.subCategories?.map(
                                         (subcategory, index) => {
                                             const shouldNotGrow =
@@ -43,7 +43,7 @@ export default function Categories({ websiteSettings, categories }) {
                                             return (
                                                 <div
                                                     key={index}
-                                                    className={` w-[100%] sm:w-1/2 md:w-1/3 lg:w-1/4 flex justify-center `}
+                                                    className="w-[100%] sm:w-1/2 md:w-1/5  justify-center bg-red-300 flex bg-blue-400  "
                                                 >
                                                     <Link
                                                         href={
@@ -52,7 +52,7 @@ export default function Categories({ websiteSettings, categories }) {
                                                                 ?.current
                                                         }
                                                     >
-                                                        <div className="group w-full  pb-0 m-4 flex flex-col items-center  border-[5px] border-grey-200 hover:border-red-700 hover:cursor-pointer ">
+                                                        <div className="group w-full pb-0  flex flex-col gap-4 items-center  border-[5px] border-grey-200 hover:border-red-700 hover:cursor-pointer ">
                                                             {subcategory?.image
                                                                 ?.image && (
                                                                 <img

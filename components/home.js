@@ -37,26 +37,6 @@ export default function Accueil({ homePage, products }) {
         <div>
             {' '}
             <div className="mb-8  lg:max-w-[70%] md:max-w-2xl sm:max-w-[95%] mx-auto  ">
-                <div className=" hidden pb-2 lg:max-w-3xl max-w-[90%] md:max-w-2xl sm:max-w-[90%] lg:px-0 px-2 mx-auto  flex  w-full justify-between  px-2 ">
-                    <div className="flex items-center">
-                        <div className="w-2 h-2 bg-orange-200  mr-2"></div>
-                        <p className="text-md capitalize font-bold text-red-700 ">
-                            agencer
-                        </p>
-                    </div>
-                    <div className="flex items-center">
-                        <div className="w-2 h-2 bg-orange-200  mr-2"></div>
-                        <p className="text-md capitalize font-bold text-red-700 ">
-                            emballer
-                        </p>
-                    </div>
-                    <div className="flex items-center">
-                        <div className="w-2 h-2 bg-orange-200  mr-2"></div>
-                        <p className="text-md capitalize font-bold text-red-700 ">
-                            décorer
-                        </p>
-                    </div>
-                </div>
                 <div className="flex flex-row md:w-[90%] my-4 mx-auto h-full gap-2 ">
                     <Link
                         href={`/category/${homePageSections[0].refrence?.slug?.current}`}

@@ -48,7 +48,7 @@ export default function SubCategory({
                         return (
                             <div
                                 key={index}
-                                className="w-full md:w-1/2 lg:w-1/4 flex justify-center"
+                                className="w-full  md:w-1/2 lg:w-1/4 flex justify-center"
                             >
                                 <Link
                                     href={

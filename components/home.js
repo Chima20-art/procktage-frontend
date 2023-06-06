@@ -11,7 +11,7 @@ export default function Accueil({ homePage, products }) {
     let reversedSections = [...homePageSections].reverse()
 
     //console.log('reversedSections', reversedSections)
-    //console.log('homePageSections', homePageSections)
+    console.log('homePageSections', homePageSections)
 
     let numberOfProducts0 = 0
     homePageSections[0]?.refrence?.subCategories?.forEach((item) => {
@@ -33,61 +33,67 @@ export default function Accueil({ homePage, products }) {
     homePageSections[4]?.refrence?.subCategories?.forEach((item) => {
         numberOfProducts4 = numberOfProducts4 + (item?.count ? item?.count : 0)
     })
+    let numberOfProducts5 = 0
+    homePageSections[5]?.refrence?.subCategories?.forEach((item) => {
+        numberOfProducts5 = numberOfProducts5 + (item?.count ? item?.count : 0)
+    })
     return (
         <div>
             {' '}
-            <div className="mb-8  lg:max-w-[70%] md:max-w-2xl sm:max-w-[95%] mx-auto  ">
-                <div className="flex flex-row md:w-[90%] my-4 mx-auto h-full gap-2 ">
-                    <Link
-                        href={`/category/${homePageSections[0].refrence?.slug?.current}`}
-                    >
-                        <div className=" md:w-[45%] w-[55%] cursor-pointer flex flex-col relative  ">
-                            <img
-                                src="/cos.jpeg"
-                                className="w-full h-full object-cover"
-                            />
-                            <div className="text-clack lg:w-[70%] text-center  w-[90%] h-fit border border-black md:py-8 py-2  bg-white/90  absolute left-0 top-0 bottom-0 right-0 m-auto ">
-                                {' '}
-                                <h1 className="lg:text-4xl md:text-xl text-md font-[500] ">
-                                    {homePageSections[0]?.title}
-                                </h1>
-                                <p className="  w-full text-sm  ">
-                                    + {numberOfProducts0} produits differents
-                                </p>
-                            </div>
-                        </div>
-                    </Link>
-                    <div className=" flex flex-col md:w-[32%] w-[45%] gap-2  ">
+            <div className="mb-8  lg:max-w-[70%] md:max-w-2xl sm:max-w-[95%] mx-auto max-h-fit  ">
+                <div className="flex flex-row md:w-[90%] my-4 mx-auto  gap-2  md-h-[85vh]  h-[50vh]">
+                    <div className=" flex flex-col md:w-[32%] w-[33%] h-[100%] gap-2 ">
                         <Link
-                            href={`/category/${homePageSections[1].refrence?.slug?.current}`}
+                            href={`/category/${homePageSections[0].refrence?.slug?.current}`}
                         >
-                            <div className="w-full h-full cursor-pointer relative ">
+                            <div className=" w-full h-[60%] cursor-pointer flex flex-col relative  ">
                                 <img
-                                    src="/patisserie.png"
-                                    className="w-full h-full object-cover"
+                                    src="/cos.jpeg"
+                                    className="w-full h-[100%] object-cover"
                                 />
-                                <div className="text-clack lg:w-[70%] text-center  w-[90%] h-fit py-2 bg-white/90  text-xs absolute left-0 top-0 bottom-0 right-0 m-auto ">
+                                <div className="text-clack lg:w-[70%] text-center  w-[90%] h-fit md:py-2 py-1 bg-white/90  text-xs absolute left-0 top-0 bottom-0 right-0 m-auto ">
                                     {' '}
-                                    <h1 className="lg:text-2xl md:text-md text-md font-[500] mb-0pb-0 ">
-                                        {homePageSections[1]?.title}
+                                    <h1 className="lg:text-2xl md:text-md text-md font-[500] mb-0 pb-0 ">
+                                        {homePageSections[0]?.title}
                                     </h1>
-                                    <p className="  w-full text-[10px] mt-0 pt-0 ">
-                                        {' '}
-                                        + {numberOfProducts1} produits
+                                    <p className="  w-full md:text-sm text-[10px] mt-0 pt-0 ">
+                                        + {numberOfProducts0} produits
                                     </p>
                                 </div>
                             </div>
                         </Link>
                         <Link
+                            href={`/category/${homePageSections[5].refrence?.slug?.current}`}
+                        >
+                            <div className=" w-full h-[40%] cursor-pointer flex flex-col relative  ">
+                                <img
+                                    src="/e_commerce.png"
+                                    className="w-full  h-[100%] object-cover"
+                                />
+                                <div className="text-clack lg:w-[70%] text-center  w-[90%] h-fit md:py-2 py-1 bg-white/90  text-xs absolute left-0 top-0 bottom-0 right-0 m-auto ">
+                                    {' '}
+                                    <h1 className="lg:text-2xl md:text-md text-md font-[500] mb-0pb-0 ">
+                                        {homePageSections[5]?.title}
+                                    </h1>
+                                    <p className="  w-full text-[10px] mt-0 pt-0 ">
+                                        + {numberOfProducts5} produits
+                                    </p>
+                                </div>
+                            </div>
+                        </Link>
+                    </div>
+
+                    <div className=" flex flex-col md:w-[32%] w-[33%] h-[100%] gap-2 ">
+                        <Link
                             href={`/category/${homePageSections[2].refrence?.slug?.current}`}
                         >
-                            <div className="w-full flex cursor-pointer relative ">
+                            <div className="w-full h-[50%] flex cursor-pointer relative ">
                                 {' '}
                                 <img
                                     src={'/sacs.png'}
-                                    className="w-full  object-cover"
+                                    className="w-full h-[100%] object-cover"
                                 />
-                                <div className="text-clack lg:w-[70%] text-center  w-[90%] h-fit py-2 bg-white/90  text-xs absolute left-0 top-0 bottom-0 right-0 m-auto ">
+                                <div className="text-clack lg:w-[70%] text-center  w-[90%] h-fit md:py-2 py-1 bg-white/90  text-xs absolute left-0 top-0 bottom-0 right-0 m-auto ">
                                     {' '}
                                     <h1 className="lg:text-2xl md:text-md text-md font-[500] ">
                                         {homePageSections[2]?.title}
@@ -99,21 +105,41 @@ export default function Accueil({ homePage, products }) {
                                 </div>
                             </div>
                         </Link>
-                    </div>
-
-                    <div className="hidden md:flex  flex-col w-[30%] gap-2">
                         <Link
-                            href={`/category/${homePageSections[3].refrence?.slug?.current}`}
+                            href={`/category/${homePageSections[1].refrence?.slug?.current}`}
                         >
-                            <div className="w-full h-full cursor-pointer relative">
+                            <div className="w-full h-[50%] cursor-pointer relative ">
                                 <img
-                                    src="/restauration.png"
-                                    className="w-full  h-full object-cover"
+                                    src="/patisserie.png"
+                                    className="w-full h-[100%] object-cover"
                                 />
-                                <div className="text-clack lg:w-[70%] text-center  w-[90%] h-fit py-2 bg-white/90  text-xs absolute left-0 top-0 bottom-0 right-0 m-auto ">
+                                <div className="text-clack lg:w-[70%] text-center  w-[90%] h-fit md:py-2 py-1 bg-white/90  text-xs absolute left-0 top-0 bottom-0 right-0 m-auto ">
                                     {' '}
                                     <h1 className="lg:text-2xl md:text-md text-md font-[500] mb-0pb-0 ">
-                                        {homePageSections[3]?.title}
+                                        {homePageSections[1]?.title}
+                                    </h1>
+                                    <p className="  w-full text-[10px] mt-0 pt-0 ">
+                                        {' '}
+                                        + {numberOfProducts1} produits
+                                    </p>
+                                </div>
+                            </div>
+                        </Link>
+                    </div>
+
+                    <div className="md:flex  flex flex-col h-[100%] w-[33%] gap-2 ">
+                        <Link
+                            href={`/category/${homePage?.Sections[4].refrence?.slug?.current}`}
+                        >
+                            <div className="w-full h-[60%] cursor-pointer relative">
+                                <img
+                                    src="/demenagement.png"
+                                    className="w-full h-[100%] object-cover"
+                                />
+                                <div className="text-clack lg:w-[70%] text-center  w-[90%] h-fit md:py-2 py-1 bg-white/90  text-xs absolute left-0 top-0 bottom-0 right-0 m-auto ">
+                                    {' '}
+                                    <h1 className="lg:text-2xl md:text-md text-md font-[500] mb-0pb-0 ">
+                                        {homePageSections[4]?.title}
                                     </h1>
                                     <p className="  w-full text-[10px] mt-0 pt-0 ">
                                         {' '}
@@ -123,17 +149,17 @@ export default function Accueil({ homePage, products }) {
                             </div>
                         </Link>
                         <Link
-                            href={`/category/${homePage?.Sections[4].refrence?.slug?.current}`}
+                            href={`/category/${homePageSections[3].refrence?.slug?.current}`}
                         >
-                            <div className="w-full h-full cursor-pointer relative">
+                            <div className="w-full h-[40%] cursor-pointer relative">
                                 <img
-                                    src="/demenagement.png"
-                                    className="w-full h-full object-cover"
+                                    src="/restauration.png"
+                                    className="w-full h-[100%]  object-cover"
                                 />
-                                <div className="text-clack lg:w-[70%] text-center  w-[90%] h-fit py-2 bg-white/90  text-xs absolute left-0 top-0 bottom-0 right-0 m-auto ">
+                                <div className="text-clack lg:w-[70%] text-center  w-[90%] h-fit md:py-2 py-1 bg-white/90  text-xs absolute left-0 top-0 bottom-0 right-0 m-auto ">
                                     {' '}
                                     <h1 className="lg:text-2xl md:text-md text-md font-[500] mb-0pb-0 ">
-                                        {homePageSections[4]?.title}
+                                        {homePageSections[3]?.title}
                                     </h1>
                                     <p className="  w-full text-[10px] mt-0 pt-0 ">
                                         {' '}

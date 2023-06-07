@@ -10,11 +10,11 @@ export default function Category({ category, categories, websiteSettings }) {
             <Header
                 websiteSettings={websiteSettings}
                 categories={categories}
-                className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between "
+                className="h-full min-h-screen w-screen flex flex-col justify-between "
             />
             <section
                 key={category._id}
-                className=" w-[90%] lg:max-w-5xl mx-auto  items-center flex flex-col py-6"
+                className=" md:w-[90%] px-4 lg:max-w-5xl mx-auto  items-center flex flex-col py-6"
             >
                 <div className=" w-full uppercase text-xs hover:font-bold ">
                     <Link href="/categories">Nos Produits </Link>
@@ -22,7 +22,7 @@ export default function Category({ category, categories, websiteSettings }) {
                 <div className="text-[28px]  uppercase my-6  text-red-700 border-b-gray border-b-[15px] border-dotted ">
                     {category?.title}
                 </div>
-                <div className="   flex flex-row flex-wrap    ">
+                <div className="flex flex-row flex-wrap justify-center">
                     {category?.subCategories?.map((subcategory, index) => {
                         let rest = category?.subCategories?.length % 4
                         let isLast = category?.subCategories?.length
@@ -36,7 +36,7 @@ export default function Category({ category, categories, websiteSettings }) {
                         return (
                             <div
                                 key={index}
-                                className={` w-[100%] sm:w-1/2 md:w-fit   flex  flex-col justify-center items-center `}
+                                className={`w-[50%] sm:w-1/2 md:w-fit flex flex-row flex-wrap text-center`}
                             >
                                 <Link
                                     href={
@@ -44,7 +44,7 @@ export default function Category({ category, categories, websiteSettings }) {
                                         subcategory?.slug?.current
                                     }
                                 >
-                                    <a className="group w-full   m-2   flex flex-col items-center w-fit	 border-[5px] border-grey-200 hover:border-red-700 hover:cursor-pointer ">
+                                    <a className="group m-2 flex flex-col items-center justify-between w-fit border-[5px] border-grey-200 hover:border-red-700 hover:cursor-pointer ">
                                         {subcategory?.image?.image && (
                                             <img
                                                 src={urlFor(

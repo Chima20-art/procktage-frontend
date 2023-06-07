@@ -58,7 +58,7 @@ export default function Product({ product, categories, websiteSettings }) {
     }
 
     return (
-        <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between text-gray ">
+        <div className="h-full  min-h-screen w-screen flex flex-col justify-between text-gray ">
             <Header websiteSettings={websiteSettings} categories={categories} />
             <div className=" uppercase lg:max-w-4xl sm:max-w-2xl  w-[95%] flex flex-col items-center mx-auto py-8 h-full  ">
                 <div className="w-full text-[11px] py-8 flex ">
@@ -178,21 +178,21 @@ export default function Product({ product, categories, websiteSettings }) {
                                             onClick={() => setIsSelected(item)}
                                             className={` flex fex-row py-2 cursor-pointer text-[12px] border-b  border-red-200 relative  ${
                                                 isSelected?._key == item._key
-                                                    ? 'bg-gray static '
-                                                    : 'bg-orange-50'
+                                                    ? 'bg-gray static text-white  '
+                                                    : 'bg-grey-50 text-red-500 '
                                             }`}
                                         >
                                             <div
                                                 className={` ${
                                                     isSelected?._key ==
                                                         item._key &&
-                                                    'border-t-[10px] border-t-transparent border-l-[15px]  -left-[6px] border-l-red-600 border-b-[10px] border-b-transparent absolute  '
+                                                    'border-t-[10px] border-t-transparent border-l-[15px] -left-[6px] border-l-red-600 border-b-[10px] border-b-transparent absolute'
                                                 }   `}
                                             ></div>
-                                            <div className="flex-1 flex  text-red-500 font-bold justify-center ">
+                                            <div className="flex-1 flex font-bold justify-center ">
                                                 {item?.reference}
                                             </div>
-                                            <div className="flex-1 flex text-red-500 lowercase justify-center">
+                                            <div className="flex-1 flex lowercase justify-center">
                                                 {item?.sizing}
                                             </div>
                                             <div
@@ -220,7 +220,7 @@ export default function Product({ product, categories, websiteSettings }) {
                                 >
                                     -
                                 </div>
-                                <div className=" m-1 flex w-[100px] rounded-[50px] px-[10px] py-[10px] bg-red-100 ">
+                                <div className=" m-1 flex w-[100px] rounded-[50px] px-[10px] py-[10px] bg-grey-100 ">
                                     {count}
                                 </div>
 

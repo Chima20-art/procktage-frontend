@@ -24,7 +24,7 @@ export default function SubCategory({
     category = category?.length > 0 ? category[0] : null
 
     return (
-        <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between ">
+        <div className="h-full bg-white min-h-screen w-screen flex flex-col justify-between ">
             <Header websiteSettings={websiteSettings} categories={categories} />
             <div className="lg:max-w-4xl sm:max-w-2xl  w-[95%]   flex flex-col items-center mx-auto py-8 h-full  ">
                 <div className=" w-full uppercase text-xs flex ">

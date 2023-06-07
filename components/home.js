@@ -41,7 +41,7 @@ export default function Accueil({ homePage, products }) {
         <div>
             {' '}
             <div className="mb-8  lg:max-w-[70%] md:max-w-2xl sm:max-w-[95%] mx-auto max-h-fit  ">
-                <div className="flex flex-row md:w-[90%] my-4 mx-auto  gap-2  md-h-[85vh]  h-[50vh]">
+                <div className="flex flex-row md:w-[90%] my-4 mx-auto  gap-2  lg:h-[80vh]  h-[50vh]">
                     <div className=" flex flex-col md:w-[32%] w-[33%] h-[100%] gap-2 ">
                         <Link
                             href={`/category/${homePageSections[0].refrence?.slug?.current}`}

@@ -39,7 +39,7 @@ export default function Header({ websiteSettings, categories }) {
                     className="w-screen h-screen absolute z-20 top-0 left-0  bg-black bg-opacity-30"
                 />
             )}
-            <div className=" font-raleway h-fit sm:pt-4 pt-2 pb-4 grid content-around  border-b border-b-red-700">
+            <div className=" font-raleway h-fit sm:pt-4 pt-2 pb-4 grid content-around border-b border-b-red-700">
                 <div className="lg:px-2 text-gray text-[10px] md:h-fit  lg:max-w-[80%] max-w-[90%] md:max-w-2xl sm:max-w-[90%] w-[98%]  mx-auto  flex flex-row  justify-between  ">
                     <div className="flex flex-row ">
                         {logo && (
@@ -83,11 +83,11 @@ export default function Header({ websiteSettings, categories }) {
                                         initial={{ y: '-20%', opacity: 0 }}
                                         animate={{ y: 0, opacity: 1 }}
                                         exit={{ opacity: 0 }}
-                                        className="z-50 bg-beige flex absolute uppercase text-gray top-[74px] border border-red-700 left-0 min-w-[280px] px-4 py-6  "
+                                        className="z-50 bg-white flex absolute uppercase text-gray top-[74px] border border-red-700 left-0 min-w-[280px] px-4 py-6  "
                                     >
                                         <ul>
                                             <Link href="/categories">
-                                                <p className="hover:text-red-700">
+                                                <p className="text-red-700 hover:scale-[1.1]">
                                                     Tous nos categories
                                                 </p>
                                             </Link>
@@ -215,7 +215,7 @@ export default function Header({ websiteSettings, categories }) {
                             <AnimatePresence>
                                 {openCard && (
                                     <div
-                                        className="z-50 bg-beige flex  flex-col absolute  uppercase text-gray top-[44px] border border-red-700 right-0 min-w-[280px] px-4 py-4 rounded-b-lg
+                                        className="z-50 bg-white flex  flex-col absolute  uppercase text-gray top-[44px] border border-red-700 right-0 min-w-[280px] px-4 py-4 rounded-b-lg
                                   "
                                     >
                                         <div

@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export default function Category({ category, categories, websiteSettings }) {
     return (
-        <div className="bg-beige">
+        <div className="bg-white">
             <Header
                 websiteSettings={websiteSettings}
                 categories={categories}

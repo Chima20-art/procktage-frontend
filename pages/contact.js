@@ -65,7 +65,7 @@ export default function Contact({ websiteSettings, categories }) {
     }
 
     return (
-        <div className="h-full bg-[#FFF8ED] min-h-screen w-screen flex flex-col justify-between ">
+        <div className="h-full bg-white min-h-screen w-screen flex flex-col justify-between ">
             <Header websiteSettings={websiteSettings} categories={categories} />
             <div className="w-full lg:max-w-4xl sm:max-w-2xl  w-[95%] flex lg:flex-row flex-col  mx-auto p-4 my-12 h-fit  border border-grey-200 uppercase text-gray">
                 <div className="flex-1  h-fit flex flex-col justify-between">
@@ -94,7 +94,7 @@ export default function Contact({ websiteSettings, categories }) {
                         onSubmit={(e) => onSend(e)}
                         className="lg:h-[580px]  md:w-full  flex flex-col justify-between px-4 py-2 gap-6"
                     >
-                        <div className="flex   bg-orange-100 h-[54px] rounded-[50px] items-center px-4  drop-shadow-xl ">
+                        <div className="flex   bg-grey-100 h-[54px] rounded-[50px] items-center px-4  drop-shadow-xl ">
                             {' '}
                             <div className="pr-2">
                                 <svg
@@ -119,7 +119,7 @@ export default function Contact({ websiteSettings, categories }) {
                                 required
                             />
                         </div>
-                        <div className="flex bg-orange-100 h-[54px] rounded-[50px] items-center px-4  drop-shadow-xl">
+                        <div className="flex bg-grey-100 h-[54px] rounded-[50px] items-center px-4  drop-shadow-xl">
                             {' '}
                             <div className="pr-2">
                                 <svg
@@ -145,7 +145,7 @@ export default function Contact({ websiteSettings, categories }) {
                                 required
                             />
                         </div>
-                        <div className="flex bg-orange-100 h-[54px] rounded-[50px] items-center px-4 drop-shadow-xl">
+                        <div className="flex bg-grey-100 h-[54px] rounded-[50px] items-center px-4 drop-shadow-xl">
                             {' '}
                             <div className="pr-2">
                                 <svg
@@ -167,7 +167,7 @@ export default function Contact({ websiteSettings, categories }) {
                                 required
                             />
                         </div>
-                        <div className="flex bg-orange-100 h-[54px] rounded-[50px] items-center px-4 drop-shadow-xl">
+                        <div className="flex bg-grey-100 h-[54px] rounded-[50px] items-center px-4 drop-shadow-xl">
                             {' '}
                             <div className="pr-2">
                                 <svg
@@ -191,7 +191,7 @@ export default function Contact({ websiteSettings, categories }) {
                                 required
                             />
                         </div>
-                        <div className="flex bg-orange-100 min-h-[164px] rounded-[38px] items-start px-4 py-4  drop-shadow-xl">
+                        <div className="flex bg-grey-100 min-h-[164px] rounded-[38px] items-start px-4 py-4  drop-shadow-xl">
                             {' '}
                             <div className="pr-2 pt-2">
                                 <svg

@@ -8,6 +8,7 @@ import Link from 'next/link'
 import OrdersContext from '../OrdersContext'
 import { useRouter } from 'next/router'
 import { uid } from 'uid'
+import { IoIosArrowUp } from 'react-icons/io'
 
 export default function Header({ websiteSettings, categories }) {
     const [isOpen, setIsOpen] = useState(false)
@@ -39,19 +40,19 @@ export default function Header({ websiteSettings, categories }) {
                     className="w-screen h-screen absolute z-20 top-0 left-0  bg-black bg-opacity-30"
                 />
             )}
-            <div className=" font-raleway h-fit sm:pt-4 pt-2 pb-4 grid content-around border-b border-b-red-700">
+            <div className=" font-raleway h-fit sm:pt-4 pt-2 md:pb-4 pb-2 grid content-around border-b border-b-red-700  ">
                 <div
-                    className="lg:px-2 text-gray text-[10px] md:h-fit  
-                 lg:max-w-[80%] max-w-[90%] md:max-w-2xl sm:max-w-[90%] w-[98%]  mx-auto  flex flex-row  justify-between"
+                    className="lg:px-2 text-gray text-[10px] md:h-fit
+                 lg:max-w-[80%]  md:max-w-2xl sm:max-w-[90%] w-full flex flex-row px-4 justify-between"
                 >
-                    <div className="flex flex-row justify-center items-center w-fit ">
+                    <div className="flex flex-row justify-center items-center w-fit">
                         {logo && (
                             <Link href="/">
                                 <div className=" lg:mr-4 hover:cursor-pointer object-cover h-full w-full my-auto  md:flex  md:items-end">
                                     <img
                                         src={urlFor(logo)}
                                         alt={alt}
-                                        className="  w-[60px] lg:w-[60px] lg:h-[60px] h-[60px] object-cover "
+                                        className="w-[60px] lg:w-[60px] lg:h-[60px] h-[60px] object-cover"
                                     />
                                 </div>
                             </Link>
@@ -311,16 +312,22 @@ export default function Header({ websiteSettings, categories }) {
                         </div>
                     </div>
 
-                    <div className=" md:hidden flex mr-4 text-xl sm:items-center items-center pt-2  hover:cursor-pointer ">
+                    <div className="md:hidden flex text-xl sm:items-center items-center pt-2 hover:cursor-pointer">
                         <RiShoppingCart2Fill
                             onClick={() => setOpenCard(!openCard)}
-                            className="text-[20px]  mr-4 pt-[2px] "
+                            className="text-[27px] pt-[2px] mr-4 "
                         ></RiShoppingCart2Fill>
-
-                        <IoMdMenu
-                            className="text-2xl   "
-                            onClick={() => setIsOpen(!isOpen)}
-                        />
+                        {isOpen ? (
+                            <IoIosArrowUp
+                                className="text-2xl text-black"
+                                onClick={() => setIsOpen(!isOpen)}
+                            />
+                        ) : (
+                            <IoMdMenu
+                                className="text-2xl text-black"
+                                onClick={() => setIsOpen(!isOpen)}
+                            />
+                        )}
                     </div>
                     <AnimatePresence>
                         {openCard && (
@@ -571,7 +578,7 @@ export default function Header({ websiteSettings, categories }) {
                                 onClick={() => {
                                     setIsOpen(false)
                                 }}
-                                className="w-full mt-2 py-4    font-bold hover:cursor-pointer   hover:text-red-700 "
+                                className="w-full mt-2 py-4 font-bold hover:cursor-pointer hover:text-red-700"
                             >
                                 CONTACT
                             </div>
@@ -579,12 +586,12 @@ export default function Header({ websiteSettings, categories }) {
                         <div className=" flex h-16 items-center  ">
                             <FaSearch
                                 onClick={() => onSearch()}
-                                className="mr-2 text-[16px] text-gray flex  self-center hover:cursor-pointer hover:text-red-700 "
+                                className="mr-2 text-[16px] text-gray flex  self-center hover:cursor-pointer hover:text-red-700"
                             />
 
                             <input
                                 type="text"
-                                className="w-[85%]  h-11  placeholder:text-[10px] border-b-2 border-b-red-700 border-0 focus:outline-none  focus:border-0"
+                                className="w-[85%]  h-11  placeholder:text-[10px] border-b-2 border-b-red-700 border-0 focus:outline-none focus:border-0"
                                 placeholder="RECHERCHE UN PRODUIT..."
                                 value={searchValue}
                                 onChange={(e) => setSearchValue(e.target.value)}

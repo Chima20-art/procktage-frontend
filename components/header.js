@@ -40,39 +40,44 @@ export default function Header({ websiteSettings, categories }) {
                 />
             )}
             <div className=" font-raleway h-fit sm:pt-4 pt-2 pb-4 grid content-around border-b border-b-red-700">
-                <div className="lg:px-2 text-gray text-[10px] md:h-fit  lg:max-w-[80%] max-w-[90%] md:max-w-2xl sm:max-w-[90%] w-[98%]  mx-auto  flex flex-row  justify-between  ">
-                    <div className="flex flex-row ">
+                <div
+                    className="lg:px-2 text-gray text-[10px] md:h-fit  
+                 lg:max-w-[80%] max-w-[90%] md:max-w-2xl sm:max-w-[90%] w-[98%]  mx-auto  flex flex-row  justify-between"
+                >
+                    <div className="flex flex-row justify-center items-center w-fit ">
                         {logo && (
                             <Link href="/">
-                                <div className=" lg:mr-4 hover:cursor-pointer object-contain   h-full w-full my-auto  md:flex  md:items-end ">
+                                <div className=" lg:mr-4 hover:cursor-pointer object-cover h-full w-full my-auto  md:flex  md:items-end">
                                     <img
-                                        src={urlFor(logo).height(200)}
+                                        src={urlFor(logo)}
                                         alt={alt}
-                                        className="  w-[60px] lg:w-[70px] lg:h-[80px] h-[70px] "
+                                        className="  w-[60px] lg:w-[60px] lg:h-[60px] h-[60px] object-cover "
                                     />
                                 </div>
                             </Link>
                         )}
 
-                        <div className="hidden   font-bold sm:grid sm:content-end sm:px-4 sm:py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700  hover:text-red-700 ">
+                        <div className="hidden font-bold sm:grid sm:content-end sm:px-4 sm:py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700  hover:text-red-700 ">
                             <Link href="/">ACCEUIL</Link>
                         </div>
-                        <div
-                            className="hidden  font-bold  sm:grid content-end px-4 py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700
+                        <Link href="/entreprise">
+                            <div
+                                className="hidden   font-bold  sm:grid content-end px-4 py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700
                          hover:text-red-700  "
-                        >
-                            <Link href="/entreprise">ENTREPRISE</Link>
-                        </div>
+                            >
+                                ENTREPRISE
+                            </div>
+                        </Link>
                         <div
-                            className={`relative hidden font-bold   sm:flex sm:flex-row  items-end  px-4 py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700 hover:text-red-700 ${
+                            className={`relative hidden font-bold   sm:flex sm:flex-row  items-end   px-4  py-2 hover:cursor-pointer hover:border-b-2 hover:border-red-700 hover:text-red-700 ${
                                 clicked && 'border-b-2 border-red-700'
                             } `}
                         >
                             <div
-                                className="sm:flex sm:flex-row  items-end relative "
+                                className="sm:flex sm:flex-row items-end  relative w-[130px]    "
                                 onClick={() => setClicked(!clicked)}
                             >
-                                <p>NOS PRODUITS</p>
+                                <p className=" px-4">NOS PRODUITS</p>
                                 <RiArrowDropDownLine className="text-xl " />
                             </div>
 
@@ -189,7 +194,7 @@ export default function Header({ websiteSettings, categories }) {
                             </div>
                         </Link>
                     </div>
-                    <div className="hidden   relative h-11  md:flex flex-row items-center self-end">
+                    <div className="hidden relative h-11  md:flex flex-row items-center  self-center">
                         <input
                             value={searchValue}
                             onChange={(e) => setSearchValue(e.target.value)}

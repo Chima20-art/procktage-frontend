@@ -40,38 +40,39 @@ export default function SubCategory({
                         </a>
                     </Link>
                 </div>
-                <section className="text-[20px] uppercase my-6  text-red-700 border-b-gray border-b-[10px] border-dotted ">
+                <section className="text-[20px] uppercase my-6  text-red-700 border-b-gray border-b-[10px] border-dotted">
                     {subCategory?.title}
                 </section>
-                <section className="lg:w-full flex flex-row flex-wrap">
-                    {subCategory?.products?.map((product, index) => {
-                        return (
-                            <div
-                                key={index}
-                                className="w-full  md:w-1/2 lg:w-1/4 flex justify-center"
-                            >
-                                <Link
-                                    href={
-                                        '/products/' +
-                                        subCategory?.slug?.current +
-                                        '/' +
-                                        product?.slug?.current
-                                    }
+                <div className="w-full">
+                    <section className=" w-full flex flex-row flex-wrap">
+                        {subCategory?.products?.map((product, index) => {
+                            return (
+                                <div
+                                    key={index}
+                                    className="w-1/2 lg:w-1/4 flex justify-center "
                                 >
-                                    <a className="group w-full py-5 px-4 m-2 flex flex-col items-center border-[5px] border-grey-200 hover:border-red-700 hover:cursor-pointer ">
-                                        {product?.image?.asset && (
-                                            <img
-                                                src={urlFor(
-                                                    product?.image?.asset
-                                                )}
-                                                className="object-contain max-w-[140px] h-[140px] py-2"
-                                            />
-                                        )}
+                                    <Link
+                                        href={
+                                            '/products/' +
+                                            subCategory?.slug?.current +
+                                            '/' +
+                                            product?.slug?.current
+                                        }
+                                    >
+                                        <a className="group w-full py-3 md:py-5 px-4 m-2 flex flex-col items-center border-[5px] border-grey-200 hover:border-red-700 hover:cursor-pointer ">
+                                            {product?.image?.asset && (
+                                                <img
+                                                    src={urlFor(
+                                                        product?.image?.asset
+                                                    )}
+                                                    className="object-contain max-w-[140px] h-[140px] py-2"
+                                                />
+                                            )}
 
-                                        <p className="text-[11px] text-gray uppercase py-2">
-                                            {product?.title}
-                                        </p>
-                                        <div className="flex flex-col  justify-center py-2 items-center mx-4">
+                                            <p className="text-[11px] text-gray  text-center uppercase py-2">
+                                                {product?.title}
+                                            </p>
+                                            {/* <div className="flex flex-col  justify-center py-2 items-center mx-4">
                                             {product?.reference && (
                                                 <div className="flex items-center gap-2 mb-2">
                                                     <div className="w-6 h-6  ">
@@ -127,13 +128,14 @@ export default function SubCategory({
                                                         </p>
                                                     </div>
                                                 )}
-                                        </div>
-                                    </a>
-                                </Link>
-                            </div>
-                        )
-                    })}
-                </section>
+                                        </div> */}
+                                        </a>
+                                    </Link>
+                                </div>
+                            )
+                        })}
+                    </section>
+                </div>
             </div>
             <div className="w-screen">
                 <Footer websiteSettings={websiteSettings} />

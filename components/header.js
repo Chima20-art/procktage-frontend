@@ -40,10 +40,10 @@ export default function Header({ websiteSettings, categories }) {
                     className="w-screen h-screen absolute z-20 top-0 left-0  bg-black bg-opacity-30"
                 />
             )}
-            <div className=" font-raleway h-fit sm:pt-4 pt-2 md:pb-4 pb-2 grid content-around border-b border-b-red-700  ">
+            <div className=" font-raleway h-fit sm:pt-4 pt-2 md:pb-4 pb-2 grid content-around border-b border-b-red-700   ">
                 <div
                     className="lg:px-2 text-gray text-[10px] md:h-fit
-                 lg:max-w-[80%]  md:max-w-2xl sm:max-w-[90%] w-full flex flex-row px-4 justify-between"
+                 lg:max-w-[80%]  md:max-w-2xl sm:max-w-[90%] w-full flex flex-row px-4 justify-between mx-auto"
                 >
                     <div className="flex flex-row justify-center items-center w-fit">
                         {logo && (

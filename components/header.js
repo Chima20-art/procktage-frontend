@@ -311,7 +311,7 @@ export default function Header({ websiteSettings, categories }) {
                         </div>
                     </div>
 
-                    <div className=" md:hidden flex mr-4 text-xl sm:items-center items-top pt-2  hover:cursor-pointer">
+                    <div className=" md:hidden flex mr-4 text-xl sm:items-center items-center pt-2  hover:cursor-pointer ">
                         <RiShoppingCart2Fill
                             onClick={() => setOpenCard(!openCard)}
                             className="text-[20px]  mr-4 pt-[2px] "

@@ -58,7 +58,7 @@ export default function Product({ product, categories, websiteSettings }) {
     }
 
     return (
-        <div className="h-full  min-h-screen w-screen flex flex-col justify-between text-gray ">
+        <div className="h-full  min-h-screen w-screen flex flex-col justify-between text-gray">
             <Header websiteSettings={websiteSettings} categories={categories} />
             <div className=" uppercase lg:max-w-4xl sm:max-w-2xl  w-[95%] flex flex-col items-center mx-auto py-8 h-full  ">
                 <div className="w-full text-[11px] py-8 flex ">

@@ -15,6 +15,7 @@ export default function Home({
     categories,
     products,
 }) {
+    console.log('websiteSettings' ,websiteSettings)
     return (
         <div className="h-full bg-b min-h-screen flex flex-col justify-between ">
             <NextSeo

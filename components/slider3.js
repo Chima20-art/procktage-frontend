@@ -80,15 +80,15 @@ export default function Slider3({ product, setSelectedItem, setIsSelected }) {
                     {product?.description?.map((item, index) => {
                         return (
                             <SwiperSlide key={index}>
-                                <div className=" flex flex-row flex-1 px-2.5 bg-grey-100">
+                                <div className=" flex flex-row flex-1 px-2.5 bg-grey-100  ">
                                     <div
-                                        className={`flex-1 w-1/${Images?.length} mx- flex items-center justify-center bg-grey-100 my-[5px] hover:cursor-pointer`}
+                                        className={`flex-1 w-1/${Images?.length} flex items-center max-h-[150px] max-w-[150px] mx-auto justify-center bg-grey-100 my-[5px] hover:cursor-pointer`}
                                     >
                                         {item?.image && (
                                             <img
                                                 key={index}
                                                 src={urlFor(item?.image)}
-                                                className="relative "
+                                                className="relative"
                                                 onClick={() => {
                                                     setSelectedItem(item)
                                                     setIsSelected(item)

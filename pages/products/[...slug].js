@@ -261,10 +261,10 @@ export default function Product({ product, categories, websiteSettings }) {
                                 })}
                             </div>
 
-                            <div className=" text-[11px] mt-6 w-fit  mx-auto max-sm:text-center">
+                            <div className=" text-[11px] mt-6 md:w-full w-fit mx-auto max-sm:text-center">
                                 Quantite (Pqt):minimum pqt{' '}
                             </div>
-                            <div className="flex justify-center md:mt-0  mt-2">
+                            <div className="flex md:justify-start justify-center md:mt-0  mt-2">
                                 <div
                                     onClick={decrementCount}
                                     className="bg-gray cursor-pointer text-white text-3xl h-fit my-auto  w-[28px] flex flex-col justify-center items-center rounded-[2px] "
@@ -277,12 +277,12 @@ export default function Product({ product, categories, websiteSettings }) {
 
                                 <div
                                     onClick={incrementCount}
-                                    className="bg-gray cursor-pointer text-white text-3xl h-fit my-auto  w-[28px] flex flex-col justify-center items-center rounded-[2px] "
+                                    className="bg-gray cursor-pointer text-white text-3xl h-fit my-auto  w-[28px] flex flex-col  justify-center items-center rounded-[2px] "
                                 >
                                     +
                                 </div>
                             </div>
-                            <div className="flex items-center justify-center mt-12 gap-4">
+                            <div className="flex items-center md:justify-start justify-center mt-12 gap-4">
                                 <button
                                     onClick={() => {
                                         onAddToCart()

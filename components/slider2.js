@@ -28,7 +28,7 @@ export default function Slider2({ products, reversedSections }) {
             <AiOutlineArrowLeft
                 onClick={handlePrevious}
                 src="/left.svg"
-                color="#fff"
+                color="#ffffff"
                 size="24px"
                 className="md:w-[28px] bg-black/40 md:h-[28px]  absolute  left-0  md:-left-12 z-50 top-[35%] md:top-[50%] transform -translate-y-1/2 hover:scale-105 hover:cursor-pointer"
             />

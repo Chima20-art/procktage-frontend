@@ -1,7 +1,11 @@
 import React, { forwardRef, useState } from 'react'
 import { AiFillFacebook } from 'react-icons/ai'
 import { BsInstagram } from 'react-icons/bs'
-import { TiSocialTiktok } from 'react-icons/ti'
+import {
+    TiSocialFacebook,
+    TiSocialInstagram,
+    TiSocialTiktok,
+} from 'react-icons/ti'
 import { ImLocation } from 'react-icons/im'
 import { BsTelephoneFill } from 'react-icons/bs'
 import { FaFax } from 'react-icons/fa'
@@ -44,8 +48,7 @@ export default function Footer({ websiteSettings }) {
                                             : ''
                                     }
                                 >
-                                    facebook
-                                    {/* <AiFillFacebook className="mx-1 text-2xl cursor-pointer text-orange-100" /> */}
+                                    <TiSocialFacebook className="mx-1 text-2xl cursor-pointer text-orange-100" />
                                 </Link>
                             )}
                             {websiteSettings?.media?.instagram && (
@@ -56,8 +59,7 @@ export default function Footer({ websiteSettings }) {
                                             : ''
                                     }
                                 >
-                                    insta
-                                    {/* <BsInstagram className="mx-1 text-xl cursor-pointer text-orange-100" /> */}
+                                    <TiSocialInstagram className="mx-1 text-xl cursor-pointer text-orange-100" />
                                 </Link>
                             )}
 

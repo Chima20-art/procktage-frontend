@@ -6,12 +6,18 @@ import Slider from './slider1'
 import Slider2 from './slider2'
 import Slider1 from './slider1'
 
-export default function Accueil({ homePage, products }) {
+export default function Accueil({ homePage, products, instaCatalogue }) {
     let homePageSections = homePage?.Sections
     let reversedSections = [...homePageSections].reverse()
+    const repeatedData = []
+
+    for (let i = 0; i < 10; i++) {
+        repeatedData.push(...instaCatalogue)
+    }
 
     //console.log('reversedSections', reversedSections)
-    console.log('homePageSections', homePageSections)
+    console.log('repeatedData', repeatedData)
+    console.log('instaCatalogue', instaCatalogue)
 
     let numberOfProducts0 = 0
     homePageSections[0]?.refrence?.subCategories?.forEach((item) => {
@@ -37,6 +43,10 @@ export default function Accueil({ homePage, products }) {
     homePageSections[5]?.refrence?.subCategories?.forEach((item) => {
         numberOfProducts5 = numberOfProducts5 + (item?.count ? item?.count : 0)
     })
+    const isMobileDevice = () => {
+        return typeof window !== 'undefined' && window.innerWidth < 768
+    }
+
     return (
         <div>
             {' '}
@@ -234,8 +244,75 @@ export default function Accueil({ homePage, products }) {
                     Nouveau Produits
                 </h1>
 
-                <div className="flex md:flex-row flex-col justify-between py-4 md:w-[95%] mx-auto">
+                <div className="flex md:flex-row flex-col justify-between py-4 md:w-[95%] mx-auto ">
                     <Slider1 products={products} />
+                </div>
+                <div className="flex flex-col">
+                    <h1 className="md:text-2xl text-[20px] text-center font-semibold uppercase  tracking-wide leading-relaxed my-12 underline underline-offset-4">
+                        Instagram Catalogue
+                    </h1>
+
+                    <div className="grid grid-cols-4 md:grid-cols-4 md:gap-4 gap-1 w-full h-full  ">
+                        {instaCatalogue &&
+                            repeatedData?.map((item, index) => {
+                                return (
+                                    <div
+                                        className="cursor-pointer group perspective w-full h-full bg-red-300"
+                                        key={index}
+                                    >
+                                        <div className="md:relative md:preserve-3d md:group-hover:my-rotate-y-180 w-full h-fit h-full md:w-full md:h-[300px] md:duration-1000 ">
+                                            <div className="md:absolute backface-hidden h-full w-full rounded-xl">
+                                                {isMobileDevice ? (
+                                                    <Link
+                                                        href={`/products/${item?.product?.Subcategory?.slug?.current}/${item?.product?.slug?.current}`}
+                                                    >
+                                                        <a className="h-full w-full cursor-pointer object-cover rounded-xl">
+                                                            <img
+                                                                className="h-full w-full"
+                                                                src={
+                                                                    item?.imageUrl
+                                                                }
+                                                            />
+                                                        </a>
+                                                    </Link>
+                                                ) : (
+                                                    <img
+                                                        className="h-full w-full"
+                                                        src={item?.imageUrl}
+                                                    />
+                                                )}
+                                            </div>
+                                            <div className=" hidden absolute my-rotate-y-180 backface-hidden bg-white w-full h-full shadow-2xl md:flex flex-col items-center justify-start rounded-xl ">
+                                                <img
+                                                    src={urlFor(
+                                                        item?.product?.image
+                                                    )}
+                                                    className="max-h-[60%] w-full object-contain bg-grey-100 rounded-xl flex justify-start items-start top-0 "
+                                                />
+                                                <p className="text-black my-4 cursor-pointer">
+                                                    {item?.title}
+                                                </p>
+                                                <Link
+                                                    href={
+                                                        '/products/' +
+                                                        item?.product
+                                                            ?.Subcategory?.slug
+                                                            ?.current +
+                                                        '/' +
+                                                        item?.product?.slug
+                                                            ?.current
+                                                    }
+                                                >
+                                                    <button className="bg-orange-400 hover:bg-white hover:border hover:border-orange-400 hover:text-orange-400 text-white font-[500] py-2 px-4 rounded cursor-pointer ">
+                                                        Voir le produit
+                                                    </button>
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                    </div>
                 </div>
 
                 <div className="hidden flex md:flex-row justify-between py-4 ">

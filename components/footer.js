@@ -1,7 +1,11 @@
-import React, { useState } from 'react'
+import React, { forwardRef, useState } from 'react'
 import { AiFillFacebook } from 'react-icons/ai'
 import { BsInstagram } from 'react-icons/bs'
-import { TbBrandTiktok } from 'react-icons/tb'
+import {
+    TiSocialFacebook,
+    TiSocialInstagram,
+    TiSocialTiktok,
+} from 'react-icons/ti'
 import { ImLocation } from 'react-icons/im'
 import { BsTelephoneFill } from 'react-icons/bs'
 import { FaFax } from 'react-icons/fa'
@@ -11,7 +15,7 @@ import { MdOutlineEmail } from 'react-icons/md'
 import Link from 'next/link'
 
 export default function Footer({ websiteSettings }) {
-    //console.log('setting:', websiteSettings)
+    console.log('setting:', websiteSettings)
     const adress = websiteSettings?.contact?.adress
     const phone = websiteSettings?.contact?.phone
     const mobile = websiteSettings?.contact?.mobile
@@ -24,11 +28,11 @@ export default function Footer({ websiteSettings }) {
         //console.log('onSearch')
         router.push(`/search/${searchValue}`)
     }
-    //console.log('websiteSettings', websiteSettings)
+    console.log('websiteSettings', websiteSettings)
     //console.log(websiteSettings?.categories?.categorie1?.slug)
     //console.log(websiteSettings?.categories?.categorie2?.title)
     return (
-        <div className="  h-full bg-white flex flex-col self-end w-full-screen pb-4">
+        <div className="h-full bg-white flex flex-col self-end w-full-screen pb-4">
             <div>
                 <section className="  py-4   text-[#424242] bg-red-700 ">
                     <div className="lg:max-w-[80%] max-w-[100%] md:max-w-2xl sm:max-w-[90%] lg:px-0 px-2 mx-auto  flex justify-between">
@@ -36,15 +40,40 @@ export default function Footer({ websiteSettings }) {
                             Connectez-vous avec nous sur les réseaux sociaux :
                         </p>
                         <div className="flex items-center text-white">
-                            <Link href={websiteSettings?.media?.facebook}>
-                                <AiFillFacebook className="mx-1 text-2xl cursor-pointer text-orange-100" />
-                            </Link>
-                            <Link href={websiteSettings?.media?.instagram}>
-                                <BsInstagram className="mx-1 text-xl cursor-pointer text-orange-100" />
-                            </Link>
-                            <Link href={websiteSettings?.media?.instagram}>
-                                <TbBrandTiktok className="mx-1 text-2xl cursor-pointer text-orange-100" />
-                            </Link>
+                            {websiteSettings?.media?.facebook && (
+                                <Link
+                                    href={
+                                        websiteSettings?.media?.facebook
+                                            ? websiteSettings?.media?.facebook
+                                            : ''
+                                    }
+                                >
+                                    <TiSocialFacebook className="mx-1 text-2xl cursor-pointer text-orange-100" />
+                                </Link>
+                            )}
+                            {websiteSettings?.media?.instagram && (
+                                <Link
+                                    href={
+                                        websiteSettings?.media?.instagram
+                                            ? websiteSettings?.media?.instagram
+                                            : ''
+                                    }
+                                >
+                                    <TiSocialInstagram className="mx-1 text-xl cursor-pointer text-orange-100" />
+                                </Link>
+                            )}
+
+                            {websiteSettings?.media?.tiktok && (
+                                <Link
+                                    href={
+                                        websiteSettings?.media?.tiktok
+                                            ? websiteSettings?.media?.tiktok
+                                            : ''
+                                    }
+                                >
+                                    <TiSocialTiktok className="mx-1 text-2xl cursor-pointer text-orange-100" />
+                                </Link>
+                            )}
                         </div>
                     </div>
                 </section>
@@ -125,10 +154,12 @@ export default function Footer({ websiteSettings }) {
                         <p className=" pt-6 pb-2 my-4 lg:my-2    lg:py-2 uppercase  text-xs border-b-2 border-red-700 border-0">
                             Contact
                         </p>
-                        <div className="flex items-center md:pt-2 md:py-0 py-3 pt-0  ">
-                            <ImLocation className="text-lg mr-1" />
-                            {adress}
-                        </div>
+                        {adress && (
+                            <div className="flex items-center md:pt-2 md:py-0 py-3 pt-0  ">
+                                <ImLocation className="text-lg mr-1" />
+                                {adress}
+                            </div>
+                        )}
                         <div className="flex items-center md:pt-2 md:py-0 py-3 pt-0">
                             <BsTelephoneFill className="text-lg mr-1" />
                             {phone}

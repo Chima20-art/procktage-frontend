@@ -14,7 +14,9 @@ export default function Home({
     homePage,
     categories,
     products,
+    instaCatalogue,
 }) {
+    console.log('websiteSettings', websiteSettings)
     return (
         <div className="h-full bg-b min-h-screen flex flex-col justify-between ">
             <NextSeo
@@ -51,7 +53,11 @@ export default function Home({
                 }}
             />
             <Header websiteSettings={websiteSettings} categories={categories} />
-            <Accueil products={products} homePage={homePage} />
+            <Accueil
+                products={products}
+                homePage={homePage}
+                instaCatalogue={instaCatalogue}
+            />
             <div className="w-screen">
                 <Footer websiteSettings={websiteSettings} />
             </div>
@@ -128,8 +134,31 @@ export async function getStaticProps(context) {
             `,
         {}
     )
+    let instaCatalogue = await client.fetch(`
+    *[_type == 'instaCatalogue' && !(_id in path("drafts.**"))]{
+      _id,
+      title,
+      "imageUrl": image.asset->url,
+      product->{
+        _id,
+        title,
+        image,
+        Subcategory->{
+            title,
+            slug,
+          },
+          slug,
+      }
+    }
+  `)
 
     return {
-        props: { websiteSettings, homePage, categories, products }, // will be passed to the page component as props
+        props: {
+            websiteSettings,
+            homePage,
+            categories,
+            products,
+            instaCatalogue,
+        }, // will be passed to the page component as props
     }
 }

@@ -49,7 +49,7 @@ export default function Footer({ websiteSettings }) {
                                     }
                                 >
                                     <TiSocialFacebook className="mx-1 text-2xl cursor-pointer text-orange-100" />
-                                </Link>;
+                                </Link>
                             )}
                             {websiteSettings?.media?.instagram && (
                                 <Link

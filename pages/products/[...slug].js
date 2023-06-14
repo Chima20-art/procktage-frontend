@@ -118,7 +118,7 @@ export default function Product({ product, categories, websiteSettings }) {
                                                 ? selectedItem?.image
                                                 : product?.image
                                         )}
-                                        className="transition-all object-contain duration-500 cursor-pointer flex p-4 w-full  "
+                                        className="transition-all object-cover duration-500 cursor-pointer flex p-4 w-full  "
                                     />
                                 )}
                             </div>
@@ -383,7 +383,7 @@ export async function getStaticProps(context) {
                 _id,
                 image,
                 slug,
-                "count":count(*[ _type=='product'  && !(_id in path("drafts.**")) && references(^._id)])
+                "count":count(*[_type=='product'  && !(_id in path("drafts.**")) && references(^._id)])
               }
         }`
     )

@@ -13,7 +13,7 @@ export default function Slider1({ products, reversedSections }) {
     const [swiperRef, setSwiperRef] = useState()
 
     //console.log('products', products)
-    console.log('reversedSections in SLider', reversedSections)
+    //console.log('reversedSections in SLider', reversedSections)
 
     const handlePrevious = () => {
         swiperRef?.slidePrev()
@@ -79,10 +79,10 @@ export default function Slider1({ products, reversedSections }) {
                                         product.slug.current
                                     }
                                 >
-                                    <div className="flex-1  bg-[#F7F7F7] p-10 py-20 flex items-center justify-center  mb-[35px] hover:cursor-pointer">
+                                    <div className="flex-1  bg-[#F7F7F7] p-10 py-20 flex items-center justify-center  mb-[35px] hover:cursor-pointer max-h-[340px]">
                                         <img
                                             src={urlFor(product?.image)}
-                                            className="object-contain w-full  "
+                                            className="object-cover w-full "
                                         />
                                     </div>
                                 </Link>
@@ -93,7 +93,7 @@ export default function Slider1({ products, reversedSections }) {
                                             product.Subcategory.slug.current
                                         }
                                     >
-                                        <p className="text-[14px] text-[#777777] mb-[6px] hover:cursor-pointer  ">
+                                        <p className="text-[14px] text-[#777777] mb-[6px] hover:cursor-pointer text-orange-400  ">
                                             {product.Subcategory.title}
                                         </p>
                                     </Link>

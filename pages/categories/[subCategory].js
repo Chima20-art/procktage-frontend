@@ -65,7 +65,7 @@ export default function SubCategory({
                                                     src={urlFor(
                                                         product?.image?.asset
                                                     )}
-                                                    className="object-contain max-w-[140px] h-[140px] py-2"
+                                                    className="object-cover max-w-[140px] h-[140px] py-2"
                                                 />
                                             )}
 

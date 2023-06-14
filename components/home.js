@@ -252,12 +252,12 @@ export default function Accueil({ homePage, products, instaCatalogue }) {
                         Instagram Catalogue
                     </h1>
 
-                    <div className="grid grid-cols-4 md:grid-cols-4 md:gap-4 gap-1 w-full h-full  ">
+                    <div className="grid grid-cols-3 md:grid-cols-4 md:gap-4 gap-1 w-full h-full  ">
                         {instaCatalogue &&
                             repeatedData?.map((item, index) => {
                                 return (
                                     <div
-                                        className="cursor-pointer group perspective w-full h-full bg-red-300"
+                                        className="cursor-pointer group perspective w-full h-full "
                                         key={index}
                                     >
                                         <div className="md:relative md:preserve-3d md:group-hover:my-rotate-y-180 w-full h-fit h-full md:w-full md:h-[300px] md:duration-1000 ">
@@ -266,7 +266,7 @@ export default function Accueil({ homePage, products, instaCatalogue }) {
                                                     <Link
                                                         href={`/products/${item?.product?.Subcategory?.slug?.current}/${item?.product?.slug?.current}`}
                                                     >
-                                                        <a className="h-full w-full cursor-pointer object-cover rounded-xl">
+                                                        <a className="h-full w-full  cursor-pointer object-cover rounded-xl">
                                                             <img
                                                                 className="h-full w-full"
                                                                 src={

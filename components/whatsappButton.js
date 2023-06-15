@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 export default function WhatsAppButton() {
     const [message, setMessage] = useState(
-        'Bonjour ! Comment puis-je vous aider dans votre demande ?'
+        "Bonjour ! J'aimerais obtenir un devis. Pouvez-vous me fournir les détails nécessaires ?"
     )
     const [isVisible, setIsVisible] = useState(false)
 

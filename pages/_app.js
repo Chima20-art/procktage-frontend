@@ -3,6 +3,7 @@ import App from 'next/app'
 import { client } from '../lib/sanity'
 import { OrdersProvider } from '../OrdersContext'
 import { useEffect, useState } from 'react'
+import WhatsAppButton from '../components/whatsappButton'
 
 function MyApp({ Component, pageProps }) {
     const [cart, setCart] = useState([])
@@ -51,6 +52,7 @@ function MyApp({ Component, pageProps }) {
             }}
         >
             <Component {...pageProps} />
+            <WhatsAppButton />
         </OrdersProvider>
     )
 }

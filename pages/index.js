@@ -8,6 +8,7 @@ import { client } from '../lib/sanity'
 import { NextSeo } from 'next-seo'
 import { setConfig } from 'next/config'
 import { urlFor } from '../lib/sanity'
+import WhatsAppButton from '../components/whatsappButton'
 
 export default function Home({
     websiteSettings,
@@ -58,6 +59,7 @@ export default function Home({
                 homePage={homePage}
                 instaCatalogue={instaCatalogue}
             />
+
             <div className="w-screen">
                 <Footer websiteSettings={websiteSettings} />
             </div>

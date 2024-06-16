@@ -1,92 +1,92 @@
-import React, { useState } from 'react'
-import Header from '../components/header'
-import { client, urlFor } from '../lib/sanity'
-import Footer from '../components/footer'
-import Link from 'next/link'
-import GoogleMapReact from 'google-map-react'
+import React, { useState } from "react";
+import Header from "../components/header";
+import { client, urlFor } from "../lib/sanity";
+import Footer from "../components/footer";
+import Link from "next/link";
+import GoogleMapReact from "google-map-react";
 const AnyReactComponent = ({ text }) => (
-    <div className="flex text-red-800  ">
-        <div>
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="48"
-                height="48"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="red"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="arcs"
-            >
-                <circle cx="12" cy="10" r="3" />
-                <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z" />
-            </svg>
-        </div>
-        <h1 className="text-md   text-red-500 items-center flex font-bold">
-            {text}
-        </h1>
+  <div className="flex text-red-800  ">
+    <div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="48"
+        height="48"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="red"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="arcs"
+      >
+        <circle cx="12" cy="10" r="3" />
+        <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z" />
+      </svg>
     </div>
-)
+    <h1 className="text-md   text-red-500 items-center flex font-bold">
+      {text}
+    </h1>
+  </div>
+);
 
 export default function Contact({ websiteSettings, categories }) {
-    const [name, setName] = useState('')
-    const [nomDuResponsable, setNomDuResponsable] = useState('')
-    const [telephone, setTelephone] = useState('')
-    const [email, setEmail] = useState('')
-    const [message, setMessage] = useState('')
+  const [name, setName] = useState("");
+  const [nomDuResponsable, setNomDuResponsable] = useState("");
+  const [telephone, setTelephone] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
-    //console.log('categories', categories)
-    const defaultProps = {
-        center: {
-            lat: 31.67582375056415,
-            lng: -8.032326433365405,
-        },
-        zoom: 12.5,
+  //console.log('categories', categories)
+  const defaultProps = {
+    center: {
+      lat: 31.67582375056415,
+      lng: -8.032326433365405,
+    },
+    zoom: 12.5,
+  };
+
+  const onSend = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("/api/sendContact", {
+        method: "POST",
+        body: JSON.stringify({
+          name,
+          nomDuResponsable,
+          telephone,
+          email,
+          message,
+        }),
+      });
+      let result = await response.json();
+      //console.log('result', result)
+    } catch (error) {
+      console.log("error", error);
     }
+  };
 
-    const onSend = async (e) => {
-        e.preventDefault()
-        try {
-            const response = await fetch('/api/sendContact', {
-                method: 'POST',
-                body: JSON.stringify({
-                    name,
-                    nomDuResponsable,
-                    telephone,
-                    email,
-                    message,
-                }),
-            })
-            let result = await response.json()
-            //console.log('result', result)
-        } catch (error) {
-            console.log('error', error)
-        }
-    }
-
-    return (
-        <div className="h-full bg-white min-h-screen w-screen flex flex-col justify-between ">
-            <Header websiteSettings={websiteSettings} categories={categories} />
-            <div className="w-full lg:max-w-4xl sm:max-w-2xl  w-[95%] flex lg:flex-row flex-col  mx-auto p-4 my-12 h-fit  border border-grey-200 uppercase text-gray">
-                <div className="flex-1  h-fit flex flex-col justify-between">
-                    <p>Trouvez nous facilement</p>
-                    <div className="lg:w-[455px] lg:h-[605px] w-full h-[500px]  ">
-                        <GoogleMapReact
-                            bootstrapURLKeys={{
-                                key: 'AIzaSyBBjQ-uu38SXO64wcDT9azoSwYCTuw8L4M',
-                            }}
-                            defaultCenter={defaultProps.center}
-                            defaultZoom={defaultProps.zoom}
-                        >
-                            <AnyReactComponent
-                                lat={defaultProps.center.lat}
-                                lng={defaultProps.center.lng}
-                                text="Procktage"
-                            />
-                        </GoogleMapReact>
-                    </div>
-                </div>
-                <div className="flex-1  ">
+  return (
+    <div className="h-full bg-white min-h-screen w-screen flex flex-col justify-between ">
+      <Header websiteSettings={websiteSettings} categories={categories} />
+      <div className="w-[95%] lg:max-w-4xl sm:max-w-2xl flex lg:flex-row flex-col  mx-auto p-4 my-12 h-fit  border border-grey-200 uppercase text-gray">
+        <div className="w-full h-fit flex flex-col justify-between">
+          <p>Trouvez nous facilement</p>
+          <div className="w-full h-[500px]  ">
+            <GoogleMapReact
+              bootstrapURLKeys={{
+                key: "AIzaSyBBjQ-uu38SXO64wcDT9azoSwYCTuw8L4M",
+              }}
+              defaultCenter={defaultProps.center}
+              defaultZoom={defaultProps.zoom}
+            >
+              <AnyReactComponent
+                lat={defaultProps.center.lat}
+                lng={defaultProps.center.lng}
+                text="Procktage"
+              />
+            </GoogleMapReact>
+          </div>
+        </div>
+        {/* <div className="flex-1  ">
                     <p className="flex-1  self-top pb-2 pl-4 lg:pt-0 pt-4 ">
                         contactez-nous
                     </p>
@@ -235,18 +235,18 @@ export default function Contact({ websiteSettings, categories }) {
                             envoyez
                         </button>
                     </form>
-                </div>
-            </div>
-            <div className="w-screen">
-                <Footer websiteSettings={websiteSettings} />
-            </div>
-        </div>
-    )
+                </div> */}
+      </div>
+      <div className="w-screen">
+        <Footer websiteSettings={websiteSettings} />
+      </div>
+    </div>
+  );
 }
 
 export async function getStaticProps(context) {
-    let websiteSettings = client.fetch(
-        `*[_id == 'settings'][0]{
+  let websiteSettings = client.fetch(
+    `*[_id == 'settings'][0]{
         categories{
             categorie1->,
             categorie2->,
@@ -257,10 +257,10 @@ export async function getStaticProps(context) {
         media,
         seo,
     }`,
-        {}
-    )
-    let categories = client.fetch(
-        `*[_type == 'category'  && !(_id in path("drafts.**"))]{
+    {}
+  );
+  let categories = client.fetch(
+    `*[_type == 'category'  && !(_id in path("drafts.**"))]{
           _id,
           title,
            subCategories[]->{
@@ -271,13 +271,13 @@ export async function getStaticProps(context) {
                 "count":count(*[ _type=='product' && !(_id in path("drafts.**"))  && references(^._id)])
               }
         }`
-    )
-    let promises = [websiteSettings, categories]
-    promises = await Promise.all(promises)
-    websiteSettings = promises[0]
-    categories = promises[1]
+  );
+  let promises = [websiteSettings, categories];
+  promises = await Promise.all(promises);
+  websiteSettings = promises[0];
+  categories = promises[1];
 
-    return {
-        props: { websiteSettings, categories }, // will be passed to the page component as props
-    }
+  return {
+    props: { websiteSettings, categories }, // will be passed to the page component as props
+  };
 }

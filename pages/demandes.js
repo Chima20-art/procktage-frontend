@@ -1,163 +1,152 @@
-import React, { useContext, useState } from 'react'
-import Header from '../components/header'
-import { client, urlFor } from '../lib/sanity'
-import Footer from '../components/footer'
-import Link from 'next/link'
-import OrdersContext from '../OrdersContext'
+import React, { useContext, useState } from "react";
+import Header from "../components/header";
+import { client, urlFor } from "../lib/sanity";
+import Footer from "../components/footer";
+import Link from "next/link";
+import OrdersContext from "../OrdersContext";
 
 export default function Demandes({ websiteSettings, categories }) {
-    const [name, setName] = useState('')
-    const [nomDuResponsable, setNomDuResponsable] = useState('')
-    const [telephone, setTelephone] = useState('')
-    const [email, setEmail] = useState('')
-    const [message, setMessage] = useState('')
-    const [error, setError] = useState(false)
-    const [loading, setLoading] = useState(false)
-    const [errorMessage, setErrorMessage] = useState('')
+  const [name, setName] = useState("");
+  const [nomDuResponsable, setNomDuResponsable] = useState("");
+  const [telephone, setTelephone] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-    const { cart, removeFromCart, emptyCart } = useContext(OrdersContext)
-    const [isAlertVisible, setIsAlertVisible] = useState(false)
-    const handleButtonClick = () => {
-        setIsAlertVisible(true)
-    }
+  const { cart, removeFromCart, emptyCart } = useContext(OrdersContext);
+  const [isAlertVisible, setIsAlertVisible] = useState(false);
+  const handleButtonClick = () => {
+    setIsAlertVisible(true);
+  };
 
-    const onSend = async (e) => {
-        e.preventDefault()
-        setLoading(true)
-        try {
-            if (cart?.length >= 1) {
-                const response = await fetch('/api/sendOrder', {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        name,
-                        nomDuResponsable,
-                        telephone,
-                        email,
-                        message,
-                        cart,
-                    }),
-                })
-                let result = await response.json()
-                //console.log('result', result)
-                if (result.status) {
-                    setName('')
-                    setNomDuResponsable('')
-                    setTelephone('')
-                    setEmail('')
-                    setMessage('')
-                    emptyCart()
-                } else {
-                    setErrorMessage(
-                        'une erreur est survenue dans le serveur, veuillez réesayer plutard'
-                    )
-                    setError(true)
-                }
-            } else {
-                setErrorMessage(
-                    'Votre carte est vide, veuillez y ajouter des produits'
-                )
-                setError(true)
-            }
-        } catch (error) {
-            setErrorMessage(
-                'une erreur est survenue, veuillez réesayer plutard'
-            )
-            setError(true)
-            console.log('error', error)
-        }
-        setLoading(false)
-        setIsAlertVisible(true)
-    }
-    const handleSubmit = async (e) => {
-        console.log('Sending')
-        e.preventDefault()
-        let data = {
+  const onSend = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      if (cart?.length >= 1) {
+        const response = await fetch("/api/sendOrder", {
+          method: "POST",
+          body: JSON.stringify({
             name,
-            email,
             nomDuResponsable,
             telephone,
+            email,
             message,
-        }
-        const response = await fetch('/api/contact', {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json, text/plain, */*',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        })
-        let result = await response.json()
-
-        console.log('Response received!')
+            cart,
+          }),
+        });
+        let result = await response.json();
+        //console.log('result', result)
         if (result.status) {
-            console.log('Response succeeded!')
-            setName('')
-            setEmail('')
-            setMessage('')
+          setName("");
+          setNomDuResponsable("");
+          setTelephone("");
+          setEmail("");
+          setMessage("");
+          emptyCart();
+        } else {
+          setErrorMessage(
+            "une erreur est survenue dans le serveur, veuillez réesayer plutard"
+          );
+          setError(true);
         }
+      } else {
+        setErrorMessage(
+          "Votre carte est vide, veuillez y ajouter des produits"
+        );
+        setError(true);
+      }
+    } catch (error) {
+      setErrorMessage("une erreur est survenue, veuillez réesayer plutard");
+      setError(true);
+      console.log("error", error);
     }
+    setLoading(false);
+    setIsAlertVisible(true);
+  };
+  const handleSubmit = async (e) => {
+    console.log("Sending");
+    e.preventDefault();
+    let data = {
+      name,
+      email,
+      nomDuResponsable,
+      telephone,
+      message,
+    };
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    let result = await response.json();
 
-    return (
-        <div className="h-full min-h-screen w-screen flex flex-col justify-between ">
-            <Header websiteSettings={websiteSettings} categories={categories} />
-            <div className="lg:max-w-4xl sm:max-w-2xl  w-[95%] uppercase  my-10 text-grey-700 flex flex-col items-center mx-auto py-8 h-full  bg-[#f5f5f5] w-full border border-grey-300 ">
-                <p className="text-[14px] pb-2">demande de produit</p>
-                <div
-                    id="tableau "
-                    className="mb-6 w-[100%] flex flex-col items-center "
-                >
-                    <div className="bg-grey-900 w-[98%] flex text-white text-[10px] flex-6 py-4 px-2">
-                        <div className=" w-[20%]">image de produit</div>
-                        <div className="w-[40%]">description</div>
-                        <div className="w-[20%]">quatite (pqt)</div>
-                        <div className="w-[20%]">action</div>
-                    </div>
-                    {cart?.map((item) => {
-                        return (
-                            <div
-                                key={item.id}
-                                className="bg-white w-[98%] flex text-gray text-[10px] h-full flex-6 py-3 px-2 "
-                            >
-                                <div className="w-[20%]">
-                                    {item?.product?.image && (
-                                        <img
-                                            src={urlFor(item?.product?.image)}
-                                            className="  w-[60px] h-[60px] object-contain"
-                                        />
-                                    )}
-                                </div>
-                                <div className="w-[40%] h-full  h-full">
-                                    <p className=" pb-1 font-bold">
-                                        {item?.product?.title}
-                                    </p>
-                                    <p className=" pb-1 ">
-                                        {item?.variant?.sizing}
-                                    </p>
-                                    <p className=" pb-1">
-                                        {' '}
-                                        {item?.variant?.quantite}
-                                    </p>
-                                </div>
-                                <div className="w-[20%] font-bold h-full">
-                                    {item?.count}
-                                </div>
-                                <div className="w-[20%]">
-                                    <button
-                                        onClick={() => removeFromCart(item)}
-                                        className="bg-red-400 py-3 px-2 uppercase text-beige hover:bg-gray rounded-[20px]"
-                                    >
-                                        Supprimer
-                                    </button>
-                                </div>
-                            </div>
-                        )
-                    })}
+    console.log("Response received!");
+    if (result.status) {
+      console.log("Response succeeded!");
+      setName("");
+      setEmail("");
+      setMessage("");
+    }
+  };
+
+  return (
+    <div className="h-full min-h-screen w-screen flex flex-col justify-between ">
+      <Header websiteSettings={websiteSettings} categories={categories} />
+      <div className="lg:max-w-4xl sm:max-w-2xl  w-[95%] uppercase  my-10 text-grey-700 flex flex-col items-center mx-auto py-8 h-full  bg-[#f5f5f5] w-full border border-grey-300 ">
+        <p className="text-[14px] pb-2">demande de produit</p>
+        <div
+          id="tableau "
+          className="mb-6 w-[100%] flex flex-col items-center "
+        >
+          <div className="bg-grey-900 w-[98%] flex text-white text-[10px] flex-6 py-4 px-2">
+            <div className=" w-[20%]">image de produit</div>
+            <div className="w-[40%]">description</div>
+            <div className="w-[20%]">quatite (pqt)</div>
+            <div className="w-[20%]">action</div>
+          </div>
+          {cart?.map((item) => {
+            return (
+              <div
+                key={item.id}
+                className="bg-white w-[98%] flex text-gray text-[10px] h-full flex-6 py-3 px-2 "
+              >
+                <div className="w-[20%]">
+                  {item?.product?.image && (
+                    <img
+                      src={urlFor(item?.product?.image)}
+                      className="  w-[60px] h-[60px] object-contain"
+                    />
+                  )}
                 </div>
-                <div className="bg-white">
-                    <div className="text-gray text-[11px] text-center pt-6 pb-3 font-bold">
-                        demande de devis
-                    </div>
-                    <form
+                <div className="w-[40%] h-full  h-full">
+                  <p className=" pb-1 font-bold">{item?.product?.title}</p>
+                  <p className=" pb-1 ">{item?.variant?.sizing}</p>
+                  <p className=" pb-1"> {item?.variant?.quantite}</p>
+                </div>
+                <div className="w-[20%] font-bold h-full">{item?.count}</div>
+                <div className="w-[20%]">
+                  <button
+                    onClick={() => removeFromCart(item)}
+                    className="bg-red-400 py-3 px-2 uppercase text-beige hover:bg-gray rounded-[20px]"
+                  >
+                    Supprimer
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        <div className="bg-white">
+          <div className="text-gray text-[11px] text-center pt-6 pb-3 font-bold">
+            demande de devis
+          </div>
+          {/* <form
                         onSubmit={(e) => {
                             onSend(e)
                             handleSubmit(e)
@@ -362,19 +351,24 @@ export default function Demandes({ websiteSettings, categories }) {
                                 <p className="text-red-500">{errorMessage}</p>
                             </div>
                         )}
-                    </form>
-                </div>
-            </div>
-            <div className="w-screen">
-                <Footer websiteSettings={websiteSettings} />
-            </div>
+                    </form> */}
+          <p className=" lg:w-[400px] md:w-full flex flex-col justify-between px-4 py-2 gap-6 normal-case">
+            En raison d'une forte demande, le formulaire de demande de devis est
+            temporairement désactivé. Nous vous prions de nous excuser pour tout
+            inconvénient.
+          </p>
         </div>
-    )
+      </div>
+      <div className="w-screen">
+        <Footer websiteSettings={websiteSettings} />
+      </div>
+    </div>
+  );
 }
 
 export async function getStaticProps(context) {
-    let websiteSettings = client.fetch(
-        `*[_type == 'settings'][0]{
+  let websiteSettings = client.fetch(
+    `*[_type == 'settings'][0]{
         categories{
             categorie1->,
             categorie2->,
@@ -385,10 +379,10 @@ export async function getStaticProps(context) {
         media,
         seo,
     }`,
-        {}
-    )
-    let categories = client.fetch(
-        `*[_type == 'category' && !(_id in path("drafts.**")) ]{
+    {}
+  );
+  let categories = client.fetch(
+    `*[_type == 'category' && !(_id in path("drafts.**")) ]{
           _id,
           title,
            subCategories[]->{
@@ -399,13 +393,13 @@ export async function getStaticProps(context) {
                 "count":count(*[ _type=='product' && !(_id in path("drafts.**")) && references(^._id)])
               }
         }`
-    )
-    let promises = [websiteSettings, categories]
-    promises = await Promise.all(promises)
-    websiteSettings = promises[0]
-    categories = promises[1]
+  );
+  let promises = [websiteSettings, categories];
+  promises = await Promise.all(promises);
+  websiteSettings = promises[0];
+  categories = promises[1];
 
-    return {
-        props: { websiteSettings, categories }, // will be passed to the page component as props
-    }
+  return {
+    props: { websiteSettings, categories }, // will be passed to the page component as props
+  };
 }

@@ -43,18 +43,17 @@ function MyApp({ Component, pageProps }) {
   };
 
   return (
-    // <OrdersProvider
-    //     value={{
-    //         cart,
-    //         addToCart,
-    //         removeFromCart,
-    //         emptyCart,
-    //     }}
-    // >
-    //     <Component {...pageProps} />
-    //     <WhatsAppButton />
-    // </OrdersProvider>
-    <div></div>
+    <OrdersProvider
+        value={{
+            cart,
+            addToCart,
+            removeFromCart,
+            emptyCart,
+        }}
+    >
+        <Component {...pageProps} />
+        <WhatsAppButton />
+    </OrdersProvider>
   );
 }
 

@@ -247,7 +247,7 @@ export default function Accueil({ homePage, products, instaCatalogue }) {
                 <div className="flex md:flex-row flex-col justify-between py-4 md:w-[95%] mx-auto ">
                     <Slider1 products={products} />
                 </div>
-                {/* <div className="flex flex-col">
+                <div className="flex flex-col">
                     <h1 className="md:text-2xl text-[20px] text-center font-semibold uppercase  tracking-wide leading-relaxed my-12 underline underline-offset-4">
                         Instagram Catalogue
                     </h1>
@@ -257,7 +257,7 @@ export default function Accueil({ homePage, products, instaCatalogue }) {
                             repeatedData?.map((item, index) => {
                                 return (
                                     <div
-                                        className="cursor-pointer group perspective w-full h-full"
+                                        className="cursor-pointer group perspective w-full h-full "
                                         key={index}
                                     >
                                         <div className="md:relative md:preserve-3d md:group-hover:my-rotate-y-180 w-full h-fit h-full md:w-full md:h-[300px] md:duration-1000 ">
@@ -313,7 +313,7 @@ export default function Accueil({ homePage, products, instaCatalogue }) {
                                 )
                             })}
                     </div>
-                </div> */}
+                </div>
 
                 <div className="hidden flex md:flex-row justify-between py-4 ">
                     <div className="flex  w-full justify-around">
